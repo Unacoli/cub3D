@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 10 02:06:50 2022
+# Make data base, printed on Wed Aug 10 02:11:00 2022
 
 # Variables
 
@@ -171,7 +171,7 @@ LPFLAGS = -L$(LIBFT) -Lmlx -lbsd -lXext -lX11 -lmlx -lm
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=13/122=11%
+# Load=80/1024=8%, Rehash=0, Collisions=14/125=11%
 
 # Pattern-specific Variable Values
 
@@ -202,7 +202,7 @@ objs//main.o: srcs//main.c | objs compiling
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 #  recipe to execute (from 'Makefile', line 52):
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -214,7 +214,7 @@ all: cub3d
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 
 .PHONY: all clean fclean re norm
 #  Implicit rule search has not been done.
@@ -227,12 +227,12 @@ cub3d: objs//main.o objs//draw.o
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 #  recipe to execute (from 'Makefile', line 47):
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
 			$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LPFLAGS) -o $@
-	@echo "$(BLUE)            Building $(DESCRIPTION) DONE √"
+	@echo "$(BLUE)            Build $(DESCRIPTION) DONE √"
 
 # Not a target:
 .SUFFIXES:
@@ -243,22 +243,42 @@ cub3d: objs//main.o objs//draw.o
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-10 02:06:45.1601344
+#  Last modified 2022-08-10 02:09:53.8001344
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs//main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-09 22:24:31.3536028
+#  Last modified 2022-08-10 02:07:50.2701344
 #  File has been updated.
 #  Successfully updated.
 
 objs:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-10 02:06:46.5001344
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := objs
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/16=19%
+ 
 #  recipe to execute (from 'Makefile', line 58):
 	@echo "$(PURPLE)"
 			mkdir $@
@@ -277,7 +297,6 @@ fclean: clean
 			-rm -f $(NAME)
 	@echo "$(GREEN)"
 			make fclean -C $(LIBFT)
- 
 			make clean -C $(MLX)
 	@echo "$(BLUE)            Cleaning LIBFT and MLX DONE √"
 
@@ -323,28 +342,8 @@ objs//draw.o:
 
 compiling:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := compiling
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 55):
 			@echo -n "$(WHITE)"
 
@@ -356,12 +355,12 @@ compiling:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 244 B / avg = 7 B
-# current buf: size = 8162 B / used = 244 B / count = 32 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 255 B / avg = 7 B
+# current buf: size = 8162 B / used = 255 B / count = 33 / avg = 7 B
 
-# strcache performance: lookups = 67 / hit rate = 52%
+# strcache performance: lookups = 67 / hit rate = 50%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=2/67=3%
-# Finished Make data base on Wed Aug 10 02:06:50 2022
+# Load=33/8192=0%, Rehash=0, Collisions=2/67=3%
+# Finished Make data base on Wed Aug 10 02:11:00 2022
 
  
