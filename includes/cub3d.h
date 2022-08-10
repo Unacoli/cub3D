@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/10 23:26:41 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/11 00:28:18 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ typedef struct s_color
 	unsigned char	b;
 	unsigned char	o;
 }	t_color;
+
+typedef struct s_elem
+{
+	char	elem;
+	char	facing;
+	char	*texture;
+}	t_elem;
 
 typedef struct s_pos
 {
@@ -70,7 +77,6 @@ typedef struct s_data
 	t_pos		player;
 }	t_data;
 
-
 //-----PARSING-----//
 int		parsing(t_data *data);
 //-----------------//
@@ -81,7 +87,5 @@ void	init_game_data(t_data *data, char **av);
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 //-----------------//
-
-
 
 #endif
