@@ -1,16 +1,17 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/telli/Code/C/Cub3D'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/telli/Code/C/Graphical_mlx/Cub3D'
 echo "\033[1;35m"
 mkdir objs
 echo "\033[1;32m"
-make -C ./libft
-make -C ./mlx
+make -C libft
+make -C mlx
 echo -n "\033[1;37m"
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx -c srcs//main.c -o objs//main.o
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx -c srcs//draw.c -o objs//draw.o
+clang -Wall -Wextra -Werror -Iincludes -Ilibft -Imlx -c srcs/main.c -o objs/main.o
+clang -Wall -Wextra -Werror -Iincludes -Ilibft -Imlx -c srcs/parsing.c -o objs/parsing.o
+clang -Wall -Wextra -Werror -Iincludes -Ilibft -Imlx -c srcs/game_utils.c -o objs/game_utils.o
 echo "\033[0;34m =========> Compiling object files <========="
 echo "\033[1;37m"
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx  ./objs//main.o  ./objs//draw.o -L./libft -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3d
+clang -Wall -Wextra -Werror -Iincludes -Ilibft -Imlx  objs/main.o  objs/parsing.o  objs/game_utils.o -Llibft -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3D
 echo "\033[0;34m            Build Cub3D project for [42] DONE √"
-make: Leaving directory '/home/telli/Code/C/Cub3D'
+make: Leaving directory '/home/telli/Code/C/Graphical_mlx/Cub3D'
  

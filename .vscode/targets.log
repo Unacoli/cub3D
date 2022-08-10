@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 10 02:11:00 2022
+# Make data base, printed on Wed Aug 10 17:36:22 2022
 
 # Variables
 
@@ -19,37 +19,37 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 28)
-OBJ = ./objs
+OBJ = objs
 # makefile (from 'Makefile', line 27)
-SRC = ./srcs
+SRC = srcs
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 24)
-INCLUDES = -I $(INCLUDE) -I $(LIBFT) -I $(MLX)
+# makefile (from 'Makefile', line 23)
+INCLUDES = -I$(INCLUDE) -I$(LIBFT) -I$(MLX)
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/telli/Code/C/Cub3D
+CURDIR := /home/telli/Code/C/Graphical_mlx/Cub3D
 # makefile
 SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # makefile (from 'Makefile', line 30)
-MLX = ./mlx
+MLX = mlx
 # environment
-_ = /usr/bin/sh
+_ = /home/telli/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/node
 # makefile (from 'Makefile', line 19)
 CFLAGS = -Wall -Wextra -Werror
-# makefile (from 'Makefile', line 42)
+# makefile (from 'Makefile', line 44)
 BLUE = \033[0;34m
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 33)
-OBJS = $(patsubst $(SRC)%.c, $(OBJ)/%.o,$(SRCS))
+# makefile (from 'Makefile', line 35)
+OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 # environment
 VSCODE_CWD = /mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code
 # default
@@ -57,22 +57,28 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /home/telli/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Airshipper/:/mnt/c/Users/telli/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/telli/OneDrive/Bureau/Code/flutter/bin:/mnt/c/Users/telli/.dotnet/tools
 # environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-a7b75d70-0297-46be-a198-08b17ba70e0f.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f6928806-7b04-4e13-83a6-77a4d0f9d56a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 39)
+# makefile (from 'Makefile', line 41)
 PURPLE = \033[1;35m
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /home/telli/Code/C/Cub3D
+DISPLAY = localhost:10.0
+# environment
+PWD = /home/telli/Code/C/Graphical_mlx/Cub3D
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/12_interop
-# makefile (from 'Makefile', line 38)
+WSL_INTEROP = /run/WSL/15977_interop
+# makefile (from 'Makefile', line 40)
 GREEN = \033[1;32m
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -81,7 +87,9 @@ HOME = /home/telli
 # environment
 LOGNAME = telli
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+ZSH = /home/telli/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -93,13 +101,13 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 31)
-SRCS = $(SRC)/main.c $(SRC)/draw.c
+SRCS = $(SRC)/main.c $(SRC)/parsing.c $(SRC)/game_utils.c
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 41)
+# makefile (from 'Makefile', line 43)
 WHITE = \033[1;37m
 # makefile (from 'Makefile', line 29)
-LIBFT = ./libft
+LIBFT = libft
 # makefile (from 'Makefile', line 18)
 CC = clang
 # default
@@ -108,10 +116,12 @@ MAKE_VERSION := 4.2.1
 USER = telli
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 26)
 INCLUDE = includes
 # makefile (from 'Makefile', line 14)
-NAME = cub3d
+NAME = cub3D
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -120,13 +130,13 @@ VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/telli/.vscode/extensions/ms-vscode-remote
 MAKE_COMMAND := make
 # environment
 OLDPWD = /mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code
-# makefile (from 'Makefile', line 43)
+# makefile (from 'Makefile', line 45)
 EOC = \033[0;0m
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
-# makefile (from 'Makefile', line 37)
+# makefile (from 'Makefile', line 39)
 RED = \033[1;31m
 # makefile
 MAKEFLAGS = pqrR
@@ -134,11 +144,11 @@ MAKEFLAGS = pqrR
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# makefile (from 'Makefile', line 36)
+# makefile (from 'Makefile', line 38)
 BLACK = \033[1;30m
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 40)
+# makefile (from 'Makefile', line 42)
 CYAN = \033[1;36m
 # automatic
 +F = $(notdir $+)
@@ -148,6 +158,8 @@ VSCODE_HANDLES_SIGPIPE = true
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# environment
+PAGER = less
 # environment
 LC_ALL = C
 # environment
@@ -171,7 +183,7 @@ LPFLAGS = -L$(LIBFT) -Lmlx -lbsd -lXext -lX11 -lmlx -lm
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=14/125=11%
+# Load=86/1024=8%, Rehash=0, Collisions=13/129=10%
 
 # Pattern-specific Variable Values
 
@@ -180,33 +192,32 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Directories
 
 # . (device 2064, inode 165099): 11 files, no impossibilities.
-# srcs/ (device 2064, inode 218329): 4 files, no impossibilities so far.
-# srcs (device 2064, inode 218329): 4 files, no impossibilities so far.
+# srcs (device 2064, inode 218329): 5 files, no impossibilities so far.
 
-# 19 files, no impossibilities in 3 directories.
+# 16 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 objs/%.o: srcs/%.c | objs compiling
-#  recipe to execute (from 'Makefile', line 52):
+#  recipe to execute (from 'Makefile', line 54):
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-objs//main.o: srcs//main.c | objs compiling
+objs/main.o: srcs/main.c | objs compiling
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: '/main'
-#  File does not exist.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-08-10 17:23:08.1312942
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-#  recipe to execute (from 'Makefile', line 52):
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  recipe to execute (from 'Makefile', line 54):
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-all: cub3d
+all: cub3D
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
 #  Implicit rule search has not been done.
@@ -214,21 +225,27 @@ all: cub3d
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
 .PHONY: all clean fclean re norm
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3d: objs//main.o objs//draw.o
+# Not a target:
+objs/parsing.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+cub3D: objs/main.o objs/parsing.o objs/game_utils.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-#  recipe to execute (from 'Makefile', line 47):
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  recipe to execute (from 'Makefile', line 49):
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
 			$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LPFLAGS) -o $@
@@ -243,44 +260,25 @@ cub3d: objs//main.o objs//draw.o
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-10 02:09:53.8001344
+#  Last modified 2022-08-10 17:23:01.1312942
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-srcs//main.c:
+srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-10 02:07:50.2701344
+#  Last modified 2022-08-10 17:07:45.1012942
 #  File has been updated.
 #  Successfully updated.
 
 objs:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-08-10 17:23:08.3312942
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := objs
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=3/16=19%
- 
-#  recipe to execute (from 'Makefile', line 58):
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 60):
 	@echo "$(PURPLE)"
+ 
 			mkdir $@
 	@echo "$(GREEN)"
 			make -C $(LIBFT)
@@ -291,7 +289,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 70):
+#  recipe to execute (from 'Makefile', line 72):
 	@echo "$(BLUE) =========> Deleting executable <========="
 	@echo "$(PURPLE)"
 			-rm -f $(NAME)
@@ -300,12 +298,18 @@ fclean: clean
 			make clean -C $(MLX)
 	@echo "$(BLUE)            Cleaning LIBFT and MLX DONE √"
 
+# Not a target:
+objs/game_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 norm:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 81):
+#  recipe to execute (from 'Makefile', line 83):
 	@echo "$(BLACK)"
 			norminette $(LIBFT)
 	@echo "$(CYAN)"
@@ -329,38 +333,52 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 65):
+#  recipe to execute (from 'Makefile', line 67):
 	@echo "$(BLUE) =========> Deleting object files <========="
 	@echo "$(PURPLE)"
 			-rm -rf $(OBJ)
 
-# Not a target:
-objs//draw.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 compiling:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := compiling
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+#  recipe to execute (from 'Makefile', line 57):
 			@echo -n "$(WHITE)"
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/46=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/48=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 255 B / avg = 7 B
-# current buf: size = 8162 B / used = 255 B / count = 33 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 276 B / avg = 8 B
+# current buf: size = 8162 B / used = 276 B / count = 33 / avg = 8 B
 
-# strcache performance: lookups = 67 / hit rate = 50%
+# strcache performance: lookups = 68 / hit rate = 51%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=2/67=3%
-# Finished Make data base on Wed Aug 10 02:11:00 2022
+# Load=33/8192=0%, Rehash=0, Collisions=2/68=3%
+# Finished Make data base on Wed Aug 10 17:36:22 2022
 
  

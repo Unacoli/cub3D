@@ -53,7 +53,7 @@ Mkfile.old
 dkms.conf
 
 .vscode/*
-
+Notes/*
 *.pdf
 *.txt
 cub3d.out
