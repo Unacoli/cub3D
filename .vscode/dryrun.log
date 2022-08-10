@@ -1,16 +1,11 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/mnt/nfs/homes/tmoragli/42/Cub3D'
-echo "\033[1;35m"
-mkdir objs
-mkdir objs/builtins
-echo "\033[1;32m"
-make -C ./libft
-make -C ./mlx
-echo "\033[1;37m"
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/telli/Code/C/Cub3D'
+echo -n "\033[1;37m"
 clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx -c srcs//main.c -o objs//main.o
-echo "\033[1;31m =========> Compiling object files.............DONE √\n"
+clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx -c srcs//draw.c -o objs//draw.o
+echo "\033[0;34m =========> Compiling object files <========="
 echo "\033[1;37m"
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx  ./objs//main.o -L./libft -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3D
-echo "\033[1;31m =========> Building Cub3D.............DONE √\n"
-make: Leaving directory '/mnt/nfs/homes/tmoragli/42/Cub3D'
+clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx  ./objs//main.o  ./objs//draw.o -L./libft -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3d
+echo "\033[0;34m            Building Cub3D project for [42] DONE √"
+make: Leaving directory '/home/telli/Code/C/Cub3D'
  

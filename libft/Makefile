@@ -5,7 +5,7 @@ SRCS_IS		=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_t
 SRCS_TO		=	ft_atoi.c ft_itoa.c 
 SRCS_MALLOC	=	ft_calloc.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c ft_malloc.c ft_free_tab.c
 SRCS_PRINTF =	ft_printf/ft_printf.c ft_printf/ft_parsing.c ft_printf/ft_putnbr_base.c ft_printf/ft_putnbr_base_2.c ft_printf/ft_hex.c ft_printf/ft_u.c ft_printf/ft_d_i.c ft_printf/ft_utils.c ft_printf/ft_p.c ft_printf/ft_s.c
-SRCS_GNL	=	gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS_GNL	=	gnl/get_next_line.c
 SRCS		=	${SRCS_MEM} ${SRCS_STR} ${SRCS_PUTFD} ${SRCS_IS} ${SRCS_TO} ${SRCS_MALLOC} ${SRCS_PRINTF} ${SRCS_LST} ${SRCS_GNL}
 SRCS_LST	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
@@ -17,20 +17,29 @@ NAME		=	libft.a
 
 FLAGS		=	-Wall -Werror -Wextra -Ift_printf -Ignl -I./
 
+BLACK		= \033[1;30m
+RED			= \033[1;31m
+GREEN		= \033[1;32m
+PURPLE		= \033[1;35m
+CYAN		= \033[1;36m
+WHITE		= \033[1;37m
+BLUE		= \033[0;34m
+EOC			= \033[0;0m
 .c.o:
-			${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+			@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS}
-			ranlib ${NAME}
+			@ar rc ${NAME} ${OBJS}
+			@ranlib ${NAME}
+	@echo "$(BLUE) =========> Compiling LIBFT.............DONE √"
 
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			@${RM} ${OBJS}
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} ${NAME}
 
 re:			fclean all
 

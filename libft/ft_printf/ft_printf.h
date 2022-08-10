@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 14:03:56 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/09 18:55:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/09 22:07:46 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include "../libft.h"
+
 typedef struct s_parse
 {
 	char	flag;

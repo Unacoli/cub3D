@@ -6,12 +6,11 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 01:17:31 by tmoragli          #+#    #+#             */
-/*   Updated: 2021/03/22 19:53:27 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/09 22:08:49 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -25,7 +24,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int		ft_line(int fd, char **stock)
+int	ft_line(int fd, char **stock)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	char	*temp;
@@ -48,7 +47,7 @@ int		ft_line(int fd, char **stock)
 	return (1);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char		*stock[150];
 	int				ret;
@@ -66,7 +65,7 @@ int		get_next_line(int fd, char **line)
 	{
 		ret = 1;
 		*line = ft_substr(stock[fd], 0,
-		(ft_strchr(stock[fd], '\n') - stock[fd]));
+				(ft_strchr(stock[fd], '\n') - stock[fd]));
 		temp = ft_strdup(ft_strchr(stock[fd], '\n') + 1);
 	}
 	free(stock[fd]);
