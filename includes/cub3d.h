@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/11 00:28:18 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:04:37 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ typedef struct s_color
 	unsigned char	b;
 	unsigned char	o;
 }	t_color;
-
-typedef struct s_elem
-{
-	char	elem;
-	char	facing;
-	char	*texture;
-}	t_elem;
 
 typedef struct s_pos
 {
@@ -71,6 +64,7 @@ typedef struct s_data
 	void		*img;
 	char		*err_msg;
 	char		*map_path;
+	char		**map;
 	t_color		*draw;
 	t_window	*mlx;
 	t_map		*m_info;

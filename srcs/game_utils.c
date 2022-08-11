@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:34:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/11 00:10:46 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 00:24:09 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	free_game_data(t_data *data)
 {
 	free(data->mlx);
 	free(data->m_info);
+	str_arr_free(data->map);
 	free(data->map_path);
 	free(data);
 }

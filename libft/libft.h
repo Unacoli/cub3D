@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 01:10:22 by telli             #+#    #+#             */
-/*   Updated: 2022/08/10 23:24:58 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 00:02:19 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -24,6 +25,12 @@ typedef struct s_list
 }	t_list;
 
 char				*ft_strdup(const char *s);
+void				str_arr_display(char **str);
+void				str_arr_free(char **str);
+int					str_arr_size(char **str);
+char				*swap_str(char *str, char *new);
+int					ft_isspace(int c);
+int					only_isspace(char *str);
 int					ft_atoi(char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				ft_bzero(void *s, size_t n);

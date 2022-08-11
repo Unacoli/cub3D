@@ -6,23 +6,11 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 01:17:31 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/09 22:08:49 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:22:40 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s && s[i] != c && s[i])
-		i++;
-	if (s && c == s[i])
-		return ((char *)(&s[i]));
-	return (NULL);
-}
 
 int	ft_line(int fd, char **stock)
 {
