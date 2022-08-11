@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:36:48 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:02:27 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	fill_map_array(t_data *data, t_list *map)
 	}
 }
 
-int	scan_map(char **map)
+int	scan_map(char **map, t_data *data)
 {
 	int	y;
 	int	x;
@@ -73,6 +73,11 @@ int	scan_map(char **map)
 		x = 0;
 		while (map && map[y][x])
 		{
+			if (!is_player(map[y][x]))
+				data->nb_player++;
+			if (data->nb_player > 1)
+				return (ft_printf("Too many player elements, line: %d column: %d\n",
+						y, x));
 			if (check_elem(map, x, y, str_arr_size(map)))
 				return (1);
 			x++;

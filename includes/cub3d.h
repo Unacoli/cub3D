@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:40:12 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:00:47 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ typedef struct s_window
 typedef struct s_data
 {
 	void		*img;
-	int			nb_player;
 	char		*err_msg;
-	char		*map_path;
 	char		**map;
+	int			nb_player;
+	char		*map_path;
 	t_color		*draw;
 	t_window	*mlx;
 	t_map		*m_info;
@@ -78,7 +78,7 @@ int		is_player(char c);
 int		check_id(char *str);
 t_list	*is_valid_id(t_list *file_line);
 void	fill_map_array(t_data *data, t_list *map);
-int		scan_map(char **map);
+int		scan_map(char **map, t_data *data);
 int		parse_map(t_data *data);
 int		check_elem(char **map, int x, int y, int map_size);
 int		is_border(char **map, int x, int y, int map_size);

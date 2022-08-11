@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:30:45 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:36:54 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:00:24 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_valid_map(t_data *data, t_list *map)
 		return (-1);
 	data->map[map_size] = NULL;
 	fill_map_array(data, map);
-	if (scan_map(data->map))
+	if (scan_map(data->map, data))
 		return (1);
 	return (0);
 }
