@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:49:09 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:26:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 00:40:29 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game_loop(t_data *data)
 
 int	cube_3d(t_data *data)
 {
-	if (parsing(data))
+	if (parse_map(data))
 		return (ft_error("File error, check description above"));
 	else
 		game_loop(data);

@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/11 20:24:12 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/12 00:38:51 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,11 @@ SRC			=	./srcs
 OBJ			=	./objs
 LIBFT		=	./libft
 MLX			=	./mlx
-SRCS		=	$(SRC)/main.c								\
-				$(SRC)/parsing.c								\
-				$(SRC)/game_utils.c
+SRCS		=	$(SRC)/main.c					\
+				$(SRC)/parse_map.c				\
+				$(SRC)/game_utils.c				\
+				$(SRC)/utils.c					\
+				$(SRC)/parsing_utils.c
 				
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 

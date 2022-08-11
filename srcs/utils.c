@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 19:18:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:28:13 by tmoragli         ###   ########.fr       */
+/*   Created: 2022/08/12 00:35:30 by tmoragli          #+#    #+#             */
+/*   Updated: 2022/08/12 00:36:11 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-int	ft_isspace(int c)
+int	is_player(char c)
 {
-	if (c == ' ' || c == '\n' || c == '\t'
-		|| c == '\r' || c == '\f' || c == '\v')
+	if (c != 'N' || c != 'S' || c != 'W' || c != 'E')
 		return (1);
 	return (0);
-}
-
-int	only_isspace(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !ft_strlen(str))
-		return (1);
-	while (str && str[i])
-	{
-		if (!ft_isspace((int)str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }
