@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/12 00:38:51 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/12 15:13:33 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ OBJ			=	./objs
 LIBFT		=	./libft
 MLX			=	./mlx
 SRCS		=	$(SRC)/main.c					\
+				$(SRC)/cube.c					\
 				$(SRC)/parse_map.c				\
 				$(SRC)/game_utils.c				\
 				$(SRC)/utils.c					\

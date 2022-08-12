@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 01:00:47 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:04:24 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,34 @@ typedef struct s_data
 	t_pos		player;
 }	t_data;
 
+//-----GAME--------//
+void	game_loop(t_data *data);
+int		game_start(t_data *data);
+void	setup_game(t_data *data);
+//-----------------//
+
 //-----PARSING-----//
-int		parse_map(t_data *data);
+int		parse_map(t_data *data, int fd);
 int		is_player(char c);
 int		check_id(char *str);
-t_list	*is_valid_id(t_list *file_line);
+t_list	*is_valid_id(t_list *file_line, t_data *data);
+void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(char **map, t_data *data);
-int		parse_map(t_data *data);
 int		check_elem(char **map, int x, int y, int map_size);
 int		is_border(char **map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
 int		is_valid_file(t_data *data);
 int		is_opened(char	**map, int x, int y, int map_size);
 //-----------------//
+
 //------UTILS------//
 int		allocate_game_data(t_data *data, char **av);
 void	init_subdata(t_data *data);
 void	init_game_data(t_data *data, char **av);
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
+t_pos	point(int x, int y, char facing);
 //-----------------//
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:30:45 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 01:00:24 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:49:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	check_elem(char **map, int x, int y, int map_size)
 	if (map[y][x] != '1' && map[y][x] != '0'
 	&& map[y][x] != ' ' && is_player(map[y][x]))
 		return (ft_printf("Error\nNot a valid map element: %c\n", map[y][x]));
-	if ((map[y][x] == '0' && is_border(map, x, y, map_size))
-	|| (map[y][x] == '0' && is_opened(map, x, y, map_size)))
+	
+	if (((map[y][x] == '0' || !is_player(map[y][x])) && is_border(map, x, y, map_size))
+	|| (((map[y][x] == '0' || !is_player(map[y][x])) && is_opened(map, x, y, map_size))))
 		return (ft_printf("Error\nMap is not closed at line: %d column: %d\n",
 				y, x));
 	return (0);
@@ -52,9 +53,10 @@ int	is_valid_file(t_data *data)
 	t_list	*map;
 
 	file = data->m_info->map;
-	map = is_valid_id(file);
+	map = is_valid_id(file, data);
 	if (!map)
-		return (1);
+		return (ft_printf("Error\nNo map given\n"));
+	trim_textures(data);
 	if (is_valid_map(data, map))
 		return (1);
 	return (0);

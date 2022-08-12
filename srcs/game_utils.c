@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:34:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 00:24:09 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:23:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	init_game_data(t_data *data, char **av)
 void	free_game_data(t_data *data)
 {
 	free(data->mlx);
+	free(data->m_info->ea_path);
+	free(data->m_info->no_path);
+	free(data->m_info->we_path);
+	free(data->m_info->so_path);
 	free(data->m_info);
 	str_arr_free(data->map);
 	free(data->map_path);
