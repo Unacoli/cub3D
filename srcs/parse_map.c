@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 01:09:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:45:41 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,22 @@ t_list	*is_valid_id(t_list *file_line, t_data *data)
 	return (file_line);
 }
 
+int		find_map_width(char **map)
+{
+	int	i;
+	int	row_len;
+
+	row_len = 0;
+	i =0;
+	while (map && map[i])
+	{
+		if ((int)ft_strlen(map[i]) > row_len)
+			row_len = ft_strlen(map[i]);
+		i++;
+	}
+	return (row_len);
+}
+
 void	fill_map_array(t_data *data, t_list *map)
 {
 	int		i;
@@ -139,6 +155,9 @@ void	fill_map_array(t_data *data, t_list *map)
 		i++;
 		map = map->next;
 	}
+	data->m_info->size.y = str_arr_size(data->map) - 1;
+	data->m_info->size.x = find_map_width(data->map) - 1;
+	printf("Map height: %d\nMap width: %d\n", data->m_info->size.y, data->m_info->size.x);
 }
 
 int	scan_map(char **map, t_data *data)

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 01:27:06 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:06:39 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,28 @@
 
 #define SIZE 64
 # define ESC 65307
+# define RIGHT_ARR 65363
+# define LEFT_ARR 65361
+# define W 119 // QWERTY
+# define A 97
+# define S 115
+# define D 100
+# define Z 112
+# define Q 113
+
+typedef struct s_ray
+{
+	int		found_wall;
+	double	grad;
+	double	x;
+	double	y;
+	int		i_x;
+	int		i_y;
+	double	s_x;
+	double	s_y;
+	int		o;
+	double	length;
+}	t_ray;
 
 typedef struct s_color
 {
@@ -36,10 +58,18 @@ typedef struct s_color
 	unsigned char	o;
 }	t_color;
 
+typedef struct s_player_pos
+{
+	double	x;
+	double	y;
+	
+}	t_player_pos;
+
 typedef struct s_pos
 {
 	int		x;
 	int		y;
+	int		o;
 	char	facing;
 }	t_pos;
 
@@ -70,6 +100,8 @@ typedef struct s_data
 	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
+	t_ray		ray;
+	t_player_pos	player_2d;
 }	t_data;
 
 //-----GAME--------//

@@ -6,11 +6,27 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:12:39 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 02:58:31 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 21:05:16 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	move_player(int keycode, t_data *data)
+{
+	if (keycode == LEFT_ARR)
+	{
+		if (data->player.o == 360)
+			data->player.o = 0;
+		data->player.o++;
+	}
+	if (keycode == RIGHT_ARR)
+	{
+		if (data->player.o == 0)
+			data->player.o = 360;
+		data->player.o--;
+	}
+}
 
 int	hook_keypress(int keycode, t_data *data)
 {
@@ -20,7 +36,7 @@ int	hook_keypress(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
-	//move_player(keycode, data);
+	move_player(keycode, data);
 	return (0);
 }
 
@@ -66,10 +82,28 @@ void	draw_ceiling(t_data *data)
 	}
 }
 
+/*void	send_ray(t_data *data, t_ray ray)
+{
+	ray.length = data->m_info->size.
+	while (!data->found_wall)
+	{
+		
+	}
+}*/
+
 void	start_game(t_data *data)
 {
 	init_mlx_data(data, 0);
-	draw_ceiling(data);
+	if (data->player.facing == 'N')
+		data->player.o = 360;
+	if (data->player.facing == 'E')
+		data->player.o = 90;
+	if (data->player.facing == 'S')
+		data->player.o = 180;
+	if (data->player.facing == 'W')
+		data->player.o = 270;
+	//draw_ceiling(data);
+	//send_ray(data, data->ray);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_hook(data->win, 33, 1L << 17, mlx_loop_end, data->mlx);
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);

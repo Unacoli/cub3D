@@ -1,11 +1,11 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/telli/Code/C/Graphical_mlx/Cub3D'
 echo -n "\033[1;37m"
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx -c srcs//main.c -o objs//main.o
-clang -Wall -Wextra -Werror    srcs/parsing.c   -o srcs/parsing
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/cube.c -o objs/cube.o
 echo "\033[0;34m =========> Compiling object files <========="
 echo "\033[1;37m"
-clang -Wall -Wextra -Werror -I includes -I ./libft -I ./mlx  ./objs//main.o ./srcs/parsing -L./libft -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3d
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft  ./objs/main.o  ./objs/cube.o  ./objs/parse_map.o  ./objs/game_utils.o  ./objs/utils.o  ./objs/parsing_utils.o libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3D
 echo "\033[0;34m            Build Cub3D project for [42] DONE √"
+echo -n "\033[0;0m"
 make: Leaving directory '/home/telli/Code/C/Graphical_mlx/Cub3D'
  

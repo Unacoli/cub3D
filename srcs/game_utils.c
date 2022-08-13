@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:34:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 01:06:25 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:57:56 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	free_game_data(t_data *data)
 	free(data->m_info);
 	str_arr_free(data->map);
 	free(data->map_path);
-	mlx_destroy_image(data->mlx, data->img);
+	if (data->img)
+		mlx_destroy_image(data->mlx, data->img);
+	if (data->mlx)
 	mlx_destroy_window(data->mlx, data->win);
 	free(data->mlx);
 	free(data);
