@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 17:04:24 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:27:06 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@
 # include <string.h>
 # include <math.h>
 
+#define SIZE 64
+# define ESC 65307
+
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
 	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
 	unsigned char	o;
 }	t_color;
 
@@ -47,34 +50,30 @@ typedef struct s_map
 	char	*ea_path;
 	char	*no_path;
 	t_pos	size;
-	t_color	ceiling_color;
-	t_color	floor_color;
 	t_list	*map;
 }	t_map;
 
-typedef struct s_window
-{
-	void		*mlx;
-	void		*win;
-	t_pos		size;
-}	t_window;
-
 typedef struct s_data
 {
-	void		*img;
 	char		*err_msg;
 	char		**map;
 	int			nb_player;
 	char		*map_path;
+	void		*mlx;
+	void		*img;
+	void		*addr;
+	void		*win;
+	t_color		ceiling_color;
+	t_color		floor_color;
+	t_pos		w_size;
+	t_pos		screen;
 	t_color		*draw;
-	t_window	*mlx;
 	t_map		*m_info;
 	t_pos		player;
 }	t_data;
 
 //-----GAME--------//
-void	game_loop(t_data *data);
-int		game_start(t_data *data);
+int		cube_start(t_data *data);
 void	setup_game(t_data *data);
 //-----------------//
 
@@ -100,6 +99,7 @@ void	init_game_data(t_data *data, char **av);
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 t_pos	point(int x, int y, char facing);
+void	draw_pixel(t_data *d, int x, int y, t_color color);
 //-----------------//
 
 #endif

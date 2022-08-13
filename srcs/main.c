@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:49:09 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 15:15:08 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 02:58:49 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	main(int ac, char **av)
 	if (!ft_malloc((void **)&(data), sizeof(t_data)))
 		return (1);
 	init_game_data(data, av);
-	game_start(data);
+	cube_start(data);
 	free_game_data(data);
-	ft_printf("game exited\n");
 	return (0);
 }

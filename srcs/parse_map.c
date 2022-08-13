@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 17:04:03 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:09:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	check_colors(t_data *data, char c)
 {
 	if (c == 'F')
 	{
-		if ((data->m_info->floor_color.r > 255
-			|| data->m_info->floor_color.r < 0)
-			|| (data->m_info->floor_color.g > 255
-			|| data->m_info->floor_color.g < 0)
-			|| (data->m_info->floor_color.b > 255
-			|| data->m_info->floor_color.b < 0))
+		if ((data->floor_color.r > 255
+			|| data->floor_color.r < 0)
+			|| (data->floor_color.g > 255
+			|| data->floor_color.g < 0)
+			|| (data->floor_color.b > 255
+			|| data->floor_color.b < 0))
 			return (ft_printf("Error\nWrong rbg for floor\n"));
-		if ((data->m_info->ceiling_color.r > 255
-			|| data->m_info->ceiling_color.r < 0)
-			|| (data->m_info->ceiling_color.g > 255
-			|| data->m_info->ceiling_color.g < 0)
-			|| (data->m_info->ceiling_color.b > 255
-			|| data->m_info->ceiling_color.b < 0))
+		if ((data->ceiling_color.r > 255
+			|| data->ceiling_color.r < 0)
+			|| (data->ceiling_color.g > 255
+			|| data->ceiling_color.g < 0)
+			|| (data->ceiling_color.b > 255
+			|| data->ceiling_color.b < 0))
 			return (ft_printf("Error\nWrong rbg for ceiling\n"));
 	}
 	return (0);
@@ -45,28 +45,28 @@ int	check_colors(t_data *data, char c)
 
 void	get_floor(t_data *data, char *rgb, int i)
 {
-	data->m_info->floor_color.r = ft_atoi(rgb);
+	data->floor_color.r = ft_atoi(rgb);
 	while (rgb && rgb[i] && ft_isdigit(rgb[i]))
 		i++;
-	data->m_info->floor_color.g = ft_atoi(rgb + (i + 1));
+	data->floor_color.g = ft_atoi(rgb + (i + 1));
 	while (rgb && rgb[i] && !ft_isdigit(rgb[i]))
 		i++;
 	while (rgb && rgb[i] && ft_isdigit(rgb[i]))
 		i++;
-	data->m_info->floor_color.b = ft_atoi(rgb + (i + 1));
+	data->floor_color.b = ft_atoi(rgb + (i + 1));
 }
 
 void	get_ceiling(t_data *data, char *rgb, int i)
 {
-	data->m_info->ceiling_color.r = ft_atoi(rgb);
+	data->ceiling_color.r = ft_atoi(rgb);
 	while (rgb && rgb[i] && ft_isdigit(rgb[i]))
 		i++;
-	data->m_info->ceiling_color.g = ft_atoi(rgb + i + 1);
+	data->ceiling_color.g = ft_atoi(rgb + i + 1);
 	while (rgb && rgb[i] && !ft_isdigit(rgb[i]))
 		i++;
 	while (rgb && rgb[i] && ft_isdigit(rgb[i]))
 		i++;
-	data->m_info->ceiling_color.b = ft_atoi(rgb + i + 1);
+	data->ceiling_color.b = ft_atoi(rgb + i + 1);
 }
 
 int	fetch_colors(t_data *data, char c, char *rgb)
@@ -206,8 +206,6 @@ int	parse_map(t_data *data, int fd)
 	ft_printf("%s\n", line);
 	if (is_valid_file(data))
 		ret++;
-	if (!ret)
-		setup_game(data);
 	ft_lstclear(&data->m_info->map, &free);
 	return (ret);
 }
