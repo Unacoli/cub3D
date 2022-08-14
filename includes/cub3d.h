@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 21:46:28 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/15 01:11:02 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define A 97
 # define S 115
 # define D 100
-# define Z 122
+# define Z 122 // AZERTY
 # define Q 113
 # define PI 3.14159265359
 # define FOV 60
@@ -68,6 +68,10 @@ typedef struct s_keys
 {
 	int	z;
 	int	s;
+	int q;
+	int d;
+	int a;
+	int w;
 	int	l_arr;
 	int	r_arr;
 }	t_keys;
@@ -155,9 +159,12 @@ t_pos	point(int x, int y, char facing);
 void	draw_pixel(t_data *d, int x, int y, t_color color);
 void	send_ray(t_data *data, t_pos start_point);
 //-----------------//
+//-----MATHS-------//
 double	get_rad(double	angle);
-void	turn_player(int keycode, t_data *data);
+double	change_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
+//-----------------//
+void	turn_player(int keycode, t_data *data);
 void 	drawCircle(t_data *data, t_pos pos, t_color color, int radius);
 int		act_keypress(t_data *data);
 
