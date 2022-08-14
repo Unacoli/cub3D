@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/12 15:13:33 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/14 16:27:28 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,14 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/parse_map.c				\
 				$(SRC)/game_utils.c				\
 				$(SRC)/utils.c					\
-				$(SRC)/parsing_utils.c
-				
+				$(SRC)/parsing_utils.c			\
+				$(SRC)/draw.c					\
+				$(SRC)/init.c					\
+				$(SRC)/maths.c					\
+				$(SRC)/rays.c					\
+				$(SRC)/moves.c
+
+
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 
 # ----------- COLORS ---------------

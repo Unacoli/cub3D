@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 21:06:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:04:05 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <string.h>
 # include <math.h>
 
-#define SIZE 64
+# define SIZE 64
 # define ESC 65307
 # define RIGHT_ARR 65363
 # define LEFT_ARR 65361
@@ -33,22 +33,10 @@
 # define A 97
 # define S 115
 # define D 100
-# define Z 112
+# define Z 122
 # define Q 113
+# define PI 3.14159265359
 
-typedef struct s_ray
-{
-	int		found_wall;
-	double	grad;
-	double	x;
-	double	y;
-	int		i_x;
-	int		i_y;
-	double	s_x;
-	double	s_y;
-	int		o;
-	double	length;
-}	t_ray;
 
 typedef struct s_color
 {
@@ -58,20 +46,27 @@ typedef struct s_color
 	unsigned char	o;
 }	t_color;
 
-typedef struct s_player_pos
+typedef struct s_pos
 {
 	double	x;
 	double	y;
-	
-}	t_player_pos;
-
-typedef struct s_pos
-{
-	int		x;
-	int		y;
-	int		o;
+	double	o;
 	char	facing;
 }	t_pos;
+
+typedef struct s_ray
+{
+	int		found_wall;
+	double	grad;
+	double	x;
+	double	y;
+	double	i_x;
+	double	i_y;
+	double	s_x;
+	double	s_y;
+	int		o;
+	double	length;
+}	t_ray;
 
 typedef struct s_map
 {
@@ -83,9 +78,22 @@ typedef struct s_map
 	t_list	*map;
 }	t_map;
 
+typedef struct s_keys
+{
+	int	z;
+	int	s;
+	int	l_arr;
+	int	r_arr;
+}	t_keys;
+
 typedef struct s_data
 {
 	char		*err_msg;
+	double		rad;
+	int			s_width;
+	int			s_height;
+	int			w_width;
+	int			w_height;
 	char		**map;
 	int			nb_player;
 	char		*map_path;
@@ -93,20 +101,25 @@ typedef struct s_data
 	void		*img;
 	void		*addr;
 	void		*win;
+	t_keys		keys;
+	t_pos		direction;
 	t_color		ceiling_color;
 	t_color		floor_color;
-	t_pos		w_size;
-	t_pos		screen;
+	t_color		player_color;
 	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
 	t_ray		ray;
-	t_player_pos	player_2d;
 }	t_data;
 
 //-----GAME--------//
 int		cube_start(t_data *data);
 void	setup_game(t_data *data);
+//-----------------//
+//-----INIT--------//
+void	setup_window_size(t_data *data);
+void	init_mlx_data(t_data *data, int trash);
+void	start_game(t_data *data);
 //-----------------//
 
 //-----PARSING-----//
@@ -124,6 +137,19 @@ int		is_valid_file(t_data *data);
 int		is_opened(char	**map, int x, int y, int map_size);
 //-----------------//
 
+//-----MOVES-------//
+void	move_player(int keycode, t_data *data);
+int		hook_keypress(int keycode, t_data *data);
+//-----------------//
+
+//-----DRAW-------//
+void	draw_pixel(t_data *d, int x, int y, t_color color);
+void	image(t_data *data);
+void	map_fill(t_data *data);
+void	draw_player(t_data *data, t_pos pos, t_color color);
+void	draw_ceiling(t_data *data);
+//-----------------//
+
 //------UTILS------//
 int		allocate_game_data(t_data *data, char **av);
 void	init_subdata(t_data *data);
@@ -132,6 +158,12 @@ void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 t_pos	point(int x, int y, char facing);
 void	draw_pixel(t_data *d, int x, int y, t_color color);
+void	send_ray(t_data *data, t_ray ray);
 //-----------------//
+double	get_rad(double	angle);
+void	turn_player(int keycode, t_data *data);
+double	get_angle(double rad);
+void 	drawCircle(t_data *data, t_pos pos, t_color color, int radius);
+int		act_keypress(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 20:45:41 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/14 16:04:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,8 @@ void	fill_map_array(t_data *data, t_list *map)
 		i++;
 		map = map->next;
 	}
-	data->m_info->size.y = str_arr_size(data->map) - 1;
-	data->m_info->size.x = find_map_width(data->map) - 1;
-	printf("Map height: %d\nMap width: %d\n", data->m_info->size.y, data->m_info->size.x);
+	data->m_info->size.y = str_arr_size(data->map);
+	data->m_info->size.x = find_map_width(data->map);
 }
 
 int	scan_map(char **map, t_data *data)

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 13 18:20:00 2022
+# Make data base, printed on Sun Aug 14 16:11:54 2022
 
 # Variables
 
@@ -61,7 +61,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f7c59382-291a-4efe-bd20-13f80ba9542c.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2c2e1731-d3e1-48c3-be33-db005b6347c4.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 44)
@@ -77,7 +77,7 @@ PWD = /home/telli/Code/C/Graphical_mlx/Cub3D
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/12_interop
+WSL_INTEROP = /run/WSL/37_interop
 # makefile (from 'Makefile', line 43)
 GREEN = \033[1;32m
 # environment
@@ -87,7 +87,7 @@ HOME = /home/telli
 # environment
 LOGNAME = telli
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /home/telli/.oh-my-zsh
 # environment
@@ -121,7 +121,6 @@ INCLUDE = includes
 # makefile (from 'Makefile', line 14)
 NAME = cub3D
 # environment
- 
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
@@ -210,7 +209,7 @@ objs/%.o: srcs/%.c | objs compiling
 objs/main.o: srcs/main.c | objs compiling
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-08-13 17:44:54.7417781
+#  Last modified 2022-08-14 13:01:43.7128075
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -235,7 +234,7 @@ all: cub3D
 
 cub3D: objs/main.o objs/cube.o objs/parse_map.o objs/game_utils.o objs/utils.o objs/parsing_utils.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-13 17:44:55.4917781
+#  Last modified 2022-08-14 16:07:09.5828075
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -275,10 +274,11 @@ objs/cube.o:
 
 objs:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-13 17:44:55.2017781
+#  Last modified 2022-08-14 16:07:09.3628075
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 65):
+ 
 	@echo "$(PURPLE)"
 			mkdir $@
 	@echo "$(GREEN)"
@@ -398,6 +398,6 @@ compiling:
 # strcache performance: lookups = 76 / hit rate = 47%
 # hash-table stats:
 # Load=40/8192=0%, Rehash=0, Collisions=2/76=3%
-# Finished Make data base on Sat Aug 13 18:20:00 2022
+# Finished Make data base on Sun Aug 14 16:11:54 2022
 
  

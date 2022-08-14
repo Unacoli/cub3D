@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.c                                             :+:      :+:    :+:   */
+/*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 15:12:39 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 16:25:27 by tmoragli         ###   ########.fr       */
+/*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
+/*   Updated: 2022/08/14 18:21:25 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cube_start(t_data *data)
+void	send_ray(t_data *data, t_ray ray)
 {
-	if (parse_map(data, 0))
-		return (ft_error("File error, check description above"));
-	else
-		start_game(data);
-	return (0);
+	(void)data;
+	(void)ray;
+	//printf("Orientation: %f\nX: %f Y: %f\n", data->player.o, x, y);
 }

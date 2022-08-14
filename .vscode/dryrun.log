@@ -1,7 +1,17 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/telli/Code/C/Graphical_mlx/Cub3D'
+echo "\033[1;35m"
+mkdir objs
+echo "\033[1;32m"
+make -C ./libft
+make -C ./mlx
 echo -n "\033[1;37m"
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/main.c -o objs/main.o
 clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/cube.c -o objs/cube.o
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/parse_map.c -o objs/parse_map.o
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/game_utils.c -o objs/game_utils.o
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/utils.c -o objs/utils.o
+clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft -c srcs/parsing_utils.c -o objs/parsing_utils.o
 echo "\033[0;34m =========> Compiling object files <========="
 echo "\033[1;37m"
 clang -Wall -Wextra -Werror -g3 -fsanitize=address -Iincludes -I./mlx -I./libft  ./objs/main.o  ./objs/cube.o  ./objs/parse_map.o  ./objs/game_utils.o  ./objs/utils.o  ./objs/parsing_utils.o libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm -o cub3D
