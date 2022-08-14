@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 18:04:05 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:46:28 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define Z 122
 # define Q 113
 # define PI 3.14159265359
-
+# define FOV 60
 
 typedef struct s_color
 {
@@ -53,20 +53,6 @@ typedef struct s_pos
 	double	o;
 	char	facing;
 }	t_pos;
-
-typedef struct s_ray
-{
-	int		found_wall;
-	double	grad;
-	double	x;
-	double	y;
-	double	i_x;
-	double	i_y;
-	double	s_x;
-	double	s_y;
-	int		o;
-	double	length;
-}	t_ray;
 
 typedef struct s_map
 {
@@ -85,6 +71,14 @@ typedef struct s_keys
 	int	l_arr;
 	int	r_arr;
 }	t_keys;
+
+typedef struct s_ray
+{
+	double	x;
+	double	y;
+	double	x_dir;
+	double	y_dir;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -110,6 +104,7 @@ typedef struct s_data
 	t_map		*m_info;
 	t_pos		player;
 	t_ray		ray;
+	t_color		white;
 }	t_data;
 
 //-----GAME--------//
@@ -158,7 +153,7 @@ void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 t_pos	point(int x, int y, char facing);
 void	draw_pixel(t_data *d, int x, int y, t_color color);
-void	send_ray(t_data *data, t_ray ray);
+void	send_ray(t_data *data, t_pos start_point);
 //-----------------//
 double	get_rad(double	angle);
 void	turn_player(int keycode, t_data *data);

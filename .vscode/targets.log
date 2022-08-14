@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug 14 16:11:54 2022
+# Make data base, printed on Sun Aug 14 23:33:03 2022
 
 # Variables
 
@@ -15,83 +15,136 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 28)
 OBJ = ./objs
+# environment
+XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 27)
 SRC = ./srcs
+# environment
+XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # makefile (from 'Makefile', line 24)
 INCLUDES = -I$(INCLUDE) -I$(MLX) -I$(LIBFT)
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
+# environment
+XAUTHORITY = /mnt/nfs/homes/tmoragli/.Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/telli/Code/C/Graphical_mlx/Cub3D
+CURDIR := /mnt/nfs/homes/tmoragli/42/Graphical_mlx/Cub3D
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # makefile (from 'Makefile', line 30)
 MLX = ./mlx
 # environment
-_ = /home/telli/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/node
+_ = /usr/share/code/code
 # makefile (from 'Makefile', line 19)
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-# makefile (from 'Makefile', line 47)
+# makefile (from 'Makefile', line 53)
 BLUE = \033[0;34m
+# environment
+JOURNAL_STREAM = 9:1029287
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 38)
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/ubuntu:/mnt/nfs/homes/tmoragli/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/39231/bus
+# makefile (from 'Makefile', line 44)
 OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 # environment
-VSCODE_CWD = /mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code
+MANAGERPID = 165789
+# environment
+VSCODE_CWD = /mnt/nfs/homes/tmoragli
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+# environment
+KRB5CCNAME = FILE:/tmp/krb5cc_39231_ok9gV8
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/telli/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Airshipper/:/mnt/c/Users/telli/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/telli/OneDrive/Bureau/Code/flutter/bin:/mnt/c/Users/telli/.dotnet/tools
+PATH = /mnt/nfs/homes/tmoragli/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/39231/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
+SESSION_MANAGER = local/e1r3p18.clusters.42paris.fr:@/tmp/.ICE-unix/166296,unix/e1r3p18.clusters.42paris.fr:/tmp/.ICE-unix/166296
+# environment
+XDG_RUNTIME_DIR = /run/user/39231
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2c2e1731-d3e1-48c3-be33-db005b6347c4.sock
+INVOCATION_ID = ad62ce38ab3f4938917edbbca6aaaa26
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 44)
+# makefile (from 'Makefile', line 50)
 PURPLE = \033[1;35m
 # environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/tmoragli
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/39231/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 188912
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = localhost:10.0
+DISPLAY = :0
 # environment
-PWD = /home/telli/Code/C/Graphical_mlx/Cub3D
+PWD = /mnt/nfs/homes/tmoragli/42/Graphical_mlx/Cub3D
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/37_interop
-# makefile (from 'Makefile', line 43)
+SSH_AGENT_PID = 166248
+ 
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# makefile (from 'Makefile', line 49)
 GREEN = \033[1;32m
+# environment
+GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/telli
+HOME = /mnt/nfs/homes/tmoragli
 # environment
-LOGNAME = telli
+VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/tmoragli/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+LOGNAME = tmoragli
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
-ZSH = /home/telli/.oh-my-zsh
+ZSH = /mnt/nfs/homes/tmoragli/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -100,43 +153,51 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 31)
-SRCS = $(SRC)/main.c $(SRC)/cube.c $(SRC)/parse_map.c $(SRC)/game_utils.c $(SRC)/utils.c $(SRC)/parsing_utils.c
 # environment
-SHLVL = 0
-# makefile (from 'Makefile', line 46)
+QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 31)
+SRCS = $(SRC)/main.c $(SRC)/cube.c $(SRC)/parse_map.c $(SRC)/game_utils.c $(SRC)/utils.c $(SRC)/parsing_utils.c $(SRC)/draw.c $(SRC)/init.c $(SRC)/maths.c $(SRC)/rays.c $(SRC)/moves.c
+# environment
+SHLVL = 1
+# makefile (from 'Makefile', line 52)
 WHITE = \033[1;37m
 # makefile (from 'Makefile', line 29)
 LIBFT = ./libft
 # makefile (from 'Makefile', line 18)
 CC = clang
+# environment
+IM_CONFIG_PHASE = 1
 # default
 MAKE_VERSION := 4.2.1
 # environment
-USER = telli
+USER = tmoragli
 # makefile
 .DEFAULT_GOAL := all
 # makefile (from 'Makefile', line 23)
 INCLUDE = includes
-# makefile (from 'Makefile', line 14)
-NAME = cub3D
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+LIBVIRT_DEFAULT_URI = qemu:///system
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/telli/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /mnt/c/Users/telli/AppData/Local/Programs/Microsoft VS Code
-# makefile (from 'Makefile', line 48)
+OLDPWD = /mnt/nfs/homes/tmoragli
+# makefile (from 'Makefile', line 54)
 EOC = \033[0;0m
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
-# makefile (from 'Makefile', line 42)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/39231/vscode-bbeecf36-1.69.2-main.sock
+# makefile (from 'Makefile', line 48)
 RED = \033[1;31m
 # makefile
 MAKEFLAGS = pqrR
@@ -144,16 +205,20 @@ MAKEFLAGS = pqrR
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# makefile (from 'Makefile', line 41)
+# makefile (from 'Makefile', line 47)
 BLACK = \033[1;30m
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 45)
+# environment
+GDK_BACKEND = x11
+# makefile (from 'Makefile', line 51)
 CYAN = \033[1;36m
 # automatic
 +F = $(notdir $+)
 # environment
-VSCODE_HANDLES_SIGPIPE = true
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # automatic
@@ -163,27 +228,33 @@ PAGER = less
 # environment
 LC_ALL = C
 # environment
-HOSTTYPE = x86_64
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# makefile (from 'Makefile', line 14)
+NAME = cub3D
 # default
 .RECIPEPREFIX := 
 # environment
 LANG = C
-# environment
-TERM = xterm-256color
 # makefile (from 'Makefile', line 15)
 DESCRIPTION = Cub3D project for [42]
+# environment
+DOCKER_HOST = unix:///run/user/39231/docker.sock
+# environment
+VSCODE_PID = 188912
 # makefile (from 'Makefile', line 20)
 LPFLAGS = libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm
-# environment
-WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
-# Load=86/1024=8%, Rehash=0, Collisions=13/132=10%
+# Load=121/1024=12%, Rehash=0, Collisions=22/171=13%
 
 # Pattern-specific Variable Values
 
@@ -191,15 +262,15 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 165099): 13 files, no impossibilities.
-# srcs (device 2064, inode 218329): 8 files, no impossibilities so far.
+# . (device 59, inode 266768253): 13 files, no impossibilities.
+# srcs (device 59, inode 266772522): 5 files, no impossibilities so far.
 
-# 21 files, no impossibilities in 2 directories.
+# 18 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 objs/%.o: srcs/%.c | objs compiling
-#  recipe to execute (from 'Makefile', line 59):
+#  recipe to execute (from 'Makefile', line 65):
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -209,12 +280,12 @@ objs/%.o: srcs/%.c | objs compiling
 objs/main.o: srcs/main.c | objs compiling
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-08-14 13:01:43.7128075
+#  Last modified 2022-08-14 21:47:00.334648649
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  recipe to execute (from 'Makefile', line 59):
+#  recipe to execute (from 'Makefile', line 65):
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 all: cub3D
@@ -232,19 +303,31 @@ all: cub3D
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3D: objs/main.o objs/cube.o objs/parse_map.o objs/game_utils.o objs/utils.o objs/parsing_utils.o
+# Not a target:
+objs/init.o:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-14 16:07:09.5828075
+#  Modification time never checked.
+#  File has not been updated.
+
+cub3D: objs/main.o objs/cube.o objs/parse_map.o objs/game_utils.o objs/utils.o objs/parsing_utils.o objs/draw.o objs/init.o objs/maths.o objs/rays.o objs/moves.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-14 22:34:23.874208665
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  recipe to execute (from 'Makefile', line 53):
+#  recipe to execute (from 'Makefile', line 59):
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
 			$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LPFLAGS) -o $@
 	@echo "$(BLUE)            Build $(DESCRIPTION) DONE √"
 	@echo -n "$(EOC)"
+
+# Not a target:
+objs/rays.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -255,14 +338,14 @@ cub3D: objs/main.o objs/cube.o objs/parse_map.o objs/game_utils.o objs/utils.o o
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 15:13:33.5532623
+#  Last modified 2022-08-14 19:34:42.039366354
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 02:58:49.1197391
+#  Last modified 2022-08-13 14:30:56.793258499
 #  File has been updated.
 #  Successfully updated.
 
@@ -274,11 +357,10 @@ objs/cube.o:
 
 objs:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-14 16:07:09.3628075
+#  Last modified 2022-08-14 22:34:23.541206477
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 65):
- 
+#  recipe to execute (from 'Makefile', line 71):
 	@echo "$(PURPLE)"
 			mkdir $@
 	@echo "$(GREEN)"
@@ -290,7 +372,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 77):
+#  recipe to execute (from 'Makefile', line 83):
 	@echo "$(BLUE) =========> Deleting executable <========="
 	@echo "$(PURPLE)"
 			-rm -f $(NAME)
@@ -316,7 +398,7 @@ norm:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 88):
+#  recipe to execute (from 'Makefile', line 94):
 	@echo "$(BLACK)"
 			norminette $(LIBFT)
 	@echo "$(CYAN)"
@@ -331,6 +413,7 @@ norm:
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -340,10 +423,16 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 72):
+#  recipe to execute (from 'Makefile', line 78):
 	@echo "$(BLUE) =========> Deleting object files <========="
 	@echo "$(PURPLE)"
 			-rm -rf $(OBJ)
+
+# Not a target:
+objs/moves.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 objs/parsing_utils.o:
@@ -353,6 +442,18 @@ objs/parsing_utils.o:
 
 # Not a target:
 objs/parse_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/draw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/maths.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -381,23 +482,23 @@ compiling:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
-#  recipe to execute (from 'Makefile', line 62):
+#  recipe to execute (from 'Makefile', line 68):
 			@echo -n "$(WHITE)"
 
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=0/54=0%
+# Load=24/1024=2%, Rehash=0, Collisions=2/64=3%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 40 / storage = 362 B / avg = 9 B
-# current buf: size = 8162 B / used = 362 B / count = 40 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 42 / storage = 387 B / avg = 9 B
+# current buf: size = 8162 B / used = 387 B / count = 42 / avg = 9 B
 
-# strcache performance: lookups = 76 / hit rate = 47%
+# strcache performance: lookups = 78 / hit rate = 46%
 # hash-table stats:
-# Load=40/8192=0%, Rehash=0, Collisions=2/76=3%
-# Finished Make data base on Sun Aug 14 16:11:54 2022
+# Load=42/8192=1%, Rehash=0, Collisions=2/78=3%
+# Finished Make data base on Sun Aug 14 23:33:03 2022
 
  

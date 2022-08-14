@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 18:05:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:10:32 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,22 @@ void	move_player(int keycode, t_data *data)
 		t = get_rad(data->player.o);
 		data->direction.x = cos(t);
 		data->direction.y = sin(t);
-		data->player.x += data->direction.x * 0.1;
-		data->player.y += data->direction.y * 0.1;
+		if (data->map[(int)(data->player.y + (data->direction.y * 0.1))][(int)(data->player.x + (data->direction.x * 0.1))] != '1')
+		{
+			data->player.x += data->direction.x * 0.1;
+			data->player.y += data->direction.y * 0.1;
+		}
 	}
 	if (keycode == S)
 	{
 		t = get_rad(data->player.o);
 		data->direction.x = cos(t);
 		data->direction.y = sin(t);
-		data->player.x -= data->direction.x * 0.1;
-		data->player.y -= data->direction.y * 0.1;
+		if (data->map[(int)(data->player.y - (data->direction.y * 0.1))][(int)(data->player.x - (data->direction.x * 0.1))] != '1')
+		{
+			data->player.x -= data->direction.x * 0.1;
+			data->player.y -= data->direction.y * 0.1;
+		}
 	}
 }
 
