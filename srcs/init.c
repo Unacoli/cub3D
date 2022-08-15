@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 18:13:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:02:10 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,19 @@ void	start_game(t_data *data)
     mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
 	mlx_loop_hook(data->mlx, &act_keypress, data);
 	mlx_loop(data->mlx);
+}
+
+void	init_subdata(t_data *data)
+{
+	ft_memset(data->m_info, 0, sizeof(t_map));
+	data->player_color = get_rgb(255, 0, 0, 1);
+	data->white = get_rgb(255, 255, 255, 1);
+}
+
+void	init_game_data(t_data *data, char **av)
+{
+	ft_memset(data, 0, sizeof(t_data));
+	if (allocate_game_data(data, av))
+		exit_game(data, "Failed allocation, exiting\n");
+	init_subdata(data);
 }

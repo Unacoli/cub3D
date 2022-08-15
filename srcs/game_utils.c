@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:34:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 21:43:08 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:02:43 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ t_color	get_rgb(int r, int g, int b, int o)
 	color.b = b;
 	color.o = o;
 	return(color);
-}
-
-void	init_subdata(t_data *data)
-{
-	ft_memset(data->m_info, 0, sizeof(t_map));
-	data->player_color = get_rgb(255, 0, 0, 1);
-	data->white = get_rgb(255, 255, 255, 1);
-}
-
-void	init_game_data(t_data *data, char **av)
-{
-	ft_memset(data, 0, sizeof(t_data));
-	if (allocate_game_data(data, av))
-		exit_game(data, "Failed allocation, exiting\n");
-	init_subdata(data);
 }
 
 void	free_game_data(t_data *data)

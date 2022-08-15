@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/15 01:11:02 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 00:06:47 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define Z 122 // AZERTY
 # define Q 113
 # define PI 3.14159265359
+# define P2 PI / 2
+# define P3 3 * PI / 2
 # define FOV 60
 
 typedef struct s_color
@@ -78,10 +80,13 @@ typedef struct s_keys
 
 typedef struct s_ray
 {
+	t_pos	goal;
 	double	x;
 	double	y;
 	double	x_dir;
 	double	y_dir;
+	double	angle;
+	double	length;
 }	t_ray;
 
 typedef struct s_data
@@ -100,7 +105,6 @@ typedef struct s_data
 	void		*addr;
 	void		*win;
 	t_keys		keys;
-	t_pos		direction;
 	t_color		ceiling_color;
 	t_color		floor_color;
 	t_color		player_color;
@@ -113,12 +117,14 @@ typedef struct s_data
 
 //-----GAME--------//
 int		cube_start(t_data *data);
-void	setup_game(t_data *data);
+void	start_game(t_data *data);
 //-----------------//
 //-----INIT--------//
+int		allocate_game_data(t_data *data, char **av);
+void	init_game_data(t_data *data, char **av);
+void	init_subdata(t_data *data);
 void	setup_window_size(t_data *data);
 void	init_mlx_data(t_data *data, int trash);
-void	start_game(t_data *data);
 //-----------------//
 
 //-----PARSING-----//
@@ -137,35 +143,33 @@ int		is_opened(char	**map, int x, int y, int map_size);
 //-----------------//
 
 //-----MOVES-------//
+void	turn_player(int keycode, t_data *data);
 void	move_player(int keycode, t_data *data);
 int		hook_keypress(int keycode, t_data *data);
+int		act_keypress(t_data *data);
 //-----------------//
 
 //-----DRAW-------//
 void	draw_pixel(t_data *d, int x, int y, t_color color);
+void	draw_ray(t_data *data, t_pos start_point, t_pos end_point);
+void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 void	image(t_data *data);
 void	map_fill(t_data *data);
 void	draw_player(t_data *data, t_pos pos, t_color color);
-void	draw_ceiling(t_data *data);
 //-----------------//
 
 //------UTILS------//
-int		allocate_game_data(t_data *data, char **av);
-void	init_subdata(t_data *data);
-void	init_game_data(t_data *data, char **av);
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
-t_pos	point(int x, int y, char facing);
-void	draw_pixel(t_data *d, int x, int y, t_color color);
-void	send_ray(t_data *data, t_pos start_point);
+t_color	get_rgb(int r, int g, int b, int o);
 //-----------------//
+
 //-----MATHS-------//
+t_pos	point(int x, int y, char facing);
 double	get_rad(double	angle);
 double	change_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 //-----------------//
-void	turn_player(int keycode, t_data *data);
-void 	drawCircle(t_data *data, t_pos pos, t_color color, int radius);
-int		act_keypress(t_data *data);
+
 
 #endif

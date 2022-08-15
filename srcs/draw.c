@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/14 22:10:38 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 00:08:07 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	map_fill(t_data *data)
 	int	y;
 
 	y = 0;
-	draw_ceiling(data);
 	while (data->map[y])
 	{
 		x = 0;
@@ -50,30 +49,14 @@ void	map_fill(t_data *data)
 		{	
 			if (data->map[y][x] == '1')
 				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->floor_color, SIZE);
+			if (data->map[y][x] == '0' || !is_player(data->map[y][x]))
+				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->ceiling_color, SIZE);
 			x++;
 		}
 		y++;
 	}
 	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->player_color, 16);
-	send_ray(data, point(data->player.x * SIZE, data->player.y * SIZE, 0));
-}
-
-void	draw_ceiling(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < data->w_height)
-	{
-		x = 0;
-		while (x < data->w_width)
-		{
-			draw_pixel(data, x, y, data->ceiling_color);
-			x++;
-		}
-		y++;
-	}
+	send_rays(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 1);
 }
 
 void	image(t_data *data)
