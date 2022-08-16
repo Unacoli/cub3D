@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 00:06:47 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:19:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 # define P2 PI / 2
 # define P3 3 * PI / 2
 # define FOV 60
+# define FACING_UP 0
+# define FACING_DOWN 1
+# define FACING_LEFT 1
+# define FACING_RIGHT 1
 
 typedef struct s_color
 {
@@ -87,6 +91,7 @@ typedef struct s_ray
 	double	y_dir;
 	double	angle;
 	double	length;
+	int		wall;
 }	t_ray;
 
 typedef struct s_data
@@ -111,7 +116,9 @@ typedef struct s_data
 	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
-	t_ray		ray;
+	t_ray		v_ray;
+	t_ray		h_ray;
+	t_ray		main_ray;
 	t_color		white;
 }	t_data;
 
@@ -151,11 +158,15 @@ int		act_keypress(t_data *data);
 
 //-----DRAW-------//
 void	draw_pixel(t_data *d, int x, int y, t_color color);
-void	draw_ray(t_data *data, t_pos start_point, t_pos end_point);
-void	send_rays(t_data *data, t_pos start_point, int nb_rays);
+void	draw_ray(t_data *data, t_pos start, t_ray ray);
 void	image(t_data *data);
 void	map_fill(t_data *data);
 void	draw_player(t_data *data, t_pos pos, t_color color);
+//-----------------//
+
+//----RAYCASTING---//
+void	raycasting(t_data *data, t_pos start, int nb_rays);
+void	set_ray_data(t_data *data, int facing, double precision, double atang);
 //-----------------//
 
 //------UTILS------//
@@ -169,6 +180,7 @@ t_pos	point(int x, int y, char facing);
 double	get_rad(double	angle);
 double	change_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
+double	get_dist(t_pos start, t_pos end);
 //-----------------//
 
 

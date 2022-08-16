@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 00:08:07 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:57:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	draw_texture(t_data *data, t_pos pos, t_color color, int size)
 		x = 0;
 		while (x < size)
 		{
-			draw_pixel(data, x + pos.x, y + pos.y, color);
+			if (x == 0 || x == size - 1 || y == 0 || y == size - 1)
+				draw_pixel(data, x + pos.x, y + pos.y, get_rgb(0, 0, 0, 0));
+			else
+				draw_pixel(data, x + pos.x, y + pos.y, color);
 			x++;
 		}
 		y++;
@@ -56,7 +59,7 @@ void	map_fill(t_data *data)
 		y++;
 	}
 	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->player_color, 16);
-	send_rays(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 1);
+	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 1);
 }
 
 void	image(t_data *data)

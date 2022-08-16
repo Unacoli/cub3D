@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:32 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/15 01:41:47 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 13:53:23 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ double	get_rad(double	angle)
 double	get_angle(double rad)
 {
 	return (rad * 180 / PI);
+}
+
+double	get_dist(t_pos start, t_pos end)
+{
+	return (sqrt(pow(end.x - start.x, 2) + pow(end.y - start.y, 2)));
 }
 
 double	change_angle(double angle, double iterate, char iterator)
