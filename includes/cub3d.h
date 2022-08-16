@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 16:19:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:06:53 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define Q 113
 # define PI 3.14159265359
 # define P2 PI / 2
-# define P3 3 * PI / 2
+# define P3 (3 * PI) / 2
 # define FOV 60
 # define FACING_UP 0
 # define FACING_DOWN 1
@@ -116,9 +116,9 @@ typedef struct s_data
 	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
-	t_ray		v_ray;
+	t_ray		ray;
 	t_ray		h_ray;
-	t_ray		main_ray;
+	t_ray		v_ray;
 	t_color		white;
 }	t_data;
 
@@ -167,6 +167,7 @@ void	draw_player(t_data *data, t_pos pos, t_color color);
 //----RAYCASTING---//
 void	raycasting(t_data *data, t_pos start, int nb_rays);
 void	set_ray_data(t_data *data, int facing, double precision, double atang);
+void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 //-----------------//
 
 //------UTILS------//

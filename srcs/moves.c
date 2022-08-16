@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/15 01:41:46 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:57:34 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	move_player(int keycode, t_data *data)
 {
 	if (keycode == LEFT_ARR || keycode == RIGHT_ARR)
 		rotate_player(keycode, data);
-	if (keycode == Z)
+	if (keycode == Z || keycode == W)
 		change_player_pos(data->player.o, data, point(1, 1, 0));
 	if (keycode == S)
 		change_player_pos(data->player.o, data, point(-1, -1, 0));
@@ -86,11 +86,11 @@ int	hook_keypress(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
-	if (keycode == Z)
+	if (keycode == Z || keycode == W)
 		data->keys.z = !data->keys.z;
 	if (keycode == S)
 		data->keys.s = !data->keys.s;
-	if (keycode == Q)
+	if (keycode == Q || keycode == A)
 		data->keys.q = !data->keys.q;
 	if (keycode == D)
 		data->keys.d = !data->keys.d;
