@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 17:57:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/16 23:38:09 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	hook_keypress(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 	{
-		printf("You pressed escape key\nGame closed\n");
+		ft_printf("You pressed escape key\nGame closed\n");
 		mlx_loop_end(data->mlx);
 		return (0);
 	}

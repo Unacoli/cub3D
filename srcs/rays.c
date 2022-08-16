@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 22:26:35 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/17 00:19:29 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 			&& data->map[my][mx] == '1')
 		{
 			dof = 8;
-			printf("End point: x: %d y: %d\n", mx, my);
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
 		}
 		else
@@ -68,14 +67,14 @@ void	setup_v_ray_data(t_ray *ray, t_pos start, int facing)
 		ray->x = (((int)start.x / 64) * 64) - 0.0001;
 		ray->y = (start.x - ray->x) * atang + start.y;
 		ray->x_dir = -64;
-		ray->y_dir = (ray->x_dir * -1) * atang;
+		ray->y_dir = -ray->x_dir * atang;
 	}
 	else
 	{
 		ray->x = (((int)start.x / 64) * 64) + 64;
 		ray->y = (start.x - ray->x) * atang + start.y;
 		ray->x_dir = 64;
-		ray->y_dir = (ray->x_dir * -1) * atang;
+		ray->y_dir = -ray->x_dir * atang;
 	}
 }
 
@@ -89,35 +88,39 @@ void	reset_ray_data(t_ray *ray, t_pos start, int *dof)
 void	raycasting(t_data *data, t_pos start, int nb_rays)
 {
 	int		dof;
+	double	ray_angle;
 
-	data->h_ray.angle = get_rad(data->player.o);
-	data->v_ray.angle = get_rad(data->player.o);
+	ray_angle = data->player.o;
 	while (nb_rays > 0)
 	{
 		dof = 0;
+		ray_angle += 0.05;
+		data->h_ray.angle = get_rad(ray_angle);
+		data->v_ray.angle = get_rad(ray_angle);
 		if (data->h_ray.angle > PI && data->h_ray.angle < (PI * 2))
 			setup_h_ray_data(&data->h_ray, start, 1);
 		if (data->h_ray.angle < PI && data->h_ray.angle > 0)
 			setup_h_ray_data(&data->h_ray, start, 0);
 		if (data->h_ray.angle == 0 || data->h_ray.angle == PI)
 			reset_ray_data(&data->h_ray, start, &dof);
-		if (data->v_ray.angle > (PI / 2) && data->v_ray.angle < P3)
+		//send_ray(&data->h_ray, data, dof, start);
+		dof = 0;
+		if (data->v_ray.angle > P2 && data->v_ray.angle < P3)
 			setup_v_ray_data(&data->v_ray, start, 1);
 		if (data->v_ray.angle < P2 || data->v_ray.angle > P3)
 			setup_v_ray_data(&data->v_ray, start, 0);
-		if (data->v_ray.angle == 0 || data->v_ray.angle == PI)
+		if (data->v_ray.angle == P2 || data->v_ray.angle == P3)
 			reset_ray_data(&data->v_ray, start, &dof);
 		send_ray(&data->v_ray, data, dof, start);
-		send_ray(&data->h_ray, data, dof, start);
-		if (data->h_ray.length < data->v_ray.length)
-			draw_ray(data, start, data->h_ray);
-		else
-			draw_ray(data, start, data->v_ray);
+		//if (data->h_ray.length < data->v_ray.length)
+		//draw_ray(data, start, data->h_ray, ray_angle);
+		//else
+		draw_ray(data, start, data->v_ray, ray_angle);
 		nb_rays--;
 	}
 }
 
-void	draw_ray(t_data *data, t_pos start, t_ray ray)
+void	draw_ray(t_data *data, t_pos start, t_ray ray, double ray_angle)
 {
 	double	t;
 	double	x_dir;
@@ -126,13 +129,13 @@ void	draw_ray(t_data *data, t_pos start, t_ray ray)
 	double	x;
 	double	length;
 
-	t = get_rad(data->player.o);
+	t = get_rad(ray_angle);
 	x_dir = cos(t);
 	y_dir = sin(t);
 	x = start.x;
 	y = start.y;
 	length = 0;
-	while (length < 3000 && get_dist(start, point(x, y, 0)) < ray.length)
+	while (length < 5000 && get_dist(start, point(x, y, 0)) < ray.length)
 	{
 		draw_pixel(data, x, y, data->white);
 		y += y_dir;
