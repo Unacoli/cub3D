@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 23:08:09 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 00:00:37 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_keys
 typedef struct s_ray
 {
 	t_pos	goal;
+	double	dof;
 	double	x;
 	double	y;
 	double	x_dir;
@@ -158,7 +159,8 @@ int		act_keypress(t_data *data);
 
 //-----DRAW-------//
 void	draw_pixel(t_data *d, int x, int y, t_color color);
-void	draw_ray(t_data *data, t_pos start, t_ray ray, double ray_angle);
+void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
+void	draw_texture(t_data *data, t_pos pos, t_color color, int size);
 void	image(t_data *data);
 void	map_fill(t_data *data);
 void	draw_player(t_data *data, t_pos pos, t_color color);
