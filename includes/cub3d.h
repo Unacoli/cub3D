@@ -24,17 +24,12 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# define XK_MISCELLANY
+# define XK_LATIN1
+# include <X11/X.h>
+# include <X11/keysymdef.h>
 
 # define SIZE 64
-# define ESC 65307
-# define RIGHT_ARR 65363
-# define LEFT_ARR 65361
-# define W 119 // QWERTY
-# define A 97
-# define S 115
-# define D 100
-# define Z 122 // AZERTY
-# define Q 113
 # define PI 3.14159265359
 # define P2 PI / 2
 # define P3 (3 * PI) / 2
@@ -72,11 +67,9 @@ typedef struct s_map
 
 typedef struct s_keys
 {
-	int	z;
 	int	s;
-	int q;
-	int d;
 	int a;
+	int d;
 	int w;
 	int	l_arr;
 	int	r_arr;
@@ -151,8 +144,8 @@ int		is_opened(char	**map, int x, int y, int map_size);
 
 //-----MOVES-------//
 void	turn_player(int keycode, t_data *data);
-void	move_player(int keycode, t_data *data);
-int		hook_keypress(int keycode, t_data *data);
+int	move_player(int keycode, t_data *data);
+int		key_hook(int keycode, t_data *data);
 int		act_keypress(t_data *data);
 //-----------------//
 
@@ -175,6 +168,7 @@ void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 t_color	get_rgb(int r, int g, int b, int o);
+int		win_close(t_data *data);
 //-----------------//
 
 //-----MATHS-------//

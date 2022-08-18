@@ -43,11 +43,11 @@ void	start_game(t_data *data)
 		data->player.o = 360;
 	map_fill(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_hook(data->win, 33, 1L << 17, mlx_loop_end, data->mlx);
-	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
-	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
-	mlx_loop_hook(data->mlx, &act_keypress, data);
-	mlx_loop(data->mlx);
+//	mlx_hook(data->win, 33, 1L << 17, mlx_loop_end, data->mlx);
+//	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
+//	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
+//	mlx_key_hook(data->win, act_keypress, &data);
+//	mlx_loop_hook(data->mlx, &act_keypress, data);
 }
 
 void	init_subdata(t_data *data)

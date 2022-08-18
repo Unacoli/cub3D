@@ -23,6 +23,9 @@ int	main(int ac, char **av)
 		return (1);
 	init_game_data(data, av);
 	cube_start(data);
+	mlx_key_hook(data->win, move_player, &data);
+	mlx_hook(data->win, DestroyNotify, 1L << 0, win_close, &data);
+	mlx_loop(data->mlx);
 	free_game_data(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/14 16:27:28 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/18 16:26:43 by nargouse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ DESCRIPTION =	Cub3D project for [42]
 
 # ----------- COMPILER FLAGS -------
 CC			=	clang
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3
 LPFLAGS		=	libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- INCLUDE --------------
