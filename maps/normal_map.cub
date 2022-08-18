@@ -1,13 +1,11 @@
-NO ./texture/shrek/shrek1.xpm
 EA ./texture/shrek/shrek2.xpm
 WE ./texture/shrek/shrek3.xpm
+NO ./texture/shrek/shrek1.xpm
 SO ./texture/shrek/shrek4.xpm
-
 C 255, 186, 8
 F 50, 1, 19
-
-111111111111111
-100000000000001
+    11111111111
+111110000000001
 100000000000001
 100000S00100001
 100000000000001

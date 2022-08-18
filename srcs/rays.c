@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 03:12:51 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:35:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 		{
 			dof = 16;
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
+			draw_texture(data, point(ray->x, ray->y, 0), data->player_color, 8);
 			return ;
 		}
 		else
 		{
+			//draw_texture(data, point(ray->x, ray->y, 0), data->player_color, 8);
 			ray->x += ray->x_dir;
 			ray->y += ray->y_dir;
 			dof++;
@@ -117,7 +119,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			draw_ray(data, start, &data->h_ray, ray_angle);
 		else
 			draw_ray(data, start, &data->v_ray, ray_angle);
-		ray_angle = change_angle(ray_angle, 1, '+');
+		ray_angle = change_angle(data->player.o, 0.1 * nb_rays, '+');
 		nb_rays--;
 	}
 }

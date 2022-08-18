@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/15 15:02:10 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:07:02 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	start_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_hook(data->win, 33, 1L << 17, mlx_loop_end, data->mlx);
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
-    mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
+	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
 	mlx_loop_hook(data->mlx, &act_keypress, data);
 	mlx_loop(data->mlx);
 }
