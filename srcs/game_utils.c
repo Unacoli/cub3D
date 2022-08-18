@@ -56,9 +56,3 @@ void	exit_game(t_data *data, char *msg)
 	free_game_data(data);
 	exit(1);
 }
-
-int	win_close(t_data *data)
-{
-	free_game_data(data);
-	exit (EXIT_SUCCESS);
-}

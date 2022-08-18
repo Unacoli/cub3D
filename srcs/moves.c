@@ -54,13 +54,13 @@ int	move_player(int keycode, t_data *data)
 	}
 	if (keycode == XK_Left || keycode == XK_Right)
 		rotate_player(keycode, data);
-	if (keycode == XK_W || keycode == XK_w)
+	if (keycode == XK_W)
 		change_player_pos(data->player.o, data, point(1, 1, 0));
-	if (keycode == XK_S || keycode == XK_s)
+	if (keycode == XK_S)
 		change_player_pos(data->player.o, data, point(-1, -1, 0));
-	if (keycode == XK_A || keycode == XK_a)
+	if (keycode == XK_A)
 		change_player_pos(change_angle(data->player.o, 90, '-'), data, point(1, 1, 0));
-	if (keycode == XK_D || keycode == XK_d)
+	if (keycode == XK_D)
 		change_player_pos(change_angle(data->player.o, 90, '-'), data, point(-1, -1, 0));
 	return (0);
 }
@@ -84,7 +84,7 @@ int	act_keypress(t_data *data)
 	return (0);
 }
 
-int	key_hook(int keycode, t_data *data)
+int	hook_keypress(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 	{
@@ -92,13 +92,13 @@ int	key_hook(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
-	if (keycode == XK_W)
+	if (keycode == XK_W || keycode == XK_w)
 		data->keys.w = !data->keys.w;
-	if (keycode == XK_S)
+	if (keycode == XK_S || keycode == XK_s)
 		data->keys.s = !data->keys.s;
-	if (keycode == XK_A) 
+	if (keycode == XK_A || keycode == XK_a) 
 		data->keys.a = !data->keys.a;
-	if (keycode == XK_D)
+	if (keycode == XK_D || keycode == XK_d)
 		data->keys.d = !data->keys.d;
 	if (keycode == XK_Left)
 		data->keys.l_arr = !data->keys.l_arr;

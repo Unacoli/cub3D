@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:16:22 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 02:10:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <X11/keysymdef.h>
 
 # define SIZE 64
+# define ESC 65307
 # define PI 3.14159265359
 # define P2 PI / 2
 # define P3 (3 * PI) / 2
@@ -67,8 +68,8 @@ typedef struct s_map
 
 typedef struct s_keys
 {
+	int	a;
 	int	s;
-	int a;
 	int d;
 	int w;
 	int	l_arr;
@@ -144,8 +145,8 @@ int		is_opened(char	**map, int x, int y, int map_size);
 
 //-----MOVES-------//
 void	turn_player(int keycode, t_data *data);
-int	move_player(int keycode, t_data *data);
-int		key_hook(int keycode, t_data *data);
+void	move_player(int keycode, t_data *data);
+int		hook_keypress(int keycode, t_data *data);
 int		act_keypress(t_data *data);
 //-----------------//
 
@@ -160,19 +161,14 @@ void	draw_player(t_data *data, t_pos pos, t_color color);
 
 //----RAYCASTING---//
 void	raycasting(t_data *data, t_pos start, int nb_rays);
-void	setup_h_ray_data(t_ray *ray, t_pos start, int facing);
-void	cast_h_ray(t_data *data, t_pos start, double ray_angle);
-void	setup_v_ray_data(t_ray *ray, t_pos start, int facing);
-void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
-void	reset_ray_data(t_ray *ray, t_pos start, int *dof);
-void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start);
+void	set_ray_data(t_data *data, int facing, double precision, double atang);
+void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 //-----------------//
 
 //------UTILS------//
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
 t_color	get_rgb(int r, int g, int b, int o);
-int		win_close(t_data *data);
 //-----------------//
 
 //-----MATHS-------//
