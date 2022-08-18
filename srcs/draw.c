@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 15:49:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:12:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,26 @@ void	draw_texture(t_data *data, t_pos pos, t_color color, int size)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
+{
+	double	t;
+	double	length;
+
+	t = get_rad(ray_angle);
+	ray->x_dir = cos(t);
+	ray->y_dir = sin(t);
+	ray->x = start.x;
+	ray->y = start.y;
+	length = 0;
+	while (length < 8000 && get_dist(start, point(ray->x, ray->y, 0)) < ray->length)
+	{
+		draw_pixel(data, ray->x, ray->y, data->white);
+		ray->y += ray->y_dir;
+		ray->x += ray->x_dir;
+		length++;
 	}
 }
 

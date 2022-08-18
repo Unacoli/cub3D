@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 02:10:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:16:22 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,12 @@ void	draw_player(t_data *data, t_pos pos, t_color color);
 
 //----RAYCASTING---//
 void	raycasting(t_data *data, t_pos start, int nb_rays);
-void	set_ray_data(t_data *data, int facing, double precision, double atang);
-void	send_rays(t_data *data, t_pos start_point, int nb_rays);
+void	setup_h_ray_data(t_ray *ray, t_pos start, int facing);
+void	cast_h_ray(t_data *data, t_pos start, double ray_angle);
+void	setup_v_ray_data(t_ray *ray, t_pos start, int facing);
+void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
+void	reset_ray_data(t_ray *ray, t_pos start, int *dof);
+void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start);
 //-----------------//
 
 //------UTILS------//

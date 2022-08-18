@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/14 16:27:28 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/18 16:14:38 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/init.c					\
 				$(SRC)/maths.c					\
 				$(SRC)/rays.c					\
-				$(SRC)/moves.c
+				$(SRC)/moves.c					\
+				$(SRC)/setup_rays.c
 
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
