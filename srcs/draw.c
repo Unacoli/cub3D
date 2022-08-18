@@ -6,16 +6,16 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:12:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:37:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_pixel(t_data *d, int x, int y, t_color color)
+void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw)
 {
 	if (x >= 0 && x < d->w_width && y >= 0 && y < d->w_height)
-		d->draw[y * d->w_width + x] = color;
+		draw[y * d->w_width + x] = color;
 }
 
 void	draw_texture(t_data *data, t_pos pos, t_color color, int size)
@@ -30,9 +30,9 @@ void	draw_texture(t_data *data, t_pos pos, t_color color, int size)
 		while (x < size)
 		{
 			if (x == 0 || x == size - 1 || y == 0 || y == size - 1)
-				draw_pixel(data, x + pos.x, y + pos.y, get_rgb(0, 0, 0, 0));
+				draw_pixel(data, x + pos.x, y + pos.y, data->black, data->draw_2d);
 			else
-				draw_pixel(data, x + pos.x, y + pos.y, color);
+				draw_pixel(data, x + pos.x, y + pos.y, color, data->draw_2d);
 			x++;
 		}
 		y++;
@@ -52,7 +52,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 	length = 0;
 	while (length < 8000 && get_dist(start, point(ray->x, ray->y, 0)) < ray->length)
 	{
-		draw_pixel(data, ray->x, ray->y, data->white);
+		draw_pixel(data, ray->x, ray->y, data->white, data->draw_2d);
 		ray->y += ray->y_dir;
 		ray->x += ray->x_dir;
 		length++;
@@ -79,11 +79,11 @@ void	map_fill(t_data *data)
 		y++;
 	}
 	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 720);
-	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->player_color, 16);
+	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->red, 16);
 }
 
 void	image(t_data *data)
 {
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
 }

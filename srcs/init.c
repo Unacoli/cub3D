@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 15:07:02 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:39:58 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ void	init_mlx_data(t_data *data, int trash)
 	data->mlx = mlx_init();
 	mlx_get_screen_size(data->mlx, &data->s_width, &data->s_height);
 	setup_window_size(data);
-	data->win = mlx_new_window(data->mlx, data->w_width, data->w_height,
-				"The room");
-	data->img = mlx_new_image(data->mlx, data->w_width, data->w_height);
-	data->addr = mlx_get_data_addr(data->img, &trash, &trash, &trash);
-	data->draw = (t_color *)data->addr;
+	data->win = mlx_new_window(data->mlx, data->w_width,
+				data->w_height, "The room");
+	data->img_2d = mlx_new_image(data->mlx, data->w_width, data->w_height);
+	data->img_3d = mlx_new_image(data->mlx, data->w_width, data->w_height);
+	data->addr_2d = mlx_get_data_addr(data->img_2d, &trash, &trash, &trash);
+	data->addr_3d = mlx_get_data_addr(data->img_3d, &trash, &trash, &trash);
+	data->draw_2d = (t_color *)data->addr_2d;
+	data->draw_3d = (t_color *)data->addr_3d;
 }
 
 void	start_game(t_data *data)
@@ -42,7 +45,7 @@ void	start_game(t_data *data)
 	if (data->player.facing == 'W')
 		data->player.o = 360;
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
 	mlx_hook(data->win, 33, 1L << 17, mlx_loop_end, data->mlx);
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
 	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
@@ -53,8 +56,9 @@ void	start_game(t_data *data)
 void	init_subdata(t_data *data)
 {
 	ft_memset(data->m_info, 0, sizeof(t_map));
-	data->player_color = get_rgb(255, 0, 0, 1);
+	data->red = get_rgb(255, 0, 0, 1);
 	data->white = get_rgb(255, 255, 255, 1);
+	data->black = get_rgb(0, 0, 0, 0);
 }
 
 void	init_game_data(t_data *data, char **av)

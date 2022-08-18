@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 00:28:13 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:43:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	act_keypress(t_data *data)
 	if (data->keys.d)
 		move_player(D, data);
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
 	return (0);
 }
 
@@ -94,9 +94,12 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.q = !data->keys.q;
 	if (keycode == D)
 		data->keys.d = !data->keys.d;
+	if (keycode == M)
+		data->keys.m = !data->keys.m;
 	if (keycode == LEFT_ARR)
 		data->keys.l_arr = !data->keys.l_arr;
 	if (keycode == RIGHT_ARR)
 		data->keys.r_arr = !data->keys.r_arr;
+	printf("%d\n", keycode);
 	return (0);
 }

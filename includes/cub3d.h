@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:16:22 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:42:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define D 100
 # define Z 122 // AZERTY
 # define Q 113
+# define M 109
 # define PI 3.14159265359
 # define P2 PI / 2
 # define P3 (3 * PI) / 2
@@ -78,26 +79,24 @@ typedef struct s_keys
 	int d;
 	int a;
 	int w;
+	int	m;
 	int	l_arr;
 	int	r_arr;
 }	t_keys;
 
 typedef struct s_ray
 {
-	t_pos	goal;
 	double	x;
 	double	y;
 	double	x_dir;
 	double	y_dir;
 	double	angle;
 	double	length;
-	int		wall;
 }	t_ray;
 
 typedef struct s_data
 {
 	char		*err_msg;
-	double		rad;
 	int			s_width;
 	int			s_height;
 	int			w_width;
@@ -106,20 +105,23 @@ typedef struct s_data
 	int			nb_player;
 	char		*map_path;
 	void		*mlx;
-	void		*img;
-	void		*addr;
+	void		*img_2d;
+	void		*addr_2d;
+	t_color		*draw_2d;
+	void		*img_3d;
+	void		*addr_3d;
+	t_color		*draw_3d;
 	void		*win;
 	t_keys		keys;
 	t_color		ceiling_color;
 	t_color		floor_color;
-	t_color		player_color;
-	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
-	t_ray		ray;
 	t_ray		h_ray;
 	t_ray		v_ray;
+	t_color		red;
 	t_color		white;
+	t_color		black;
 }	t_data;
 
 //-----GAME--------//
@@ -157,7 +159,7 @@ int		act_keypress(t_data *data);
 //-----------------//
 
 //-----DRAW-------//
-void	draw_pixel(t_data *d, int x, int y, t_color color);
+void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
 void	draw_texture(t_data *data, t_pos pos, t_color color, int size);
 void	image(t_data *data);
