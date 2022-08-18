@@ -19,7 +19,7 @@ static int	iscub(char *name_file)
 	len = ft_strlen(name_file);
 	if (name_file == 0)
 		return (0);
-	if (len < 6)
+	if (len < 5)
 		return (0);
 	if (ft_strncmp(name_file + len - 4, ".cub", 4) != 0)
 		return (0);
