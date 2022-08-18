@@ -15,7 +15,7 @@ NAME		= libft.a
 
 # ----------- COMPILER FLAGS -------
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -I./
+CFLAGS		+= -Wall -Wextra -Werror
 
 # ----------- FILES ----------------
 INCLUDE		= ./include
@@ -52,7 +52,7 @@ clean	:
 	rm -rf ${OBJ}
 
 fclean	:	clean
-	rm -f ${NAME}
+	rm -rf ${NAME}
 
 re		:	fclean all
 
