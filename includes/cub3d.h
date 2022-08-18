@@ -39,6 +39,8 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
+# define HEIGHT_3D 320
+# define WIDTH_3D 160
 
 typedef struct s_color
 {
@@ -91,6 +93,9 @@ typedef struct s_data
 {
 	char		*err_msg;
 	int			s_width;
+	double		line_height;
+	double		line_offset;
+	double		angle_diff;
 	int			s_height;
 	int			w_width;
 	int			w_height;
@@ -105,6 +110,7 @@ typedef struct s_data
 	void		*addr_3d;
 	t_color		*draw_3d;
 	void		*win;
+	double		ray_length;
 	t_keys		keys;
 	t_color		ceiling_color;
 	t_color		floor_color;

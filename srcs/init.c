@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:39:58 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 22:10:49 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_mlx_data(t_data *data, int trash)
 	data->win = mlx_new_window(data->mlx, data->w_width,
 				data->w_height, "The room");
 	data->img_2d = mlx_new_image(data->mlx, data->w_width, data->w_height);
-	data->img_3d = mlx_new_image(data->mlx, data->w_width, data->w_height);
+	data->img_3d = mlx_new_image(data->mlx, 160, 320);
 	data->addr_2d = mlx_get_data_addr(data->img_2d, &trash, &trash, &trash);
 	data->addr_3d = mlx_get_data_addr(data->img_3d, &trash, &trash, &trash);
 	data->draw_2d = (t_color *)data->addr_2d;

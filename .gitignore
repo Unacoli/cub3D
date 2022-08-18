@@ -57,6 +57,8 @@ Notes/*
 *.pdf
 *.txt
 cub3d.out
+cub3D
+
 # Local History for Visual Studio Code
 .history/
 
