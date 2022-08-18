@@ -18,8 +18,9 @@ CC			= clang
 CFLAGS		= -Wall -Wextra -Werror -I./
 
 # ----------- FILES ----------------
+INCLUDE		= ./include
 OBJ			= ./objs
-SRC			= ./
+SRC			= ./srcs
 SRCS_MEM	=	ft_swap_str.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c
 SRCS_STR	=	ft_strchr.c ft_strdup.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c ft_strnstr.c ft_strlen.c ft_error.c str_arr_display.c str_arr_free.c str_arr_size.c
 SRCS_PUTFD	=	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
@@ -39,10 +40,7 @@ $(NAME): ${OBJS}
 	ar rcs ${NAME} ${OBJS}
 
 $(OBJ)/%.o	: $(SRC)/%.c | $(OBJ)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ)/%.o	: $(SRC)/%.c | $(OBJ)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -I $(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(OBJ)		:
 	mkdir $@

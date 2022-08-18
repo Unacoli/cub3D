@@ -16,18 +16,20 @@ DESCRIPTION =	Cub3D project for [42]
 
 # ----------- COMPILER FLAGS -------
 CC			=	clang
-CFLAGS		=	-Wall -Wextra -Werror -g3
-LPFLAGS		=	libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm
+CFLAGS		+=	-Wall -Wextra -Werror -g3
+LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- INCLUDE --------------
-INCLUDE		=	includes
-INCLUDES	=	-I$(INCLUDE) -I$(MLX) -I$(LIBFT)
+INCLUDE		=	./includes/
+
+# ------------ LIB -----------------
+MLX	= ./mlx/libmlx.a
+LIBFT	= ./libft/libft.a
+LIB	= $(MLX) $(LIBFT)
 
 # ----------- FILES ----------------
 SRC			=	./srcs
 OBJ			=	./objs
-LIBFT		=	./libft
-MLX			=	./mlx
 SRCS		=	$(SRC)/main.c					\
 				$(SRC)/cube.c					\
 				$(SRC)/parse_map.c				\
@@ -56,37 +58,40 @@ EOC			= \033[0;0m
 
 # ----------- RULES ----------------
 all			: $(NAME)
-${NAME}		: $(OBJS)
+${NAME}		: $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
-			$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LPFLAGS) -o $@
+			$(CC) $(OBJS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
 	@echo "$(BLUE)            Build $(DESCRIPTION) DONE √"
 	@echo -n "$(EOC)"
-$(OBJ)/%.o	: $(SRC)/%.c | $(OBJ) compiling
-			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ)/%.o	: $(SRC)/%.c
+			mkdir -p ./objs/
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 compiling	:
 			@echo -n "$(WHITE)"
 
-$(OBJ)		:
-	@echo "$(PURPLE)"
-			mkdir $@
-	@echo "$(GREEN)"
-			make -C $(LIBFT)
-			make -C $(MLX)
+$(MLX):
+	$(MAKE) -C ./mlx
+
+$(LIBFT):
+	$(MAKE) --no-print-directory -C ./libft
 
 clean		:
 	@echo "$(BLUE) =========> Deleting object files <========="
 	@echo "$(PURPLE)"
-			-rm -rf $(OBJ)
+			$(MAKE) -C ./mlx clean
+			$(MAKE) -C ./libft clean
+			$(RM) $(OBJS) 
 
 fclean		: clean
 	@echo "$(BLUE) =========> Deleting executable <========="
 	@echo "$(PURPLE)"
-			-rm -f $(NAME)
+			$(RM) $(NAME)
 	@echo "$(GREEN)"
-			make fclean -C $(LIBFT)
-			make clean -C $(MLX)
+			$(RM) $(MLX)
+			$(RM) $(LIBFT)
 	@echo "$(BLUE)            Cleaning LIBFT and MLX DONE √"
 
 re			: fclean all
