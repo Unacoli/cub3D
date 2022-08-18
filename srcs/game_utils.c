@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:34:15 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/15 15:02:43 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:42:41 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ void	free_game_data(t_data *data)
 	free(data->m_info);
 	str_arr_free(data->map);
 	free(data->map_path);
-	if (data->img)
-		mlx_destroy_image(data->mlx, data->img);
+	if (data->img_2d)
+		mlx_destroy_image(data->mlx, data->img_2d);
+	if (data->img_3d)
+		mlx_destroy_image(data->mlx, data->img_3d);
 	if (data->mlx)
-	mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win);
 	free(data->mlx);
 	free(data);
 }

@@ -30,7 +30,6 @@
 # include <X11/keysymdef.h>
 
 # define SIZE 64
-# define ESC 65307
 # define PI 3.14159265359
 # define P2 PI / 2
 # define P3 (3 * PI) / 2
@@ -39,7 +38,7 @@
 # define FACING_DOWN 1
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
-
+# define RAD_1 0.0174533 // 1 degree in radian
 typedef struct s_color
 {
 	unsigned char	b;
@@ -72,26 +71,24 @@ typedef struct s_keys
 	int	s;
 	int d;
 	int w;
+	int	m;
 	int	l_arr;
 	int	r_arr;
 }	t_keys;
 
 typedef struct s_ray
 {
-	t_pos	goal;
 	double	x;
 	double	y;
 	double	x_dir;
 	double	y_dir;
 	double	angle;
 	double	length;
-	int		wall;
 }	t_ray;
 
 typedef struct s_data
 {
 	char		*err_msg;
-	double		rad;
 	int			s_width;
 	int			s_height;
 	int			w_width;
@@ -100,20 +97,23 @@ typedef struct s_data
 	int			nb_player;
 	char		*map_path;
 	void		*mlx;
-	void		*img;
-	void		*addr;
+	void		*img_2d;
+	void		*addr_2d;
+	t_color		*draw_2d;
+	void		*img_3d;
+	void		*addr_3d;
+	t_color		*draw_3d;
 	void		*win;
 	t_keys		keys;
 	t_color		ceiling_color;
 	t_color		floor_color;
-	t_color		player_color;
-	t_color		*draw;
 	t_map		*m_info;
 	t_pos		player;
-	t_ray		ray;
 	t_ray		h_ray;
 	t_ray		v_ray;
+	t_color		red;
 	t_color		white;
+	t_color		black;
 }	t_data;
 
 //-----GAME--------//
@@ -151,7 +151,7 @@ int		act_keypress(t_data *data);
 //-----------------//
 
 //-----DRAW-------//
-void	draw_pixel(t_data *d, int x, int y, t_color color);
+void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
 void	draw_texture(t_data *data, t_pos pos, t_color color, int size);
 void	image(t_data *data);
@@ -175,6 +175,7 @@ t_color	get_rgb(int r, int g, int b, int o);
 t_pos	point(int x, int y, char facing);
 double	get_rad(double	angle);
 double	change_angle(double angle, double iterate, char iterator);
+double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 double	get_dist(t_pos start, t_pos end);
 //-----------------//
