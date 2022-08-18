@@ -61,22 +61,29 @@ all			: $(NAME)
 ${NAME}		: $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
-			$(CC) $(OBJS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
+		$(CC) $(OBJS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
 	@echo "$(BLUE)            Build $(DESCRIPTION) DONE √"
 	@echo -n "$(EOC)"
 
 $(OBJ)/%.o	: $(SRC)/%.c
-			mkdir -p ./objs/
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+	@echo "$(PURPLE)"
+		mkdir -p ./objs/
+		$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 compiling	:
 			@echo -n "$(WHITE)"
 
 $(MLX):
-	$(MAKE) -C ./mlx
+	@echo "$(BLUE) =========> Compiling MLX library <========="
+	@echo "$(CYAN)"
+		$(MAKE) -C ./mlx
+	@echo -n "$(EOC)"
 
 $(LIBFT):
-	$(MAKE) --no-print-directory -C ./libft
+	@echo "$(BLUE) =========> Compiling LIBFT library <========="
+	@echo "$(CYAN)"
+		$(MAKE) --no-print-directory -C ./libft
+	@echo -n "$(EOC)"
 
 clean		:
 	@echo "$(BLUE) =========> Deleting object files <========="
