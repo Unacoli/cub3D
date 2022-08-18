@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 02:12:10 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 03:12:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			draw_ray(data, start, &data->h_ray, ray_angle);
 		else
 			draw_ray(data, start, &data->v_ray, ray_angle);
-		ray_angle += 0.1;
+		ray_angle = change_angle(ray_angle, 1, '+');
 		nb_rays--;
 	}
 }
