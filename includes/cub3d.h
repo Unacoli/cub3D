@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:42:57 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:50:58 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define FACING_DOWN 1
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
-
+# define RAD_1 0.0174533 // 1 degree in radian
 typedef struct s_color
 {
 	unsigned char	b;
@@ -187,6 +187,7 @@ t_color	get_rgb(int r, int g, int b, int o);
 t_pos	point(int x, int y, char facing);
 double	get_rad(double	angle);
 double	change_angle(double angle, double iterate, char iterator);
+double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 double	get_dist(t_pos start, t_pos end);
 //-----------------//

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:43:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 20:48:45 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.l_arr = !data->keys.l_arr;
 	if (keycode == RIGHT_ARR)
 		data->keys.r_arr = !data->keys.r_arr;
-	printf("%d\n", keycode);
 	return (0);
 }

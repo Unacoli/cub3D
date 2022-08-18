@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 16:17:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 21:48:11 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	cast_h_ray(t_data *data, t_pos start, double ray_angle)
 {
 	int	dof;
 
-	data->h_ray.angle = get_rad(ray_angle);
+	data->h_ray.angle = ray_angle;
 	dof = 0;
 	if (data->h_ray.angle > PI)
 		setup_h_ray_data(&data->h_ray, start, 1);
@@ -58,7 +58,7 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 {
 	int	dof;
 
-	data->v_ray.angle = get_rad(ray_angle);
+	data->v_ray.angle = ray_angle;
 	dof = 0;
 	if (data->v_ray.angle > P2 && data->v_ray.angle < P3)
 		setup_v_ray_data(&data->v_ray, start, 1);
@@ -71,11 +71,9 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 
 void	raycasting(t_data *data, t_pos start, int nb_rays)
 {
-	double	first_ray_angle;
 	double	ray_angle;
 
-	first_ray_angle = change_angle(data->player.o, 0.1 * 360, '-');
-	ray_angle = data->player.o;
+	ray_angle = get_rad(change_angle(data->player.o, 30, '-'));
 	while (nb_rays > 0)
 	{
 		cast_h_ray(data, start, ray_angle);
@@ -84,7 +82,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			draw_ray(data, start, &data->h_ray, ray_angle);
 		else
 			draw_ray(data, start, &data->v_ray, ray_angle);
-		ray_angle = change_angle(first_ray_angle, 0.1 * nb_rays, '+');
+		ray_angle = change_rad_angle(ray_angle, RAD_1, '+');
 		nb_rays--;
 	}
 }
