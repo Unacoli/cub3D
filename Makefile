@@ -88,26 +88,26 @@ $(LIBFT):
 clean		:
 	@echo "$(BLUE) =========> Deleting object files <========="
 	@echo "$(PURPLE)"
-			$(MAKE) -C ./mlx clean
-			$(MAKE) -C ./libft clean
-			$(RM) $(OBJS) 
+		$(MAKE) -C ./mlx clean
+		$(MAKE) -C ./libft clean
+		$(RM) $(OBJS) 
 
 fclean		: clean
 	@echo "$(BLUE) =========> Deleting executable <========="
 	@echo "$(PURPLE)"
-			$(RM) $(NAME)
+		$(RM) $(NAME)
 	@echo "$(GREEN)"
-			$(RM) $(MLX)
-			$(RM) $(LIBFT)
+		$(RM) $(MLX)
+		$(RM) $(LIBFT)
 	@echo "$(BLUE)            Cleaning LIBFT and MLX DONE √"
 
 re			: fclean all
 
 norm		:
 	@echo "$(BLACK)"
-			norminette $(LIBFT)
+		norminette $(LIBFT)
 	@echo "$(CYAN)"
-			norminette $(SRC) $(INCLUDE)
+		norminette $(SRC) $(INCLUDE)
 	@echo "$(BLUE)            Checking the norminette DONE √"
 
 .PHONY: all clean fclean re norm
