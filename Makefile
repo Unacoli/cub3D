@@ -16,7 +16,7 @@ DESCRIPTION =	Cub3D project for [42]
 
 # ----------- COMPILER FLAGS -------
 CC			=	clang
-CFLAGS		+=	-Wall -Wextra -Werror -g3
+CFLAGS		+=	-Wall -Wextra -Werror -g3 -fsanitize=address
 LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- INCLUDE --------------
