@@ -100,7 +100,7 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.a = !data->keys.a;
 	if (keycode == XK_D || keycode == XK_d)
 		data->keys.d = !data->keys.d;
-	if (keycode == XK_M)
+	if (keycode == XK_M || keycode == XK_m)
 		data->keys.m = !data->keys.m;
 	if (keycode == XK_Left)
 		data->keys.l_arr = !data->keys.l_arr;

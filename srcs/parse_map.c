@@ -132,7 +132,7 @@ int		find_map_width(char **map)
 	int	row_len;
 
 	row_len = 0;
-	i =0;
+	i = 0;
 	while (map && map[i])
 	{
 		if ((int)ft_strlen(map[i]) > row_len)

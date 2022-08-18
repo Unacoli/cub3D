@@ -39,6 +39,7 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
+
 typedef struct s_color
 {
 	unsigned char	b;
@@ -145,7 +146,7 @@ int		is_opened(char	**map, int x, int y, int map_size);
 
 //-----MOVES-------//
 void	turn_player(int keycode, t_data *data);
-void	move_player(int keycode, t_data *data);
+int		move_player(int keycode, t_data *data);
 int		hook_keypress(int keycode, t_data *data);
 int		act_keypress(t_data *data);
 //-----------------//
@@ -163,6 +164,9 @@ void	draw_player(t_data *data, t_pos pos, t_color color);
 void	raycasting(t_data *data, t_pos start, int nb_rays);
 void	set_ray_data(t_data *data, int facing, double precision, double atang);
 void	send_rays(t_data *data, t_pos start_point, int nb_rays);
+void	setup_h_ray_data(t_ray *ray, t_pos start, int facing);
+void	reset_ray_data(t_ray *ray, t_pos start, int *dof);
+void	setup_v_ray_data(t_ray *ray, t_pos start, int facing);
 //-----------------//
 
 //------UTILS------//
