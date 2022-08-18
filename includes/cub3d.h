@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 00:00:37 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 02:10:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ typedef struct s_keys
 typedef struct s_ray
 {
 	t_pos	goal;
-	double	dof;
 	double	x;
 	double	y;
 	double	x_dir;

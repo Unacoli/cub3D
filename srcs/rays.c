@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 00:28:57 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 02:12:10 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 {
 	int	mx;
 	int	my;
-	(void)start;
+
 	while (dof < 16)
 	{
 		mx = (int)(ray->x / 64);
@@ -25,7 +25,6 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 			&& data->map[my][mx] == '1')
 		{
 			dof = 16;
-			ray->dof = 0;
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
 			return ;
 		}
@@ -36,7 +35,7 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 			dof++;
 		}
 	}
-	ray->length = 1000000;
+	ray->length = 8000;
 }
 
 void	setup_h_ray_data(t_ray *ray, t_pos start, int facing)
@@ -85,7 +84,6 @@ void	reset_ray_data(t_ray *ray, t_pos start, int *dof)
 {
 	ray->x = start.x;
 	ray->y = start.y;
-	ray->dof = 1;
 	*dof = 16;
 }
 
@@ -97,8 +95,6 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 	ray_angle = data->player.o;
 	while (nb_rays > 0)
 	{
-		data->v_ray.dof = 0;
-		data->h_ray.dof = 0;
 		data->v_ray.angle = get_rad(ray_angle);
 		data->h_ray.angle = get_rad(ray_angle);
 		dof = 0;
@@ -118,9 +114,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			reset_ray_data(&data->v_ray, start, &dof);
 		send_ray(&data->v_ray, data, dof, start);
 		if (data->h_ray.length < data->v_ray.length)
-		{
 			draw_ray(data, start, &data->h_ray, ray_angle);
-		}
 		else
 			draw_ray(data, start, &data->v_ray, ray_angle);
 		ray_angle += 0.1;
@@ -145,7 +139,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 	y = start.y;
 	length = 0;
 	draw_length = 0;
-	while (length < 10000 && draw_length < ray->length)
+	while (length < 8000 && draw_length < ray->length)
 	{
 		draw_pixel(data, x, y, data->white);
 		y += y_dir;
