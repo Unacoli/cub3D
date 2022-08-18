@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 21:48:11 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 00:01:27 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 void	raycasting(t_data *data, t_pos start, int nb_rays)
 {
 	double	ray_angle;
+	double	player_angle;
 
 	ray_angle = get_rad(change_angle(data->player.o, 30, '-'));
 	while (nb_rays > 0)
@@ -79,9 +80,22 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		cast_h_ray(data, start, ray_angle);
 		cast_v_ray(data, start, ray_angle);
 		if (data->h_ray.length < data->v_ray.length)
+		{
 			draw_ray(data, start, &data->h_ray, ray_angle);
+			data->ray_length = data->h_ray.length;
+		}
 		else
+		{
 			draw_ray(data, start, &data->v_ray, ray_angle);
+			data->ray_length = data->v_ray.length;
+		}
+		player_angle = get_rad(data->player.o);
+		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
+		data->ray_length = data->ray_length * cos(data->angle_diff);
+		data->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
+		if (data->line_height > 320)
+			data->line_height = 320;
+		data->line_offset = 160 -data->line_height / 2;
 		ray_angle = change_rad_angle(ray_angle, RAD_1, '+');
 		nb_rays--;
 	}
