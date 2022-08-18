@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 15:35:46 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:49:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	map_fill(t_data *data)
 		}
 		y++;
 	}
-	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 360);
+	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 720);
 	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->player_color, 16);
 }
 
