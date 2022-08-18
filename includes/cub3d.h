@@ -136,6 +136,7 @@ void	init_mlx_data(t_data *data, int trash);
 //-----------------//
 
 //-----PARSING-----//
+int		check_av(int ac, char **av);
 int		parse_map(t_data *data, int fd);
 int		is_player(char c);
 int		check_id(char *str);

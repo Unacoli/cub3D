@@ -39,8 +39,8 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/maths.c					\
 				$(SRC)/rays.c					\
 				$(SRC)/moves.c					\
-				$(SRC)/setup_rays.c
-
+				$(SRC)/setup_rays.c				\
+				$(SRC)/check_av.c
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 

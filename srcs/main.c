@@ -17,12 +17,13 @@ int	main(int ac, char **av)
 {
 	t_data	*data;
 
-	if (ac > 2 || ac < 2)
-		return (ft_error("Too many arguments, try ./cub3D \"map_path.cub\""));
+
+	if (check_av(ac, av) == 1)
+		return (EXIT_FAILURE);
 	if (!ft_malloc((void **)&(data), sizeof(t_data)))
-		return (1);
+		return (EXIT_FAILURE);
 	init_game_data(data, av);
 	cube_start(data);
 	free_game_data(data);
-	return (0);
+	return (EXIT_SUCCESS);
 }
