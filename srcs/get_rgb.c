@@ -6,7 +6,7 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:46:41 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:46:44 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:32:17 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ t_color	get_rgb(int r, int g, int b, int o)
 	color.g = g;
 	color.b = b;
 	color.o = o;
-	return(color);
+	return (color);
 }

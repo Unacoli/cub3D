@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 03:18:01 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:44:58 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct s_keys
 {
 	int	a;
 	int	s;
-	int d;
-	int w;
+	int	d;
+	int	w;
 	int	m;
 	int	l_arr;
 	int	r_arr;
@@ -166,7 +166,7 @@ int		act_keypress(t_data *data);
 //-----DRAW-------//
 void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
-void	draw_texture(t_data *data, t_pos pos, t_color color, int size, t_color *draw);
+void	draw_texture(t_data *data, t_pos p, t_color col, int s, t_color *draw);
 void	image(t_data *data);
 void	map_fill(t_data *data);
 void	draw_line(t_data *data, int rays);
@@ -192,7 +192,7 @@ t_color	get_rgb(int r, int g, int b, int o);
 
 //-----MATHS-------//
 t_pos	point(int x, int y, char facing);
-double	get_rad(double	angle);
+double	get_rad(double angle);
 double	change_angle(double angle, double iterate, char iterator);
 double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);

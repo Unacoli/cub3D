@@ -6,7 +6,7 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:51:10 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:51:18 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:38:49 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,23 @@ void	stock_element(t_data *data, int *elems, char *line)
 void	trim_textures(t_data *data)
 {
 	if (ft_strchr(data->m_info->no_path, ' '))
-		data->m_info->no_path = swap_str(data->m_info->no_path, ft_strtrim(data->m_info->no_path, " "));
+	{
+		data->m_info->no_path = swap_str(data->m_info->no_path,
+				ft_strtrim(data->m_info->no_path, " "));
+	}
 	if (ft_strchr(data->m_info->ea_path, ' '))
-		data->m_info->ea_path = swap_str(data->m_info->ea_path, ft_strtrim(data->m_info->ea_path, " "));
+	{
+		data->m_info->ea_path = swap_str(data->m_info->ea_path,
+				ft_strtrim(data->m_info->ea_path, " "));
+	}
 	if (ft_strchr(data->m_info->we_path, ' '))
-		data->m_info->we_path = swap_str(data->m_info->we_path, ft_strtrim(data->m_info->we_path, " "));
+	{
+		data->m_info->we_path = swap_str(data->m_info->we_path,
+				ft_strtrim(data->m_info->we_path, " "));
+	}
 	if (ft_strchr(data->m_info->so_path, ' '))
-		data->m_info->so_path = swap_str(data->m_info->so_path, ft_strtrim(data->m_info->so_path, " "));
+	{
+		data->m_info->so_path = swap_str(data->m_info->so_path,
+				ft_strtrim(data->m_info->so_path, " "));
+	}
 }

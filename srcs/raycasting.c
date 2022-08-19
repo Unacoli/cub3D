@@ -6,12 +6,11 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:56:15 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:40:20 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	raycasting(t_data *data, t_pos start, int nb_rays)
 {

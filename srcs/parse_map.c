@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/16 16:44:19 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:42:06 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	check_elem(char **map, int x, int y, int map_size)
 	if (map[y][x] != '1' && map[y][x] != '0'
 	&& map[y][x] != ' ' && is_player(map[y][x]))
 		return (ft_printf("Error\nNot a valid map element: %c\n", map[y][x]));
-	
-	if (((map[y][x] == '0' || !is_player(map[y][x])) && is_border(map, x, y, map_size))
-	|| (((map[y][x] == '0' || !is_player(map[y][x])) && is_opened(map, x, y, map_size))))
+	if (((map[y][x] == '0' || !is_player(map[y][x]))
+		&& is_border(map, x, y, map_size)) || (((map[y][x] == '0'
+		|| !is_player(map[y][x])) && is_opened(map, x, y, map_size))))
 		return (ft_printf("Error\nMap is not closed at line: %d column: %d\n",
 				y, x));
 	return (0);
@@ -42,8 +42,7 @@ int	scan_map(char **map, t_data *data)
 				data->nb_player++;
 			}
 			if (data->nb_player > 1)
-				return (ft_printf("Error\nToo many player elements, line: %d column: %d\n",
-						y, x));
+				return (ft_printf("Error\nToo many player elements\n"));
 			if (check_elem(map, x, y, str_arr_size(map)))
 				return (1);
 			x++;

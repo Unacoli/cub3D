@@ -6,7 +6,7 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 00:08:13 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 00:08:36 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:36:30 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	check_av(int ac, char **av)
 		return (ft_error("Usage: ./cub3D <*.cub>"));
 	if (iscub(av[1]) == 0)
 		return (ft_error("Use a .cub file"));
-    return (0);
+	return (0);
 }

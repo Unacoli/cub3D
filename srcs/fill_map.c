@@ -6,13 +6,13 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:43:47 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:43:54 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:40:29 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int		find_map_width(char **map)
+static int	find_map_width(char **map)
 {
 	int	i;
 	int	row_len;

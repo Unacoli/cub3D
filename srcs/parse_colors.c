@@ -6,7 +6,7 @@
 /*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:47:32 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:47:39 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:37:48 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ int	check_colors(t_data *data, char c)
 	if (c == 'F')
 	{
 		if ((data->floor_color.r > 255
-			|| data->floor_color.r < 0)
+				|| data->floor_color.r < 0)
 			|| (data->floor_color.g > 255
-			|| data->floor_color.g < 0)
+				|| data->floor_color.g < 0)
 			|| (data->floor_color.b > 255
-			|| data->floor_color.b < 0))
+				|| data->floor_color.b < 0))
 			return (ft_printf("Error\nWrong rbg for floor\n"));
 		if ((data->ceiling_color.r > 255
-			|| data->ceiling_color.r < 0)
+				|| data->ceiling_color.r < 0)
 			|| (data->ceiling_color.g > 255
-			|| data->ceiling_color.g < 0)
+				|| data->ceiling_color.g < 0)
 			|| (data->ceiling_color.b > 255
-			|| data->ceiling_color.b < 0))
+				|| data->ceiling_color.b < 0))
 			return (ft_printf("Error\nWrong rbg for ceiling\n"));
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 02:51:09 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:36:13 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_mlx_data(t_data *data, int trash)
 	mlx_get_screen_size(data->mlx, &data->s_width, &data->s_height);
 	setup_window_size(data);
 	data->win = mlx_new_window(data->mlx, data->w_width,
-				data->w_height, "cub3D");
+			data->w_height, "cub3D");
 	data->img_2d = mlx_new_image(data->mlx, data->w_width, data->w_height);
 	data->img_3d = mlx_new_image(data->mlx, 320, 160);
 	data->addr_2d = mlx_get_data_addr(data->img_2d, &trash, &trash, &trash);
