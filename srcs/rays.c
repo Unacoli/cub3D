@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 16:05:05 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:12:13 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	draw_line(t_data *data, int rays)
 	x = data->w_width - 480 + rays * 1;
 	while (nb < 1)
 	{
-		y = 384;
+		y = 320;
 		while (y >= 0)
 		{
 			if (y < data->line_offset)
