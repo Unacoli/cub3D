@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_rgb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/09 18:49:09 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 02:58:49 by tmoragli         ###   ########.fr       */
+/*   Created: 2022/08/19 12:46:41 by nargouse          #+#    #+#             */
+/*   Updated: 2022/08/19 12:46:44 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+t_color	get_rgb(int r, int g, int b, int o)
 {
-	t_data	*data;
+	t_color	color;
 
-	if (check_av(ac, av) == 1)
-		return (EXIT_FAILURE);
-	if (!ft_malloc((void **)&(data), sizeof(t_data)))
-		return (EXIT_FAILURE);
-	init_game_data(data, av);
-	cube_start(data);
-	free_game_data(data);
-	return (EXIT_SUCCESS);
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	color.o = o;
+	return(color);
 }

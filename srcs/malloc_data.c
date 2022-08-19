@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   malloc_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 00:35:30 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/12 17:03:48 by tmoragli         ###   ########.fr       */
+/*   Created: 2022/08/19 12:40:09 by nargouse          #+#    #+#             */
+/*   Updated: 2022/08/19 12:40:33 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_pos	point(int x, int y, char facing)
+int	allocate_game_data(t_data *data, char **av)
 {
-	t_pos	ret;
-
-	ret.x = x;
-	ret.y = y;
-	ret.facing = facing;
-	return (ret);
+	if (!ft_malloc((void **)&(data->m_info), sizeof(t_map)))
+		return (1);
+	data->map_path = ft_strdup(av[1]);
+	if (!data->map_path)
+		return (1);
+	return (0);
 }

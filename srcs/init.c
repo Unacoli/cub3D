@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	setup_window_size(t_data *data)
+static void	setup_window_size(t_data *data)
 {
 	data->w_height = data->m_info->size.y * SIZE;
 	data->w_width = data->m_info->size.x * SIZE;
@@ -31,27 +31,6 @@ void	init_mlx_data(t_data *data, int trash)
 	data->addr_3d = mlx_get_data_addr(data->img_3d, &trash, &trash, &trash);
 	data->draw_2d = (t_color *)data->addr_2d;
 	data->draw_3d = (t_color *)data->addr_3d;
-}
-
-void	start_game(t_data *data)
-{
-	init_mlx_data(data, 0);
-	if (data->player.facing == 'N')
-		data->player.o = 90;
-	if (data->player.facing == 'E')
-		data->player.o = 180;
-	if (data->player.facing == 'S')
-		data->player.o = 270;
-	if (data->player.facing == 'W')
-		data->player.o = 360;
-	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
-	//mlx_put_image_to_window(data->mlx, data->win, data->img_3d, 0, 0);
-	mlx_hook(data->win, DestroyNotify, 1L << 17, mlx_loop_end, data->mlx);
-	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
-	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
-	mlx_loop_hook(data->mlx, &act_keypress, data);
-	mlx_loop(data->mlx);
 }
 
 void	init_subdata(t_data *data)

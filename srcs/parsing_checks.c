@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_checks.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
+/*   Updated: 2022/08/19 12:49:08 by nargouse         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
+int	is_player(char c)
+{
+	if (c != 'N' && c != 'S' && c != 'W' && c != 'E')
+		return (1);
+	return (0);
+}
+
+int	is_border(char **map, int x, int y, int map_size)
+{
+	if (y == 0 || y == map_size || x == 0 || x == (int)ft_strlen(map[y]))
+		return (1);
+	return (0);
+}
+
+int	is_valid_map(t_data *data, t_list *map)
+{
+	int	map_size;
+
+	map_size = ft_lstsize(map);
+	data->map = malloc(sizeof(char *) * (map_size + 1));
+	if (!data->map)
+		return (-1);
+	data->map[map_size] = NULL;
+	fill_map_array(data, map);
+	if (scan_map(data->map, data))
+		return (1);
+	return (0);
+}
+
+int	is_valid_file(t_data *data)
+{
+	t_list	*file;
+	t_list	*map;
+
+	file = data->m_info->map;
+	map = is_valid_id(file, data);
+	if (!map)
+		return (ft_printf("Error\nNo map given\n"));
+	trim_textures(data);
+	if (is_valid_map(data, map))
+		return (1);
+	return (0);
+}
+
+int	is_opened(char	**map, int x, int y, int map_size)
+{
+	if (x != 0)
+		if (map[y][x - 1] != '0' && map[y][x - 1] != '1'
+			&& is_player(map[y][x - 1]))
+			return (1);
+	if (x != (int)ft_strlen(map[y]))
+		if (map[y][x + 1] != '0' && map[y][x + 1] != '1'
+			&& is_player(map[y][x + 1]))
+			return (1);
+	if (y != map_size)
+		if (map[y + 1][x] != '0' && map[y + 1][x] != '1'
+			&& is_player(map[y + 1][x]))
+			return (1);
+	if (y != 0)
+		if (map[y - 1][x] != '0' && map[y - 1][x] != '1'
+			&& is_player(map[y - 1][x]))
+			return (1);
+	return (0);
+}
