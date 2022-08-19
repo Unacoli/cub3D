@@ -13,8 +13,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx.h"
-# include "libft.h"
+# include "../mlx/mlx.h"
+# include "../libft/include/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -139,6 +139,7 @@ void	init_mlx_data(t_data *data, int trash);
 //-----------------//
 
 //-----PARSING-----//
+int		check_av(int ac, char **av);
 int		parse_map(t_data *data, int fd);
 int		is_player(char c);
 int		check_id(char *str);
