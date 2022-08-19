@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	if (!ft_malloc((void **)&(data), sizeof(t_data)))
 		return (EXIT_FAILURE);
 	init_game_data(data, av);
-	cube_start(data);
+	cub_start(data);
 	free_game_data(data);
 	return (EXIT_SUCCESS);
 }

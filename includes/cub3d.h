@@ -127,14 +127,14 @@ typedef struct s_data
 }	t_data;
 
 //-----GAME--------//
-int		cube_start(t_data *data);
+int		cub_start(t_data *data);
 void	start_game(t_data *data);
 //-----------------//
+
 //-----INIT--------//
 int		allocate_game_data(t_data *data, char **av);
 void	init_game_data(t_data *data, char **av);
 void	init_subdata(t_data *data);
-void	setup_window_size(t_data *data);
 void	init_mlx_data(t_data *data, int trash);
 //-----------------//
 
@@ -147,7 +147,9 @@ t_list	*is_valid_id(t_list *file_line, t_data *data);
 void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(char **map, t_data *data);
+void	stock_element(t_data *data, int *elems, char *line);
 int		check_elem(char **map, int x, int y, int map_size);
+int		fetch_colors(t_data *data, char c, char *rgb);
 int		is_border(char **map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
 int		is_valid_file(t_data *data);
@@ -178,6 +180,8 @@ void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 void	setup_h_ray_data(t_ray *ray, t_pos start, int facing);
 void	reset_ray_data(t_ray *ray, t_pos start, int *dof);
 void	setup_v_ray_data(t_ray *ray, t_pos start, int facing);
+void	cast_h_ray(t_data *data, t_pos start, double ray_angle);
+void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
 //-----------------//
 
 //------UTILS------//
@@ -194,6 +198,5 @@ double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 double	get_dist(t_pos start, t_pos end);
 //-----------------//
-
 
 #endif

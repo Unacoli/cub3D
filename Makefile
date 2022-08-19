@@ -36,18 +36,26 @@ LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 SRC			=	./srcs
 OBJ			=	./objs
 SRCS		=	$(SRC)/main.c					\
-				$(SRC)/cube.c					\
-				$(SRC)/parse_map.c				\
-				$(SRC)/game_utils.c				\
-				$(SRC)/utils.c					\
-				$(SRC)/parsing_utils.c			\
+				$(SRC)/check_av.c				\
+				$(SRC)/cub_start.c				\
 				$(SRC)/draw.c					\
+				$(SRC)/exit_game.c				\
+				$(SRC)/fill_map.c				\
+				$(SRC)/get_rgb.c				\
 				$(SRC)/init.c					\
+				$(SRC)/key_hook.c				\
+				$(SRC)/malloc_data.c			\
 				$(SRC)/maths.c					\
-				$(SRC)/rays.c					\
 				$(SRC)/moves.c					\
+				$(SRC)/parse_colors.c			\
+				$(SRC)/parse_id.c 				\
+				$(SRC)/parse_map.c				\
+				$(SRC)/parse_textures.c			\
+				$(SRC)/parsing_checks.c			\
+				$(SRC)/raycasting.c				\
+				$(SRC)/rays.c					\
 				$(SRC)/setup_rays.c				\
-				$(SRC)/check_av.c
+				$(SRC)/utils.c					\
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 
