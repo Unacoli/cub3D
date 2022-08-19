@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 22:10:49 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 02:51:09 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_mlx_data(t_data *data, int trash)
 	data->win = mlx_new_window(data->mlx, data->w_width,
 				data->w_height, "The room");
 	data->img_2d = mlx_new_image(data->mlx, data->w_width, data->w_height);
-	data->img_3d = mlx_new_image(data->mlx, 160, 320);
+	data->img_3d = mlx_new_image(data->mlx, 320, 160);
 	data->addr_2d = mlx_get_data_addr(data->img_2d, &trash, &trash, &trash);
 	data->addr_3d = mlx_get_data_addr(data->img_3d, &trash, &trash, &trash);
 	data->draw_2d = (t_color *)data->addr_2d;
@@ -46,6 +46,7 @@ void	start_game(t_data *data)
 		data->player.o = 360;
 	map_fill(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
+	//mlx_put_image_to_window(data->mlx, data->win, data->img_3d, 0, 0);
 	mlx_hook(data->win, DestroyNotify, 1L << 17, mlx_loop_end, data->mlx);
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
 	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
@@ -59,6 +60,7 @@ void	init_subdata(t_data *data)
 	data->red = get_rgb(255, 0, 0, 1);
 	data->white = get_rgb(255, 255, 255, 1);
 	data->black = get_rgb(0, 0, 0, 0);
+	data->blue = get_rgb(30, 144, 255, 0);
 }
 
 void	init_game_data(t_data *data, char **av)

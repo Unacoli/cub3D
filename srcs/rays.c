@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 00:01:27 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 03:30:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,30 +73,62 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 {
 	double	ray_angle;
 	double	player_angle;
+	int		rays;
 
 	ray_angle = get_rad(change_angle(data->player.o, 30, '-'));
-	while (nb_rays > 0)
+	rays = 0;
+	player_angle = get_rad(data->player.o);
+	while (rays < nb_rays)
 	{
 		cast_h_ray(data, start, ray_angle);
 		cast_v_ray(data, start, ray_angle);
 		if (data->h_ray.length < data->v_ray.length)
 		{
-			draw_ray(data, start, &data->h_ray, ray_angle);
+		//	draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_length = data->h_ray.length;
+			data->wall_color = data->red;
 		}
 		else
 		{
-			draw_ray(data, start, &data->v_ray, ray_angle);
+		//	draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_length = data->v_ray.length;
+			data->wall_color = data->blue;
 		}
-		player_angle = get_rad(data->player.o);
+		data->ray_ratio = 8 * (nb_rays / FOV);
 		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
 		data->ray_length = data->ray_length * cos(data->angle_diff);
-		data->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
+		data->line_height = 320 * 64 / data->ray_length;
 		if (data->line_height > 320)
 			data->line_height = 320;
-		data->line_offset = 160 -data->line_height / 2;
+		data->line_offset = 160 - data->line_height / 2;
+		draw_line(data, rays);
 		ray_angle = change_rad_angle(ray_angle, RAD_1, '+');
-		nb_rays--;
+		rays++;
+	}
+}
+
+void	draw_line(t_data *data, int rays)
+{
+	double	y;
+	int		nb;
+	double	x;
+
+	nb = 0;
+	x = rays * 8;
+	while (nb < 8)
+	{
+		y = data->w_height;
+		while (y > 0)
+		{
+			if (y <= data->line_height + data->line_offset && y > data->line_offset)
+				draw_pixel(data, x, y, data->wall_color, data->draw_2d);
+			if (y > data->line_height + data->line_offset)
+				draw_pixel(data, x, y, data->floor_color, data->draw_2d);
+			if (y < data->line_offset)
+				draw_pixel(data, x, y, data->ceiling_color, data->draw_2d);
+			y--;
+		}
+		x++;
+		nb++;
 	}
 }

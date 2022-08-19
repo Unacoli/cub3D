@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 02:10:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 03:18:01 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_ray
 typedef struct s_data
 {
 	char		*err_msg;
+	int			ray_ratio;
 	int			s_width;
 	double		line_height;
 	double		line_offset;
@@ -121,6 +122,8 @@ typedef struct s_data
 	t_color		red;
 	t_color		white;
 	t_color		black;
+	t_color		blue;
+	t_color		wall_color;
 }	t_data;
 
 //-----GAME--------//
@@ -160,9 +163,10 @@ int		act_keypress(t_data *data);
 //-----DRAW-------//
 void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
-void	draw_texture(t_data *data, t_pos pos, t_color color, int size);
+void	draw_texture(t_data *data, t_pos pos, t_color color, int size, t_color *draw);
 void	image(t_data *data);
 void	map_fill(t_data *data);
+void	draw_line(t_data *data, int rays);
 void	draw_player(t_data *data, t_pos pos, t_color color);
 //-----------------//
 

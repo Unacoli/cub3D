@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/18 20:48:45 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 01:11:02 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	act_keypress(t_data *data)
 		move_player(XK_D, data);
 	map_fill(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
+	//mlx_put_image_to_window(data->mlx, data->win, data->img_3d, 0, 0);
 	return (0);
 }
 
@@ -92,11 +93,13 @@ int	hook_keypress(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
-	if (keycode == XK_W || keycode == XK_w)
+	if (keycode == XK_W || keycode == XK_w
+		|| keycode == XK_Z || keycode == XK_z)
 		data->keys.w = !data->keys.w;
 	if (keycode == XK_S || keycode == XK_s)
 		data->keys.s = !data->keys.s;
-	if (keycode == XK_A || keycode == XK_a) 
+	if (keycode == XK_A || keycode == XK_a
+		|| keycode == XK_q || keycode == XK_Q)
 		data->keys.a = !data->keys.a;
 	if (keycode == XK_D || keycode == XK_d)
 		data->keys.d = !data->keys.d;
