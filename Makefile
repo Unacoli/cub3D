@@ -11,24 +11,28 @@
 # **************************************************************************** #
 
 # ----------- EXECUTABLE -----------
+
 NAME		=	cub3D
 DESCRIPTION =	Cub3D project for [42]
 
-# ----------- COMPILER FLAGS -------
-CC			=	clang
-
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
-LPFLAGS		=	libft/libft.a -Lmlx -lbsd -lXext -lX11 -lmlx -lm
-
 # ----------- INCLUDE --------------
+
 INCLUDE		=	./includes/
 
 # ------------ LIB -----------------
+
 MLX	= ./mlx/libmlx.a
 LIBFT	= ./libft/libft.a
 LIB	= $(MLX) $(LIBFT)
 
+# ----------- COMPILER FLAGS -------
+
+CC			=	clang
+CFLAGS		+=	-Wall -Wextra -Werror -g3 -fsanitize=address
+LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
+
 # ----------- FILES ----------------
+
 SRC			=	./srcs
 OBJ			=	./objs
 SRCS		=	$(SRC)/main.c					\
@@ -48,6 +52,7 @@ SRCS		=	$(SRC)/main.c					\
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 
 # ----------- COLORS ---------------
+
 BLACK		= \033[1;30m
 RED			= \033[1;31m
 GREEN		= \033[1;32m
@@ -58,21 +63,20 @@ BLUE		= \033[0;34m
 EOC			= \033[0;0m
 
 # ----------- RULES ----------------
+
 all			: $(NAME)
+
 ${NAME}		: $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
 		$(CC) $(OBJS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
-	@echo "$(BLUE)            Build $(DESCRIPTION) DONE √"
+	@echo "$(BLUE) =====> Build $(DESCRIPTION) DONE √ <====="
 	@echo -n "$(EOC)"
 
 $(OBJ)/%.o	: $(SRC)/%.c
 	@echo "$(PURPLE)"
 		mkdir -p ./objs/
 		$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
-
-compiling	:
-			@echo -n "$(WHITE)"
 
 $(MLX):
 	@echo "$(BLUE) =========> Compiling MLX library <========="
@@ -100,8 +104,7 @@ fclean		: clean
 	@echo "$(GREEN)"
 		$(RM) $(MLX)
 		$(RM) $(LIBFT)
-	@echo "$(BLUE)            Cleaning LIBFT and MLX DONE √"
-
+	@echo "$(BLUE) =====> Cleaning LIBFT and MLX DONE √ <====="
 re			: fclean all
 
 norm		:
@@ -109,6 +112,6 @@ norm		:
 		norminette $(LIBFT)
 	@echo "$(CYAN)"
 		norminette $(SRC) $(INCLUDE)
-	@echo "$(BLUE)            Checking the norminette DONE √"
+	@echo "$(BLUE) =====> Checking the norminette DONE √ <====="
 
 .PHONY: all clean fclean re norm

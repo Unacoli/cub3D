@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include "../mlx/mlx.h"
-# include "../libft/include/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -28,6 +27,7 @@
 # define XK_LATIN1
 # include <X11/X.h>
 # include <X11/keysymdef.h>
+# include "../libft/include/libft.h"
 
 # define SIZE 64
 # define PI 3.14159265359
