@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 03:30:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:17:35 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 	length = 0;
 	while (length < 8000 && get_dist(start, point(ray->x, ray->y, 0)) < ray->length)
 	{
-		draw_pixel(data, ray->x, ray->y, data->white, data->draw_2d);
+		draw_pixel(data, ray->x, ray->y, data->white, data->draw);
 		ray->y += ray->y_dir;
 		ray->x += ray->x_dir;
 		length++;
@@ -61,7 +61,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 
 void	map_fill(t_data *data)
 {
-	/*int	x;
+	int	x;
 	int	y;
 
 	y = 0;
@@ -71,20 +71,19 @@ void	map_fill(t_data *data)
 		while (data->map[y][x])
 		{	
 			if (data->map[y][x] == '1')
-				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->floor_color, SIZE, data->draw_2d);
+				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->floor_color, SIZE, data->draw);
 			if (data->map[y][x] == '0' || !is_player(data->map[y][x]))
-				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->ceiling_color, SIZE, data->draw_2d);
+				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->ceiling_color, SIZE, data->draw);
 			x++;
 		}
 		y++;
-	}*/
+	}
 	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 60);
-	//draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->red, 16, data->draw_2d);
+	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->red, 16, data->draw);
 }
 
 void	image(t_data *data)
 {
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
-	//mlx_put_image_to_window(data->mlx, data->win, data->img_3d, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }

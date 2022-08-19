@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 13:42:06 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:40:45 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,13 @@ int	parse_map(t_data *data, int fd)
 		else
 			free(line);
 	}
-	ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
-	ft_printf("%s\n", line);
+	if (!only_isspace(line))
+	{
+		ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
+		ft_printf("%s\n", line);
+	}
+	else
+		free(line);
 	if (is_valid_file(data))
 		ret++;
 	ft_lstclear(&data->m_info->map, &free);

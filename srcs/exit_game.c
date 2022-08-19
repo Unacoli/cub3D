@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 13:39:31 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:17:47 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ void	free_game_data(t_data *data)
 	free(data->m_info);
 	str_arr_free(data->map);
 	free(data->map_path);
-	if (data->img_2d)
-		mlx_destroy_image(data->mlx, data->img_2d);
-	if (data->img_3d)
-		mlx_destroy_image(data->mlx, data->img_3d);
+	if (data->img)
+		mlx_destroy_image(data->mlx, data->img);
 	if (data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	free(data->mlx);

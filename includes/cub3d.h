@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 13:44:58 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:16:25 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ typedef struct s_ray
 
 typedef struct s_data
 {
+	void		*img;
+	void		*addr;
+	t_color		*draw;
 	char		*err_msg;
 	int			ray_ratio;
 	int			s_width;
@@ -104,12 +107,6 @@ typedef struct s_data
 	int			nb_player;
 	char		*map_path;
 	void		*mlx;
-	void		*img_2d;
-	void		*addr_2d;
-	t_color		*draw_2d;
-	void		*img_3d;
-	void		*addr_3d;
-	t_color		*draw_3d;
 	void		*win;
 	double		ray_length;
 	t_keys		keys;

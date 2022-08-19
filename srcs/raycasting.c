@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 13:40:20 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:20:05 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		cast_v_ray(data, start, ray_angle);
 		if (data->h_ray.length < data->v_ray.length)
 		{
-		//	draw_ray(data, start, &data->h_ray, ray_angle);
+			draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_length = data->h_ray.length;
 			data->wall_color = data->red;
 		}
 		else
 		{
-		//	draw_ray(data, start, &data->v_ray, ray_angle);
+			draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_length = data->v_ray.length;
 			data->wall_color = data->blue;
 		}

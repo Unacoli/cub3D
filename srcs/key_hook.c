@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 12:52:33 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:17:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	act_keypress(t_data *data)
 	if (data->keys.d)
 		move_player(XK_D, data);
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img_2d, 0, 0);
-	//mlx_put_image_to_window(data->mlx, data->win, data->img_3d, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
 

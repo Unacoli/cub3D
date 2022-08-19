@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 13:36:13 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:18:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	setup_window_size(t_data *data)
 {
-	data->w_height = data->m_info->size.y * SIZE;
-	data->w_width = data->m_info->size.x * SIZE;
+	data->w_height = data->m_info->size.y * SIZE + 160;
+	data->w_width = data->m_info->size.x * SIZE + 480;
 }
 
 void	init_mlx_data(t_data *data, int trash)
@@ -25,12 +25,9 @@ void	init_mlx_data(t_data *data, int trash)
 	setup_window_size(data);
 	data->win = mlx_new_window(data->mlx, data->w_width,
 			data->w_height, "cub3D");
-	data->img_2d = mlx_new_image(data->mlx, data->w_width, data->w_height);
-	data->img_3d = mlx_new_image(data->mlx, 320, 160);
-	data->addr_2d = mlx_get_data_addr(data->img_2d, &trash, &trash, &trash);
-	data->addr_3d = mlx_get_data_addr(data->img_3d, &trash, &trash, &trash);
-	data->draw_2d = (t_color *)data->addr_2d;
-	data->draw_3d = (t_color *)data->addr_3d;
+	data->img = mlx_new_image(data->mlx, data->w_width, data->w_height);
+	data->addr = mlx_get_data_addr(data->img, &trash, &trash, &trash);
+	data->draw = (t_color *)data->addr;
 }
 
 void	init_subdata(t_data *data)
