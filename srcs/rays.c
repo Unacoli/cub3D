@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 15:21:21 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:34:27 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 void	draw_line(t_data *data, int rays)
 {
 	double	y;
-	int		nb;
 	double	x;
+	int		nb;
 
 	nb = 0;
 	x = data->w_width - 480 + rays * 8;
@@ -82,13 +82,13 @@ void	draw_line(t_data *data, int rays)
 		y = 384;
 		while (y >= 0)
 		{
-			if (y > data->line_height + data->line_offset)
-				draw_pixel(data, x, y, data->floor_color, data->draw);
 			if (y < data->line_offset)
 				draw_pixel(data, x, y, data->ceiling_color, data->draw);
-			if (y <= data->line_height + data->line_offset
+			else if (y <= data->line_height + data->line_offset
 				&& y > data->line_offset)
 				draw_pixel(data, x, y, data->wall_color, data->draw);
+			else if (y > data->line_height + data->line_offset)
+				draw_pixel(data, x, y, data->floor_color, data->draw);
 			y--;
 		}
 		x++;

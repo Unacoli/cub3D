@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 15:20:05 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:38:56 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		cast_v_ray(data, start, ray_angle);
 		if (data->h_ray.length < data->v_ray.length)
 		{
+			data->wall_color = data->red;
 			draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_length = data->h_ray.length;
-			data->wall_color = data->red;
 		}
 		else
 		{
+			data->wall_color = data->blue;
 			draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_length = data->v_ray.length;
-			data->wall_color = data->blue;
 		}
 		data->ray_ratio = 8 * (nb_rays / FOV);
 		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');

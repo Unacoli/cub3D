@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 15:17:35 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/19 15:39:01 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 	length = 0;
 	while (length < 8000 && get_dist(start, point(ray->x, ray->y, 0)) < ray->length)
 	{
-		draw_pixel(data, ray->x, ray->y, data->white, data->draw);
+		draw_pixel(data, ray->x, ray->y, data->wall_color, data->draw);
 		ray->y += ray->y_dir;
 		ray->x += ray->x_dir;
 		length++;
