@@ -29,8 +29,8 @@ static int	iscub(char *name_file)
 int	check_av(int ac, char **av)
 {
 	if (ac != 2)
-		return (ft_error("Usage: ./cub3D <*.cub>\n"));
+		return (ft_error("Usage: ./cub3D <*.cub>"));
 	if (iscub(av[1]) == 0)
-		return (ft_error("Use a .cub file\n"));
+		return (ft_error("Use a .cub file"));
     return (0);
 }
