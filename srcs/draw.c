@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 16:04:52 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:31:10 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,20 @@ void	map_fill(t_data *data)
 	int	y;
 
 	y = 0;
-	while (data->map[y])
+	while (y < data->m_info->size.y)
 	{
 		x = 0;
-		while (data->map[y][x])
+		while (data->map[y].line[x])
 		{	
-			if (data->map[y][x] == '1')
+			if (data->map[y].line[x] == '1')
 				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->floor_color, SIZE, data->draw);
-			if (data->map[y][x] == '0' || !is_player(data->map[y][x]))
+			if (data->map[y].line[x] == '0' || !is_player(data->map[y].line[x]))
 				draw_texture(data, point(x * SIZE, y * SIZE, 0), data->ceiling_color, SIZE, data->draw);
 			x++;
 		}
 		y++;
 	}
-	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), 480);
+	raycasting(data, point(data->player.x * SIZE, data->player.y * SIZE, 0), NB_RAYS);
 	draw_texture(data, point((data->player.x * SIZE - 8), (data->player.y * SIZE - 8), 0), data->red, 16, data->draw);
 }
 

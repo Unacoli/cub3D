@@ -6,44 +6,44 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 14:40:45 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:55:59 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_elem(char **map, int x, int y, int map_size)
+int	check_elem(t_line *map, int x, int y, int map_size)
 {
-	if (map[y][x] != '1' && map[y][x] != '0'
-	&& map[y][x] != ' ' && is_player(map[y][x]))
-		return (ft_printf("Error\nNot a valid map element: %c\n", map[y][x]));
-	if (((map[y][x] == '0' || !is_player(map[y][x]))
-		&& is_border(map, x, y, map_size)) || (((map[y][x] == '0'
-		|| !is_player(map[y][x])) && is_opened(map, x, y, map_size))))
+	if (map[y].line[x] != '1' && map[y].line[x] != '0'
+	&& map[y].line[x] != ' ' && is_player(map[y].line[x]))
+		return (ft_printf("Error\nNot a valid map element: %c\n", map[y].line[x]));
+	if (((map[y].line[x] == '0' || !is_player(map[y].line[x]))
+		&& is_border(map, x, y, map_size)) || (((map[y].line[x] == '0'
+		|| !is_player(map[y].line[x])) && is_opened(map, x, y, map_size))))
 		return (ft_printf("Error\nMap is not closed at line: %d column: %d\n",
 				y, x));
 	return (0);
 }
 
-int	scan_map(char **map, t_data *data)
+int	scan_map(t_line *map, t_data *data)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	while (map && map[y])
+	while (y < data->m_info->size.y)
 	{
 		x = 0;
-		while (map && map[y][x])
+		while (map && map[y].line[x])
 		{
-			if (!is_player(map[y][x]))
+			if (!is_player(map[y].line[x]))
 			{
-				data->player = point(x, y, map[y][x]);
+				data->player = point(x, y, map[y].line[x]);
 				data->nb_player++;
 			}
 			if (data->nb_player > 1)
 				return (ft_printf("Error\nToo many player elements\n"));
-			if (check_elem(map, x, y, str_arr_size(map)))
+			if (check_elem(map, x, y, data->m_info->size.y))
 				return (1);
 			x++;
 		}

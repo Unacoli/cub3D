@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 15:16:25 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:40:22 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
 # define HEIGHT_3D 320
-# define WIDTH_3D 160
+# define WIDTH_3D 320
+# define NB_RAYS 320
+# define TURN_RATIO WIDTH_3D / FOV
+# define PIX_PER_RAY WIDTH_3D / NB_RAYS
 
 typedef struct s_color
 {
@@ -89,13 +92,18 @@ typedef struct s_ray
 	double	length;
 }	t_ray;
 
+typedef struct s_line
+{
+	char	*line;
+	int		len;
+}	t_line;
+
 typedef struct s_data
 {
 	void		*img;
 	void		*addr;
 	t_color		*draw;
 	char		*err_msg;
-	int			ray_ratio;
 	int			s_width;
 	double		line_height;
 	double		line_offset;
@@ -103,7 +111,7 @@ typedef struct s_data
 	int			s_height;
 	int			w_width;
 	int			w_height;
-	char		**map;
+	t_line		*map;
 	int			nb_player;
 	char		*map_path;
 	void		*mlx;
@@ -143,14 +151,14 @@ int		check_id(char *str);
 t_list	*is_valid_id(t_list *file_line, t_data *data);
 void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
-int		scan_map(char **map, t_data *data);
+int		scan_map(t_line *map, t_data *data);
 void	stock_element(t_data *data, int *elems, char *line);
-int		check_elem(char **map, int x, int y, int map_size);
+int		check_elem(t_line *map, int x, int y, int map_size);
 int		fetch_colors(t_data *data, char c, char *rgb);
-int		is_border(char **map, int x, int y, int map_size);
+int		is_border(t_line *map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
 int		is_valid_file(t_data *data);
-int		is_opened(char	**map, int x, int y, int map_size);
+int		is_opened(t_line *map, int x, int y, int map_size);
 //-----------------//
 
 //-----MOVES-------//

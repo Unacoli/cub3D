@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:37:36 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 15:17:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:11:40 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	start_game(t_data *data)
 	if (data->player.facing == 'N')
 		data->player.o = 90;
 	if (data->player.facing == 'E')
-		data->player.o = 180;
+		data->player.o = HEIGHT_3D;
 	if (data->player.facing == 'S')
 		data->player.o = 270;
 	if (data->player.facing == 'W')

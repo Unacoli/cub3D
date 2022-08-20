@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 16:12:13 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:39:30 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 	{
 		mx = (int)(ray->x / 64);
 		my = (int)(ray->y / 64);
-		if (mx < data->m_info->size.x && my < data->m_info->size.y
-			&& mx >= 0 && my >= 0
-			&& data->map[my][mx] == '1')
+		if (my < data->m_info->size.y && my >= 0
+			&& mx < data->map[my].len
+			&& mx >= 0
+			&& data->map[my].line[mx] == '1')
 		{
 			dof = 16;
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
@@ -76,10 +77,10 @@ void	draw_line(t_data *data, int rays)
 	int		nb;
 
 	nb = 0;
-	x = data->w_width - 480 + rays * 1;
-	while (nb < 1)
+	x = data->w_width - WIDTH_3D + rays * PIX_PER_RAY;
+	while (nb < PIX_PER_RAY)
 	{
-		y = 320;
+		y = HEIGHT_3D;
 		while (y >= 0)
 		{
 			if (y < data->line_offset)

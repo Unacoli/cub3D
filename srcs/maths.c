@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:32 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/19 13:39:17 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:11:40 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 double	get_rad(double angle)
 {
-	return (angle * PI / 180);
+	return (angle * PI / HEIGHT_3D);
 }
 
 double	get_angle(double rad)
 {
-	return (rad * 180 / PI);
+	return (rad * HEIGHT_3D / PI);
 }
 
 double	get_dist(t_pos start, t_pos end)
