@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 14:40:22 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 15:01:58 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
-# define HEIGHT_3D 320
-# define WIDTH_3D 320
-# define NB_RAYS 320
-# define TURN_RATIO WIDTH_3D / FOV
-# define PIX_PER_RAY WIDTH_3D / NB_RAYS
+# define HEIGHT_3D 480
+# define WIDTH_3D 480
+# define NB_RAYS 480
 
 typedef struct s_color
 {

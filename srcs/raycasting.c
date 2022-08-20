@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 14:40:21 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 14:58:01 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			data->line_height = HEIGHT_3D;
 		data->line_offset = (HEIGHT_3D / 2) - (data->line_height / 2);
 		draw_line(data, rays);
-		ray_angle = change_rad_angle(ray_angle, RAD_1 / 8, '+');
+		ray_angle = change_rad_angle(ray_angle, RAD_1 / (NB_RAYS / FOV), '+');
 		rays++;
 	}
 }

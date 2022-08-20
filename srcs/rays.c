@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 14:39:30 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 15:00:29 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	draw_line(t_data *data, int rays)
 	int		nb;
 
 	nb = 0;
-	x = data->w_width - WIDTH_3D + rays * PIX_PER_RAY;
-	while (nb < PIX_PER_RAY)
+	x = data->w_width - WIDTH_3D + rays * WIDTH_3D / NB_RAYS;
+	while (nb < WIDTH_3D / NB_RAYS)
 	{
 		y = HEIGHT_3D;
 		while (y >= 0)
