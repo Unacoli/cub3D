@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 15:00:29 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:34:55 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ void	draw_line(t_data *data, int rays)
 	int		nb;
 
 	nb = 0;
-	x = data->w_width - WIDTH_3D + rays * WIDTH_3D / NB_RAYS;
-	while (nb < WIDTH_3D / NB_RAYS)
+	x = data->w_width - WIDTH_3D + rays * (WIDTH_3D / FOV);
+	while (nb < WIDTH_3D / FOV)
 	{
 		y = HEIGHT_3D;
 		while (y >= 0)
 		{
-			if (y < data->line_offset)
+			if (y <= data->line_offset)
 				draw_pixel(data, x, y, data->ceiling_color, data->draw);
 			else if (y <= data->line_height + data->line_offset
 				&& y > data->line_offset)
 				draw_pixel(data, x, y, data->wall_color, data->draw);
-			else if (y > data->line_height)
+			else if (y >= data->line_height)
 				draw_pixel(data, x, y, data->floor_color, data->draw);
 			y--;
 		}

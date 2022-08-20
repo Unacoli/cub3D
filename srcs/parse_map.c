@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 13:55:59 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:47:19 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	scan_map(t_line *map, t_data *data)
 			if (!is_player(map[y].line[x]))
 			{
 				data->player = point(x, y, map[y].line[x]);
+				data->convert = point(data->player.x * SIZE + (SIZE / 2), data->player.y * SIZE + (SIZE / 2), 0);
 				data->nb_player++;
 			}
 			if (data->nb_player > 1)

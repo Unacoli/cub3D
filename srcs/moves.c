@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 13:56:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 18:00:08 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,21 @@ void	change_player_pos(double orientation, t_data *data, t_pos dir)
 	double	t;
 	double	v_x;
 	double	v_y;
+	int		mx;
+	int		my;
 
 	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
-	if (data->map[(int)(data->player.y + (v_y * 0.08) * dir.y)].line
-			[(int)(data->player.x + (v_x * 0.08) * dir.x)] != '1')
+	mx = (int)(data->convert.x + v_x * 3 * dir.x) / 64;
+	my = (int)(data->convert.y + v_y * 3 * dir.y) / 64;
+	if (my < data->m_info->size.y && my >= 0
+			&& mx < data->map[my].len
+			&& mx >= 0
+			&& data->map[my].line[mx] != '1')
 	{
-		data->player.x += (v_x * 0.08) * dir.x;
-		data->player.y += (v_y * 0.08) * dir.y;
+		data->convert.x += (v_x * 3) * dir.x;
+		data->convert.y += (v_y * 3) * dir.y;
 	}
 }
 

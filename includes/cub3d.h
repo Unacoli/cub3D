@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 15:01:58 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:41:12 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
-# define HEIGHT_3D 480
+# define HEIGHT_3D 320
 # define WIDTH_3D 480
-# define NB_RAYS 480
+# define NB_RAYS 60
 
 typedef struct s_color
 {
@@ -120,6 +120,7 @@ typedef struct s_data
 	t_color		floor_color;
 	t_map		*m_info;
 	t_pos		player;
+	t_pos		convert;
 	t_ray		h_ray;
 	t_ray		v_ray;
 	t_color		red;
@@ -200,6 +201,7 @@ double	change_angle(double angle, double iterate, char iterator);
 double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 double	get_dist(t_pos start, t_pos end);
+int		check_pos(double pos);
 //-----------------//
 
 #endif
