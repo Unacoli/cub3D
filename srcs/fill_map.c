@@ -12,6 +12,23 @@
 
 #include "cub3d.h"
 
+static char	**fill_end_line(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		if (ft_strlen(data->map[i]) < data->m_info->size.x)
+		{
+			while (ft_strlen(data->map[i]) != data->m_info->size.x)
+				data->map[i] = ft_strjoin(data->map[i], " ");
+		}
+		i++;
+	}
+	return (data->map);
+}
+
 static int	find_map_width(char **map)
 {
 	int	i;
@@ -43,4 +60,5 @@ void	fill_map_array(t_data *data, t_list *map)
 	}
 	data->m_info->size.y = str_arr_size(data->map);
 	data->m_info->size.x = find_map_width(data->map);
+	data->map = fill_end_line(data);
 }
