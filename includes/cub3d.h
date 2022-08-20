@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 17:41:12 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 21:11:53 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
-# define HEIGHT_3D 320
-# define WIDTH_3D 480
-# define NB_RAYS 60
+# define HEIGHT_3D 480
+# define WALL_HEIGHT 480
+# define WIDTH_3D 1024
+# define NB_RAYS 1024
+# define MOVE_SPEED 2
+# define ROTATE_SPEED 1
 
 typedef struct s_color
 {
@@ -76,6 +79,7 @@ typedef struct s_keys
 	int	d;
 	int	w;
 	int	m;
+	int	shift;
 	int	l_arr;
 	int	r_arr;
 }	t_keys;
@@ -161,6 +165,7 @@ int		is_opened(t_line *map, int x, int y, int map_size);
 //-----------------//
 
 //-----MOVES-------//
+void	change_player_pos(double orientation, t_data *data, t_pos dir, int speed);
 void	turn_player(int keycode, t_data *data);
 int		move_player(int keycode, t_data *data);
 int		hook_keypress(int keycode, t_data *data);

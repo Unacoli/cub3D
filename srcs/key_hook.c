@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 15:17:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/20 18:34:07 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.l_arr = !data->keys.l_arr;
 	if (keycode == XK_Right)
 		data->keys.r_arr = !data->keys.r_arr;
+	if (keycode == 65505)
+		data->keys.shift = !data->keys.shift;
 	return (0);
 }
