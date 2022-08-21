@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/21 16:54:03 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:59:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ void	free_textures(t_data *data)
 	free(data->m_info->so_path);
 	free(data->m_info);
 	free(data->map_path);
-	/*while (i < 4)
+	while (i < 4)
 	{
-		mlx_destroy_image(data->mlx, data->text[i].img);
+		if (data->text[i].img)
+			mlx_destroy_image(data->mlx, data->text[i].img);
 		i++;
-	}*/
+	}
 	free(data->text);
 }
 

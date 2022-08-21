@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 17:06:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 22:37:55 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define WALL_HEIGHT 960
 # define WIDTH_3D 760
 # define NB_RAYS 760
-# define MOVE_SPEED 2
-# define ROTATE_SPEED 3
+# define MOVE_SPEED 3
+# define ROTATE_SPEED 5
 
 typedef struct s_color
 {
@@ -111,6 +111,7 @@ typedef struct s_text
 
 typedef struct s_data
 {
+	int			wall;
 	void		*img;
 	void		*addr;
 	t_color		*draw;
@@ -128,6 +129,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	double		ray_length;
+	t_pos		ray_pos;
 	t_keys		keys;
 	t_text		*text;
 	t_color		ceiling_color;
@@ -190,6 +192,7 @@ void	image(t_data *data);
 void	map_fill(t_data *data);
 void	draw_line(t_data *data, int rays);
 void	draw_player(t_data *data, t_pos pos, t_color color);
+t_color	get_pixel_color(t_text text, int x, int y);
 //-----------------//
 
 //----RAYCASTING---//

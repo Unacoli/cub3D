@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 16:00:27 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:04:01 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	init_mlx_data(t_data *data, int trash)
 	data->img = mlx_new_image(data->mlx, data->w_width, data->w_height);
 	data->addr = mlx_get_data_addr(data->img, &trash, &trash, &trash);
 	data->draw = (t_color *)data->addr;
+	init_textures_data(data);
 }
 
 void	init_subdata(t_data *data)
