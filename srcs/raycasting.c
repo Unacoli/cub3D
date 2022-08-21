@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 21:33:03 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 15:10:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 	double	player_angle;
 	int		rays;
 
-	ray_angle = get_rad(change_angle(data->player.o, 30, '-'));
-	rays = 0;
+	ray_angle = get_rad(change_angle(data->player.o, FOV / 2, '-'));
+	rays = 1;
 	player_angle = get_rad(data->player.o);
 	while (rays <= nb_rays)
 	{
@@ -28,18 +28,17 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		if (data->h_ray.length < data->v_ray.length)
 		{
 			data->wall_color = data->red;
-			//draw_ray(data, start, &data->h_ray, ray_angle);
+			draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_length = data->h_ray.length;
 		}
 		else
 		{
 			data->wall_color = data->blue;
-			//draw_ray(data, start, &data->v_ray, ray_angle);
+			draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_length = data->v_ray.length;
 		}
 		data->angle_diff = player_angle - ray_angle;
-		if (data->angle_diff < FOV / 2)
-			data->ray_length = data->ray_length * cos(data->angle_diff);
+		data->ray_length = data->ray_length * cos(data->angle_diff);
 		data->line_height = (WALL_HEIGHT * 64) / data->ray_length;
 		if (data->line_height > WALL_HEIGHT)
 			data->line_height = WALL_HEIGHT;

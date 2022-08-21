@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 21:11:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:59:04 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@
 # define RAD_1 0.0174533 // 1 degree in radian
 # define HEIGHT_3D 480
 # define WALL_HEIGHT 480
-# define WIDTH_3D 1024
-# define NB_RAYS 1024
+# define WIDTH_3D 480
+# define NB_RAYS 480
 # define MOVE_SPEED 2
-# define ROTATE_SPEED 1
+# define ROTATE_SPEED 3
 
 typedef struct s_color
 {

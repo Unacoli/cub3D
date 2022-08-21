@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 14:08:22 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:56:09 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ double	find_long_line(t_line *map, t_data *data)
 
 	i = 0;
 	len = 0;
-	while (i < data->m_info->size.y)
+	while (i <= data->m_info->size.y)
 	{
 		if (map->len > len)
 			len = map->len;
 		i++;
 	}
-	printf("%f\n", len);
 	return (len);
 }
 

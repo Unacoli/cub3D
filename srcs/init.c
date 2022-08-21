@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/20 19:47:19 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 14:56:41 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	setup_window_size(t_data *data)
 {
-	data->w_height = HEIGHT_3D;
-	data->w_width = WIDTH_3D;
+	data->w_height = data->m_info->size.y * 64 + HEIGHT_3D / 2;
+	data->w_width = data->m_info->size.x * 64 + WIDTH_3D;
 }
 
 void	init_mlx_data(t_data *data, int trash)
