@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 14:56:41 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:00:27 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@ static void	setup_window_size(t_data *data)
 {
 	data->w_height = data->m_info->size.y * 64 + HEIGHT_3D / 2;
 	data->w_width = data->m_info->size.x * 64 + WIDTH_3D;
+}
+
+void	assign_text(t_data *data, int nb, char *path)
+{
+	int	trash;
+
+	data->text[nb].img = mlx_xpm_file_to_image(data->mlx, path,
+			&data->text[nb].width, &data->text[nb].height);
+	data->text[nb].addr = mlx_get_data_addr(data->text[nb].img,
+			&trash, &trash, &trash);
+	data->text[nb].draw = (t_color *)data->text[nb].addr;
+}
+
+void	init_textures_data(t_data *data)
+{
+	assign_text(data, 0, data->m_info->no_path);
+	assign_text(data, 1, data->m_info->so_path);
+	assign_text(data, 2, data->m_info->we_path);
+	assign_text(data, 3, data->m_info->ea_path);
 }
 
 void	init_mlx_data(t_data *data, int trash)

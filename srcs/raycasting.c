@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/21 15:10:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:03:27 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_length = data->v_ray.length;
 		}
-		data->angle_diff = player_angle - ray_angle;
+		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
 		data->ray_length = data->ray_length * cos(data->angle_diff);
-		data->line_height = (WALL_HEIGHT * 64) / data->ray_length;
-		if (data->line_height > WALL_HEIGHT)
-			data->line_height = WALL_HEIGHT;
-		data->line_offset = (HEIGHT_3D / 2) - (data->line_height / 2);
+		data->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
+		if (data->line_height > HEIGHT_3D)
+			data->line_height = HEIGHT_3D;
+		data->line_offset = (HEIGHT_3D - data->line_height) / 2;
 		draw_line(data, rays);
 		ray_angle = change_rad_angle(ray_angle, RAD_1 / (NB_RAYS / FOV), '+');
 		rays++;

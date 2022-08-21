@@ -6,11 +6,18 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 14:54:07 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:17:48 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_color	get_pixel_color(t_text text, int x, int y)
+{
+	if (x < text.width && y >= 0 && y < text.height)
+		return (text.draw[y * text.width + x]);
+	return (get_rgb(0, 0, 0, 0));
+}
 
 void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw)
 {

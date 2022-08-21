@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 14:59:04 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:06:53 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@
 # define PI 3.14159265359
 # define P2 PI / 2
 # define P3 (3 * PI) / 2
-# define FOV 60
+# define FOV 30
 # define FACING_UP 0
 # define FACING_DOWN 1
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
-# define HEIGHT_3D 480
-# define WALL_HEIGHT 480
-# define WIDTH_3D 480
-# define NB_RAYS 480
+# define HEIGHT_3D 960
+# define WALL_HEIGHT 960
+# define WIDTH_3D 760
+# define NB_RAYS 760
 # define MOVE_SPEED 2
 # define ROTATE_SPEED 3
 
@@ -100,6 +100,15 @@ typedef struct s_line
 	int		len;
 }	t_line;
 
+typedef struct s_text
+{
+	void		*img;
+	void		*addr;
+	int			width;
+	int			height;
+	t_color		*draw;
+}	t_text;
+
 typedef struct s_data
 {
 	void		*img;
@@ -120,6 +129,7 @@ typedef struct s_data
 	void		*win;
 	double		ray_length;
 	t_keys		keys;
+	t_text		*text;
 	t_color		ceiling_color;
 	t_color		floor_color;
 	t_map		*m_info;

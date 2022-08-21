@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 14:02:40 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/21 16:54:03 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,29 @@ void	free_map_data(t_data *data, t_line *map)
 	free(map);
 }
 
-void	free_game_data(t_data *data)
+void	free_textures(t_data *data)
 {
-	free_map_data(data, data->map);
+	int	i;
+
+	i = 0;
 	free(data->m_info->ea_path);
 	free(data->m_info->no_path);
 	free(data->m_info->we_path);
 	free(data->m_info->so_path);
 	free(data->m_info);
 	free(data->map_path);
+	/*while (i < 4)
+	{
+		mlx_destroy_image(data->mlx, data->text[i].img);
+		i++;
+	}*/
+	free(data->text);
+}
+
+void	free_game_data(t_data *data)
+{
+	free_map_data(data, data->map);
+	free_textures(data);
 	if (data->img)
 		mlx_destroy_image(data->mlx, data->img);
 	if (data->mlx)
