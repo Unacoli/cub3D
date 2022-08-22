@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 18:32:01 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:31:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 
 void	map_fill(t_data *data)
 {
-	int	x;
+	/*int	x;
 	int	y;
 
 	y = 0;
@@ -85,7 +85,7 @@ void	map_fill(t_data *data)
 		}
 		y++;
 	}
-	draw_texture(data, point((data->convert.x - 8), (data->convert.y - 8), 0), data->red, 16, data->draw);
+	draw_texture(data, point((data->convert.x - 8), (data->convert.y - 8), 0), data->red, 16, data->draw);*/
 	raycasting(data, point(data->convert.x, data->convert.y, 0), NB_RAYS);
 }
 

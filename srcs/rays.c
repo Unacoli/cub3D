@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 15:24:35 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:32:22 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void	draw_line(t_data *data, int rays)
 	{
 		y = HEIGHT_3D;
 		ty = 50;
-		if (data->tx >= 50)
-			data->tx = 0;
 		while (y >= 0)
 		{
 			if (y <= data->line_height + data->line_offset && y >= data->line_offset)
