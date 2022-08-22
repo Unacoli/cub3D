@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/22 15:58:52 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:00:26 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		if (data->h_ray.length < data->v_ray.length)
 		{
 			data->wall_color = data->red;
-			//draw_ray(data, start, &data->h_ray, ray_angle);
+			draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_pos = point(data->h_ray.x, data->h_ray.y, 0);
 			data->ray_length = data->h_ray.length;
 			if (ray_angle > PI)
@@ -40,7 +40,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		else
 		{
 			data->wall_color = data->blue;
-			//draw_ray(data, start, &data->v_ray, ray_angle);
+			draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_pos = point(data->v_ray.x, data->v_ray.y, 0);
 			if (ray_angle < P2 || ray_angle > P3)
 				set_wall(data, 2);
