@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 22:37:55 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 02:28:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_text
 
 typedef struct s_data
 {
+	double		tx;
 	int			wall;
 	void		*img;
 	void		*addr;

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/21 22:29:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 03:16:35 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 				data->wall = 0;
 			if (ray_angle < PI)
 				data->wall = 1;
+			if (rays == 1)
+				data->tx = (int)data->ray_pos.x % 64;
 		}
 		else
 		{
@@ -46,6 +48,8 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			if (ray_angle > P2 && ray_angle < P3)
 				data->wall = 2;
 			data->ray_length = data->v_ray.length;
+			if (rays == 1)
+				data->tx = (int)data->ray_pos.y % 64;
 		}
 		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
 		data->ray_length = data->ray_length * cos(data->angle_diff);

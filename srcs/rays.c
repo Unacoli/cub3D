@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/21 22:45:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 03:15:55 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,29 @@ void	draw_line(t_data *data, int rays)
 {
 	double	y;
 	double	x;
-	double	tx;
+	double	tx_step;
+	double	ty_step;
 	double	ty;
 	int		nb;
 
 	nb = 0;
+	
 	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
-	tx = data->ray_pos.x
+	tx_step = 50 / data->line_height;
+	ty_step = 50 / data->line_height;
 	while (nb < WIDTH_3D / NB_RAYS)
 	{
 		y = HEIGHT_3D;
-		//ty = 0;
+		ty = 0;
+		if (data->tx >= 50)
+			data->tx = 0;
 		while (y >= 0)
 		{
 			if (y <= data->line_height + data->line_offset && y >= data->line_offset)
 			{
-			//	data->wall_color = get_pixel_color(data->text[data->wall], tx, ty);
+				data->wall_color = get_pixel_color(data->text[data->wall], data->tx / 64 * 50, ty / 64 * 50);
 				draw_pixel(data, x, y, data->wall_color, data->draw);
-			//	ty += ty_step;
+				ty += ty_step;
 			}
 			if (y > data->line_height + data->line_offset)
 				draw_pixel(data, x, y, data->floor_color, data->draw);
@@ -99,7 +104,7 @@ void	draw_line(t_data *data, int rays)
 				draw_pixel(data, x, y, data->ceiling_color, data->draw);
 			y--;
 		}
-		//tx += tx_step;
+		data->tx += tx_step;
 		x++;
 		nb++;
 	}
