@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/22 03:16:35 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:29:03 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,26 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		if (data->h_ray.length < data->v_ray.length)
 		{
 			data->wall_color = data->red;
-			draw_ray(data, start, &data->h_ray, ray_angle);
+			//draw_ray(data, start, &data->h_ray, ray_angle);
 			data->ray_pos = point(data->h_ray.x, data->h_ray.y, 0);
 			data->ray_length = data->h_ray.length;
 			if (ray_angle > PI)
 				data->wall = 0;
 			if (ray_angle < PI)
 				data->wall = 1;
-			if (rays == 1)
-				data->tx = (int)data->ray_pos.x % 64;
+			data->tx = ((int)data->ray_pos.x % 64);
 		}
 		else
 		{
 			data->wall_color = data->blue;
-			draw_ray(data, start, &data->v_ray, ray_angle);
+			//draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_pos = point(data->v_ray.x, data->v_ray.y, 0);
 			if (ray_angle < P2 || ray_angle > P3)
 				data->wall = 3;
 			if (ray_angle > P2 && ray_angle < P3)
 				data->wall = 2;
 			data->ray_length = data->v_ray.length;
-			if (rays == 1)
-				data->tx = (int)data->ray_pos.y % 64;
+			data->tx = ((int)data->ray_pos.y % 64);
 		}
 		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
 		data->ray_length = data->ray_length * cos(data->angle_diff);
