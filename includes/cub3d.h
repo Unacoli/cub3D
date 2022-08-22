@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 15:20:31 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:57:35 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,7 @@ typedef struct s_text
 {
 	void		*img;
 	void		*addr;
-	int			width;
-	int			height;
+	t_pos		size;
 	t_color		*draw;
 }	t_text;
 
@@ -192,9 +191,10 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
 void	draw_texture(t_data *data, t_pos p, t_color col, int s, t_color *draw);
 void	image(t_data *data);
 void	map_fill(t_data *data);
-void	draw_line(t_data *data, int rays);
+void	draw_line(t_data *data, int rays, t_text *text);
 void	draw_player(t_data *data, t_pos pos, t_color color);
 t_color	get_pixel_color(t_text text, int x, int y);
+void	set_wall(t_data *data, int i);
 //-----------------//
 
 //----RAYCASTING---//

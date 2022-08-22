@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/22 15:29:03 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:58:52 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			data->ray_pos = point(data->h_ray.x, data->h_ray.y, 0);
 			data->ray_length = data->h_ray.length;
 			if (ray_angle > PI)
-				data->wall = 0;
+				set_wall(data, 0);
 			if (ray_angle < PI)
-				data->wall = 1;
+				set_wall(data, 1);
 			data->tx = ((int)data->ray_pos.x % 64);
 		}
 		else
@@ -43,9 +43,9 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			//draw_ray(data, start, &data->v_ray, ray_angle);
 			data->ray_pos = point(data->v_ray.x, data->v_ray.y, 0);
 			if (ray_angle < P2 || ray_angle > P3)
-				data->wall = 3;
+				set_wall(data, 2);
 			if (ray_angle > P2 && ray_angle < P3)
-				data->wall = 2;
+				set_wall(data, 3);
 			data->ray_length = data->v_ray.length;
 			data->tx = ((int)data->ray_pos.y % 64);
 		}
@@ -55,7 +55,7 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		if (data->line_height > HEIGHT_3D)
 			data->line_height = HEIGHT_3D;
 		data->line_offset = (HEIGHT_3D - data->line_height) / 2;
-		draw_line(data, rays);
+		draw_line(data, rays, &(data->text[data->wall]));
 		ray_angle = change_rad_angle(ray_angle, RAD_1 / (NB_RAYS / FOV), '+');
 		rays++;
 	}

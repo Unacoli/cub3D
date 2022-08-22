@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 15:32:22 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:56:30 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 	send_ray(&data->v_ray, data, dof, start);
 }
 
-void	draw_line(t_data *data, int rays)
+void	draw_line(t_data *data, int rays, t_text *text)
 {
 	double	y;
 	double	x;
@@ -82,17 +82,17 @@ void	draw_line(t_data *data, int rays)
 	nb = 0;
 	
 	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
-	tx_step = 50 / data->line_height;
-	ty_step = 50 / data->line_height;
+	tx_step = text->size.x / data->line_height;
+	ty_step = text->size.y / data->line_height;
 	while (nb < WIDTH_3D / NB_RAYS)
 	{
 		y = HEIGHT_3D;
-		ty = 50;
+		ty = text->size.y;
 		while (y >= 0)
 		{
 			if (y <= data->line_height + data->line_offset && y >= data->line_offset)
 			{
-				data->wall_color = get_pixel_color(data->text[data->wall], data->tx / 64 * 50, ty / 64 * 50);
+				data->wall_color = get_pixel_color(data->text[data->wall], data->tx / 64 * text->size.x, ty / 64 * text->size.y);
 				draw_pixel(data, x, y, data->wall_color, data->draw);
 				ty -= ty_step;
 			}

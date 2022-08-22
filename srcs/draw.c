@@ -6,16 +6,22 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 15:31:31 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:57:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	set_wall(t_data *data, int i)
+{
+	data->wall = i;
+	data->text[i].size = point(data->text[i].size.x, data->text[i].size.y, 0);
+}
+
 t_color	get_pixel_color(t_text text, int x, int y)
 {
-	if ((x >= 0 && x < text.width) && (y >= 0 && y < text.height))
-		return (text.draw[y * text.width + x]);
+	if ((x >= 0 && x < text.size.x) && (y >= 0 && y < text.size.y))
+		return (text.draw[y * (int)text.size.x + x]);
 	return (get_rgb(0, 0, 0, 0));
 }
 
