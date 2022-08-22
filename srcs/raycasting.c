@@ -25,37 +25,37 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 	{
 		cast_h_ray(data, start, ray_angle);
 		cast_v_ray(data, start, ray_angle);
-		if (data->h_ray.length < data->v_ray.length)
+		if (data->ray->h_ray.length < data->ray->v_ray.length)
 		{
-			data->wall_color = data->red;
-			draw_ray(data, start, &data->h_ray, ray_angle);
-			data->ray_pos = point(data->h_ray.x, data->h_ray.y, 0);
-			data->ray_length = data->h_ray.length;
+			data->ray->wall_color = data->c_palette->red;
+			draw_ray(data, start, &data->ray->h_ray, ray_angle);
+			data->ray->ray_pos = point(data->ray->h_ray.x, data->ray->h_ray.y, 0);
+			data->ray_length = data->ray->h_ray.length;
 			if (ray_angle > PI)
 				set_wall(data, 0);
 			if (ray_angle < PI)
 				set_wall(data, 1);
-			data->tx = ((int)data->ray_pos.x % 64);
+			data->ray->tx = ((int)data->ray->ray_pos.x % 64);
 		}
 		else
 		{
-			data->wall_color = data->blue;
-			draw_ray(data, start, &data->v_ray, ray_angle);
-			data->ray_pos = point(data->v_ray.x, data->v_ray.y, 0);
+			data->ray->wall_color = data->c_palette->blue;
+			draw_ray(data, start, &data->ray->v_ray, ray_angle);
+			data->ray->ray_pos = point(data->ray->v_ray.x, data->ray->v_ray.y, 0);
 			if (ray_angle < P2 || ray_angle > P3)
 				set_wall(data, 2);
 			if (ray_angle > P2 && ray_angle < P3)
 				set_wall(data, 3);
-			data->ray_length = data->v_ray.length;
-			data->tx = ((int)data->ray_pos.y % 64);
+			data->ray_length = data->ray->v_ray.length;
+			data->ray->tx = ((int)data->ray->ray_pos.y % 64);
 		}
-		data->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
-		data->ray_length = data->ray_length * cos(data->angle_diff);
-		data->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
-		if (data->line_height > HEIGHT_3D)
-			data->line_height = HEIGHT_3D;
-		data->line_offset = (HEIGHT_3D - data->line_height) / 2;
-		draw_line(data, rays, &(data->text[data->wall]));
+		data->ray->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
+		data->ray_length = data->ray_length * cos(data->ray->angle_diff);
+		data->ray->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
+		if (data->ray->line_height > HEIGHT_3D)
+			data->ray->line_height = HEIGHT_3D;
+		data->ray->line_offset = (HEIGHT_3D - data->ray->line_height) / 2;
+		draw_line(data, rays, &(data->text[data->ray->wall]), data->ray);
 		ray_angle = change_rad_angle(ray_angle, RAD_1 / (NB_RAYS / FOV), '+');
 		rays++;
 	}

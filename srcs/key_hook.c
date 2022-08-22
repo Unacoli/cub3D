@@ -27,7 +27,7 @@ int	act_keypress(t_data *data)
 	if (data->keys.d)
 		move_player(XK_D, data);
 	map_fill(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->screen->img, 0, 0);
 	return (0);
 }
 

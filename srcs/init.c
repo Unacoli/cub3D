@@ -14,8 +14,8 @@
 
 static void	setup_window_size(t_data *data)
 {
-	data->w_height = data->m_info->size.y * 64 + HEIGHT_3D / 2;
-	data->w_width = data->m_info->size.x * 64 + WIDTH_3D;
+	data->screen->size.y = data->m_info->size.y * 64 + HEIGHT_3D / 2;
+	data->screen->size.x = data->m_info->size.x * 64 + WIDTH_3D;
 }
 
 void	assign_text(t_data *data, int nb, char *path)
@@ -30,7 +30,7 @@ void	assign_text(t_data *data, int nb, char *path)
 	data->text[nb].size.y = (double)height;
 	data->text[nb].addr = mlx_get_data_addr(data->text[nb].img,
 			&trash, &trash, &trash);
-	data->text[nb].draw = (t_color *)data->text[nb].addr;
+	data->text[nb].draw = (t_rgb *)data->text[nb].addr;
 }
 
 void	init_textures_data(t_data *data)
@@ -44,23 +44,22 @@ void	init_textures_data(t_data *data)
 void	init_mlx_data(t_data *data, int trash)
 {
 	data->mlx = mlx_init();
-	mlx_get_screen_size(data->mlx, &data->s_width, &data->s_height);
 	setup_window_size(data);
-	data->win = mlx_new_window(data->mlx, data->w_width,
-			data->w_height, "cub3D");
-	data->img = mlx_new_image(data->mlx, data->w_width, data->w_height);
-	data->addr = mlx_get_data_addr(data->img, &trash, &trash, &trash);
-	data->draw = (t_color *)data->addr;
+	data->win = mlx_new_window(data->mlx, data->screen->size.x,
+			data->screen->size.y, "cub3D");
+	data->screen->img = mlx_new_image(data->mlx, data->screen->size.x, data->screen->size.y);
+	data->screen->addr = mlx_get_data_addr(data->screen->img, &trash, &trash, &trash);
+	data->screen->draw = (t_rgb *)data->screen->addr;
 	init_textures_data(data);
 }
 
 void	init_subdata(t_data *data)
 {
 	ft_memset(data->m_info, 0, sizeof(t_map));
-	data->red = get_rgb(255, 0, 0, 1);
-	data->white = get_rgb(255, 255, 255, 1);
-	data->black = get_rgb(0, 0, 0, 0);
-	data->blue = get_rgb(30, 144, 255, 0);
+	data->c_palette->red = get_rgb(255, 0, 0, 1);
+	data->c_palette->white = get_rgb(255, 255, 255, 1);
+	data->c_palette->black = get_rgb(0, 0, 0, 0);
+	data->c_palette->blue = get_rgb(30, 144, 255, 0);
 }
 
 void	init_game_data(t_data *data, char **av)

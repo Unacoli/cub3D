@@ -49,8 +49,11 @@ void	free_game_data(t_data *data)
 {
 	free_map_data(data, data->map);
 	free_textures(data);
-	if (data->img)
-		mlx_destroy_image(data->mlx, data->img);
+	free(data->c_palette);
+	free(data->ray);
+	if (data->screen->img)
+		mlx_destroy_image(data->mlx, data->screen->img);
+	free(data->screen);
 	if (data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

@@ -40,9 +40,9 @@ int	scan_map(t_line *map, t_data *data)
 			{
 				data->player = point(x, y, map[y].line[x]);
 				data->convert = point(data->player.x * SIZE + (SIZE / 2), data->player.y * SIZE + (SIZE / 2), 0);
-				data->nb_player++;
+				data->m_info->nb_player++;
 			}
-			if (data->nb_player > 1)
+			if (data->m_info->nb_player > 1)
 				return (ft_printf("Error\nToo many player elements\n"));
 			if (check_elem(map, x, y, data->m_info->size.y))
 				return (1);
@@ -50,7 +50,7 @@ int	scan_map(t_line *map, t_data *data)
 		}
 		y++;
 	}
-	if (data->nb_player < 1)
+	if (data->m_info->nb_player < 1)
 		return (ft_printf("Error\nNo player on map, (N, S, W, E)\n"));
 	return (0);
 }

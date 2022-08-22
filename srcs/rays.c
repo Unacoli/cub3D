@@ -44,65 +44,54 @@ void	cast_h_ray(t_data *data, t_pos start, double ray_angle)
 {
 	int	dof;
 
-	data->h_ray.angle = ray_angle;
+	data->ray->h_ray.angle = ray_angle;
 	dof = 0;
-	if (data->h_ray.angle > PI)
-		setup_h_ray_data(&data->h_ray, start, 1);
-	if (data->h_ray.angle < PI)
-		setup_h_ray_data(&data->h_ray, start, 0);
-	if (data->h_ray.angle == 0 || data->h_ray.angle == PI)
-		reset_ray_data(&data->h_ray, start, &dof);
-	send_ray(&data->h_ray, data, dof, start);
+	if (data->ray->h_ray.angle > PI)
+		setup_h_ray_data(&data->ray->h_ray, start, 1);
+	if (data->ray->h_ray.angle < PI)
+		setup_h_ray_data(&data->ray->h_ray, start, 0);
+	if (data->ray->h_ray.angle == 0 || data->ray->h_ray.angle == PI)
+		reset_ray_data(&data->ray->h_ray, start, &dof);
+	send_ray(&data->ray->h_ray, data, dof, start);
 }
 
 void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 {
 	int	dof;
 
-	data->v_ray.angle = ray_angle;
+	data->ray->v_ray.angle = ray_angle;
 	dof = 0;
-	if (data->v_ray.angle > P2 && data->v_ray.angle < P3)
-		setup_v_ray_data(&data->v_ray, start, 1);
-	if (data->v_ray.angle < P2 || data->v_ray.angle > P3)
-		setup_v_ray_data(&data->v_ray, start, 0);
-	if (data->v_ray.angle == P2 || data->v_ray.angle == P3)
-		reset_ray_data(&data->v_ray, start, &dof);
-	send_ray(&data->v_ray, data, dof, start);
+	if (data->ray->v_ray.angle > P2 && data->ray->v_ray.angle < P3)
+		setup_v_ray_data(&data->ray->v_ray, start, 1);
+	if (data->ray->v_ray.angle < P2 || data->ray->v_ray.angle > P3)
+		setup_v_ray_data(&data->ray->v_ray, start, 0);
+	if (data->ray->v_ray.angle == P2 || data->ray->v_ray.angle == P3)
+		reset_ray_data(&data->ray->v_ray, start, &dof);
+	send_ray(&data->ray->v_ray, data, dof, start);
 }
 
-void	draw_line(t_data *data, int rays, t_text *text)
+void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 {
 	double	y;
 	double	x;
-	double	tx_step;
-	double	ty_step;
-	double	ty;
-	int		nb;
 
-	nb = 0;
-	
 	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
-	tx_step = text->size.x / data->line_height;
-	ty_step = text->size.y / data->line_height;
-	while (nb < WIDTH_3D / NB_RAYS)
+	ray->tx_step = text->size.x / ray->line_height;
+	ray->ty_step = text->size.y / ray->line_height;
+	y = HEIGHT_3D;
+	ray->ty = text->size.y;
+	while (y >= 0)
 	{
-		y = HEIGHT_3D;
-		ty = text->size.y;
-		while (y >= 0)
+		if (y <= ray->line_height + ray->line_offset && y >= ray->line_offset)
 		{
-			if (y <= data->line_height + data->line_offset && y >= data->line_offset)
-			{
-				data->wall_color = get_pixel_color(data->text[data->wall], data->tx / 64 * text->size.x, ty / 64 * text->size.y);
-				draw_pixel(data, x, y, data->wall_color, data->draw);
-				ty -= ty_step;
-			}
-			if (y > data->line_height + data->line_offset)
-				draw_pixel(data, x, y, data->floor_color, data->draw);
-			if (y < data->line_offset)
-				draw_pixel(data, x, y, data->ceiling_color, data->draw);
-			y--;
+			ray->wall_color = get_pixel_color(data->text[ray->wall], ray->tx / 64 * text->size.x, ray->ty / 64 * text->size.y);
+			draw_pixel(data, x, y, ray->wall_color, data->screen->draw);
+			ray->ty -= ray->ty_step;
 		}
-		x++;
-		nb++;
+		if (y > ray->line_height + ray->line_offset)
+			draw_pixel(data, x, y, data->m_info->floor_color, data->screen->draw);
+		if (y < ray->line_offset)
+			draw_pixel(data, x, y, data->m_info->ceiling_color, data->screen->draw);
+		y--;
 	}
 }

@@ -46,12 +46,25 @@
 # define MOVE_SPEED 3
 # define ROTATE_SPEED 5
 
-typedef struct s_color
+# define NORTH_T 0
+# define EAST_T 1
+# define WEST_T 2
+# define SUD_T 3
+
+typedef struct s_rgb
 {
 	unsigned char	b;
 	unsigned char	g;
 	unsigned char	r;
 	unsigned char	o;
+}	t_rgb;
+
+typedef struct s_color
+{
+	t_rgb	red;
+	t_rgb	white;
+	t_rgb	black;
+	t_rgb	blue;
 }	t_color;
 
 typedef struct s_pos
@@ -68,8 +81,11 @@ typedef struct s_map
 	char	*we_path;
 	char	*ea_path;
 	char	*no_path;
+	int		nb_player;
 	t_pos	size;
 	t_list	*map;
+	t_rgb	ceiling_color;
+	t_rgb	floor_color;
 }	t_map;
 
 typedef struct s_keys
@@ -92,6 +108,7 @@ typedef struct s_ray
 	double	y_dir;
 	double	angle;
 	double	length;
+	double	angle_diff;
 }	t_ray;
 
 typedef struct s_line
@@ -105,46 +122,40 @@ typedef struct s_text
 	void		*img;
 	void		*addr;
 	t_pos		size;
-	t_color		*draw;
+	t_rgb		*draw;
 }	t_text;
+
+typedef struct s_draw
+{
+	int		wall;
+	double	tx;
+	double	tx_step;
+	double	ty_step;
+	double	ty;
+	double	line_height;
+	double	line_offset;
+	double	angle_diff;
+	t_pos	ray_pos;
+	t_ray	h_ray;
+	t_ray	v_ray;
+	t_rgb	wall_color;
+}	t_draw;
 
 typedef struct s_data
 {
-	double		tx;
-	double		tx_step;
-	int			wall;
-	void		*img;
-	void		*addr;
-	t_color		*draw;
-	char		*err_msg;
-	int			s_width;
-	double		line_height;
-	double		line_offset;
-	double		angle_diff;
-	int			s_height;
-	int			w_width;
-	int			w_height;
-	t_line		*map;
-	int			nb_player;
-	char		*map_path;
 	void		*mlx;
 	void		*win;
 	double		ray_length;
-	t_pos		ray_pos;
+	t_draw		*ray;
+	t_text		*screen;
+	t_line		*map;
+	char		*map_path;
 	t_keys		keys;
 	t_text		*text;
-	t_color		ceiling_color;
-	t_color		floor_color;
 	t_map		*m_info;
 	t_pos		player;
 	t_pos		convert;
-	t_ray		h_ray;
-	t_ray		v_ray;
-	t_color		red;
-	t_color		white;
-	t_color		black;
-	t_color		blue;
-	t_color		wall_color;
+	t_color		*c_palette;
 }	t_data;
 
 //-----GAME--------//
@@ -186,14 +197,14 @@ int		act_keypress(t_data *data);
 //-----------------//
 
 //-----DRAW-------//
-void	draw_pixel(t_data *d, int x, int y, t_color color, t_color *draw);
+void	draw_pixel(t_data *d, int x, int y, t_rgb color, t_rgb *draw);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
-void	draw_texture(t_data *data, t_pos p, t_color col, int s, t_color *draw);
+void	draw_texture(t_data *data, t_pos p, t_rgb col, int s);
 void	image(t_data *data);
 void	map_fill(t_data *data);
-void	draw_line(t_data *data, int rays, t_text *text);
-void	draw_player(t_data *data, t_pos pos, t_color color);
-t_color	get_pixel_color(t_text text, int x, int y);
+void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray);
+void	draw_player(t_data *data, t_pos pos, t_rgb color);
+t_rgb	get_pixel_color(t_text text, int x, int y);
 void	set_wall(t_data *data, int i);
 //-----------------//
 
@@ -211,7 +222,7 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
 //------UTILS------//
 void	free_game_data(t_data *data);
 void	exit_game(t_data *data, char *msg);
-t_color	get_rgb(int r, int g, int b, int o);
+t_rgb	get_rgb(int r, int g, int b, int o);
 //-----------------//
 
 //-----MATHS-------//

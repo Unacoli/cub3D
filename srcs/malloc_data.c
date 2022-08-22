@@ -18,6 +18,12 @@ int	allocate_game_data(t_data *data, char **av)
 		return (1);
 	if (!ft_malloc((void **)&(data->text), sizeof(t_text) * 4))
 		return (1);
+	if (!ft_malloc((void **)&(data->c_palette), sizeof(t_color)))
+		return (1);
+	if (!ft_malloc((void **)&(data->screen), sizeof(t_text)))
+		return (1);
+	if (!ft_malloc((void **)&(data->ray), sizeof(t_draw)))
+		return (1);
 	data->map_path = ft_strdup(av[1]);
 	if (!data->map_path)
 		return (1);

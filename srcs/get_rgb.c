@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-t_color	get_rgb(int r, int g, int b, int o)
+t_rgb	get_rgb(int r, int g, int b, int o)
 {
-	t_color	color;
+	t_rgb	color;
 
 	color.r = r;
 	color.g = g;
