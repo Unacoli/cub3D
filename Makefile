@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/19 03:34:00 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/22 22:25:34 by nargouse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIB	= $(MLX) $(LIBFT)
 # ----------- COMPILER FLAGS -------
 
 CC			=	clang
-CFLAGS		+=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		+=	-Wall -Wextra -Werror -g3
 LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- FILES ----------------
