@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 15:57:35 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 01:50:21 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_draw
 	double	tx;
 	double	tx_step;
 	double	ty_step;
+	double	ty_offset;
 	double	ty;
 	double	line_height;
 	double	line_offset;
