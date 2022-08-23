@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/23 22:33:55 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/23 22:41:47 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ ${NAME}		: $(MLX) $(LIBFT) $(OBJS)
 	@echo -n "$(EOC)"
 
 $(OBJ)/%.o	: $(SRC)/%.c
-	@echo "$(PURPLE)"
+	@echo -n "$(PURPLE)"
 		mkdir -p ./objs/
 		$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 

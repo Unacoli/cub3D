@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 20:47:43 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:03:02 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	rotate_player(int way, t_data *data, int speed)
 	}
 }
 
+void	increment_pos(t_data *data, double x, double y)
+{
+	data->convert.x += x;
+	data->convert.y += y;
+}
+
 void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 {
 	double	t;
@@ -39,16 +45,21 @@ void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
+	d->player.x = (int)d->convert.x / 64;
+	d->player.y = (int)d->convert.y / 64;
 	mx = (int)(d->convert.x + v_x * speed * (dir.x * 2)) / 64;
 	my = (int)(d->convert.y + v_y * speed * (dir.y * 2)) / 64;
-	if (my < d->m_info->size.y && my >= 0
-		&& mx < d->map[my].len
-		&& mx >= 0
-		&& d->map[my].line[mx] != '1')
+	if (d->player.x != mx && d->player.y != my)
 	{
-			d->convert.x += (v_x * speed) * (dir.x * 2);
-			d->convert.y += (v_y * speed) * (dir.y * 2);
+		if (d->map[my].line[(int)d->player.x] == '1')
+			v_y = 0;
+		if (d->map[(int)d->player.y].line[mx] == '1')
+			v_x = 0;
 	}
+	if (my < d->m_info->size.y && my >= 0 && mx < d->map[my].len
+		&& mx >= 0 && d->map[my].line[mx] != '1')
+		increment_pos(d, (v_x * speed) * (dir.x * 2),
+			(v_y * speed) * (dir.y * 2));
 }
 
 int	move_player(int keycode, t_data *data)
