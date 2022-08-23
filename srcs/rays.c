@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 17:32:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:41:33 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle)
 
 	data->ray->v_ray.angle = ray_angle;
 	dof = 0;
-	if (data->ray->v_ray.angle > P2 && data->ray->v_ray.angle < P3)
+	if (data->ray->v_ray.angle > (PI / 2)
+		&& data->ray->v_ray.angle < ((3 * PI) / 2))
 		setup_v_ray_data(&data->ray->v_ray, start, 1);
-	if (data->ray->v_ray.angle < P2 || data->ray->v_ray.angle > P3)
+	if (data->ray->v_ray.angle < (PI / 2)
+		|| data->ray->v_ray.angle > ((3 * PI) / 2))
 		setup_v_ray_data(&data->ray->v_ray, start, 0);
-	if (data->ray->v_ray.angle == P2 || data->ray->v_ray.angle == P3)
+	if (data->ray->v_ray.angle == (PI / 2)
+		|| data->ray->v_ray.angle == ((3 * PI) / 2))
 		reset_ray_data(&data->ray->v_ray, start, &dof);
 	send_ray(&data->ray->v_ray, data, dof, start);
 }
@@ -85,14 +88,15 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 	{
 		if (y <= ray->line_height + ray->line_offset && y >= ray->line_offset)
 		{
-			ray->wall_color = get_pixel_color(data->text[ray->wall], ray->tx, ray->ty / 50 * text->size.y);
-			draw_pixel(data, x, y, ray->wall_color, data->screen->draw);
+			ray->wall_color = get_pixel_color(data->text[ray->wall],
+					ray->tx, ray->ty / 50 * text->size.y);
+			draw_pixel(data, x, y, ray->wall_color);
 			ray->ty -= ray->ty_step;
 		}
 		if (y > ray->line_height + ray->line_offset)
-			draw_pixel(data, x, y, data->m_info->floor_color, data->screen->draw);
+			draw_pixel(data, x, y, data->m_info->floor_color);
 		if (y < ray->line_offset)
-			draw_pixel(data, x, y, data->m_info->ceiling_color, data->screen->draw);
+			draw_pixel(data, x, y, data->m_info->ceiling_color);
 		y--;
 	}
 }

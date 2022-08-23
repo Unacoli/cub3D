@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:47:32 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 13:37:48 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:53:28 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_rgb	get_pixel_color(t_text text, int x, int y)
+{
+	if ((x >= 0 && x <= text.size.x) && (y >= 0 && y <= text.size.y))
+		return (text.draw[y * (int)text.size.x + x]);
+	return (get_rgb(0, 0, 0, 0));
+}
 
 int	check_colors(t_data *data, char c)
 {

@@ -6,17 +6,11 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 02:53:18 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:48:21 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	setup_window_size(t_data *data)
-{
-	data->screen->size.y = data->m_info->size.y * 64 + HEIGHT_3D / 2;
-	data->screen->size.x = data->m_info->size.x * 64 + WIDTH_3D;
-}
 
 void	assign_text(t_data *data, int nb, char *path)
 {
@@ -44,11 +38,14 @@ void	init_textures_data(t_data *data)
 void	init_mlx_data(t_data *data, int trash)
 {
 	data->mlx = mlx_init();
-	setup_window_size(data);
+	data->screen->size.y = data->m_info->size.y * 64 + HEIGHT_3D / 2;
+	data->screen->size.x = data->m_info->size.x * 64 + WIDTH_3D;
 	data->win = mlx_new_window(data->mlx, data->screen->size.x,
 			data->screen->size.y, "cub3D");
-	data->screen->img = mlx_new_image(data->mlx, data->screen->size.x, data->screen->size.y);
-	data->screen->addr = mlx_get_data_addr(data->screen->img, &trash, &trash, &trash);
+	data->screen->img = mlx_new_image(data->mlx,
+			data->screen->size.x, data->screen->size.y);
+	data->screen->addr = mlx_get_data_addr(data->screen->img,
+			&trash, &trash, &trash);
 	data->screen->draw = (t_rgb *)data->screen->addr;
 	init_textures_data(data);
 }

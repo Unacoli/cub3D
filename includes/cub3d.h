@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 02:21:16 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:41:11 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 
 # define SIZE 64
 # define PI 3.14159265359
-# define P2 PI / 2
-# define P3 (3 * PI) / 2
 # define FOV 30
 # define FACING_UP 0
 # define FACING_DOWN 1
@@ -178,7 +176,7 @@ int		check_id(char *str);
 t_list	*is_valid_id(t_list *file_line, t_data *data);
 void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
-int		scan_map(t_line *map, t_data *data);
+int		scan_map(t_line *map, t_data *data, int x, int y);
 void	stock_element(t_data *data, int *elems, char *line);
 int		check_elem(t_line *map, int x, int y, int map_size);
 int		fetch_colors(t_data *data, char c, char *rgb);
@@ -189,7 +187,8 @@ int		is_opened(t_line *map, int x, int y, int map_size);
 //-----------------//
 
 //-----MOVES-------//
-void	change_player_pos(double orientation, t_data *data, t_pos dir, int speed);
+void	change_player_pos(double orientation,
+			t_data *data, t_pos dir, int speed);
 void	turn_player(int keycode, t_data *data);
 int		move_player(int keycode, t_data *data);
 int		hook_keypress(int keycode, t_data *data);
@@ -197,7 +196,7 @@ int		act_keypress(t_data *data);
 //-----------------//
 
 //-----DRAW-------//
-void	draw_pixel(t_data *d, int x, int y, t_rgb color, t_rgb *draw);
+void	draw_pixel(t_data *d, int x, int y, t_rgb color);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
 void	draw_texture(t_data *data, t_pos p, t_rgb col, int s);
 void	image(t_data *data);

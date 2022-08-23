@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 20:14:20 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:47:43 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rotate_player(int way, t_data *data, int speed)
 	}
 }
 
-void	change_player_pos(double orientation, t_data *data, t_pos dir, int speed)
+void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 {
 	double	t;
 	double	v_x;
@@ -39,23 +39,21 @@ void	change_player_pos(double orientation, t_data *data, t_pos dir, int speed)
 	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
-	data->player.x = (int)data->convert.x / 64;
-	data->player.y = (int)data->convert.y / 64;
-	mx = (int)(data->convert.x + v_x * speed * (dir.x * 2)) / 64;
-	my = (int)(data->convert.y + v_y * speed * (dir.y * 2)) / 64;
-	if (my < data->m_info->size.y && my >= 0
-			&& mx < data->map[my].len
-			&& mx >= 0
-			&& data->map[my].line[mx] != '1')
+	mx = (int)(d->convert.x + v_x * speed * (dir.x * 2)) / 64;
+	my = (int)(d->convert.y + v_y * speed * (dir.y * 2)) / 64;
+	if (my < d->m_info->size.y && my >= 0
+		&& mx < d->map[my].len
+		&& mx >= 0
+		&& d->map[my].line[mx] != '1')
 	{
-			data->convert.x += (v_x * speed) * (dir.x * 2);
-			data->convert.y += (v_y * speed) * (dir.y * 2);
+			d->convert.x += (v_x * speed) * (dir.x * 2);
+			d->convert.y += (v_y * speed) * (dir.y * 2);
 	}
 }
 
 int	move_player(int keycode, t_data *data)
 {
-	int speed;
+	int	speed;
 
 	speed = MOVE_SPEED;
 	if (data->keys.shift)
@@ -73,14 +71,10 @@ int	move_player(int keycode, t_data *data)
 	if (keycode == XK_S)
 		change_player_pos(data->player.o, data, point(-1, -1, 0), speed);
 	if (keycode == XK_A)
-	{
 		change_player_pos(change_angle(data->player.o, 90, '-'),
 			data, point(1, 1, 0), speed);
-	}
 	if (keycode == XK_D)
-	{
 		change_player_pos(change_angle(data->player.o, 90, '-'),
 			data, point(-1, -1, 0), speed);
-	}
 	return (0);
 }

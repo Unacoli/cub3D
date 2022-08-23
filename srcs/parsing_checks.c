@@ -6,18 +6,11 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/21 14:56:09 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:51:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_player(char c)
-{
-	if (c != 'N' && c != 'S' && c != 'W' && c != 'E')
-		return (1);
-	return (0);
-}
 
 int	is_border(t_line *map, int x, int y, int map_size)
 {
@@ -50,7 +43,7 @@ int	is_valid_map(t_data *data, t_list *map)
 		return (-1);
 	fill_map_array(data, map);
 	data->m_info->size.x = find_long_line(data->map, data);
-	if (scan_map(data->map, data))
+	if (scan_map(data->map, data, 0, 0))
 		return (1);
 	return (0);
 }
