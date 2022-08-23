@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 22:27:36 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:21:34 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	assign_text(t_data *data, int nb, char *path)
 	data->text[nb].img = mlx_xpm_file_to_image(data->mlx, path,
 			&width, &height);
 	if (data->text[nb].img == NULL)
-		exit_game(data, "Failed to make an image from xpm file", 1);
+	{
+		printf("Failed to make an image from xpm file\n");
+		exit_game(data, path, 1);
+	}
 	data->text[nb].size.x = (double)width;
 	data->text[nb].size.y = (double)height;
 	data->text[nb].addr = mlx_get_data_addr(data->text[nb].img,

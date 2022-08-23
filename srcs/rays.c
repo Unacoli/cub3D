@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 20:41:33 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:23:17 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 		if (y <= ray->line_height + ray->line_offset && y >= ray->line_offset)
 		{
 			ray->wall_color = get_pixel_color(data->text[ray->wall],
-					ray->tx, ray->ty / 50 * text->size.y);
+					ray->tx, ray->ty);
 			draw_pixel(data, x, y, ray->wall_color);
 			ray->ty -= ray->ty_step;
 		}
