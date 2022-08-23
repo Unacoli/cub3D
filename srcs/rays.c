@@ -17,7 +17,7 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 	int	mx;
 	int	my;
 
-	while (dof < 16)
+	while (dof < 9000)
 	{
 		mx = (int)(ray->x / 64);
 		my = (int)(ray->y / 64);
@@ -26,7 +26,7 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 			&& mx >= 0
 			&& data->map[my].line[mx] == '1')
 		{
-			dof = 16;
+			dof = 9000;
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
 			return ;
 		}

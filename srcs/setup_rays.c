@@ -58,5 +58,5 @@ void	reset_ray_data(t_ray *ray, t_pos start, int *dof)
 {
 	ray->x = start.x;
 	ray->y = start.y;
-	*dof = 16;
+	*dof = 9000;
 }

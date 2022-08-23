@@ -33,9 +33,9 @@ int	act_keypress(t_data *data)
 
 int	hook_keypress(int keycode, t_data *data)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_Escape) 
 	{
-		ft_printf("You pressed escape key\nGame closed\n");
+		ft_printf("Game closed\n");
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
