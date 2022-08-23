@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 01:57:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 02:47:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 	double	x;
 
 	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
-	ray->tx_step = text->size.x / ray->line_height;
 	y = HEIGHT_3D;
 	ray->ty = text->size.y - (ray->ty_offset * ray->ty_step);
 	while (y >= 0)

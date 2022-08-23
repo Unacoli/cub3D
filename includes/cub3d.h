@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 01:50:21 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 02:21:16 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ typedef struct s_draw
 {
 	int		wall;
 	double	tx;
-	double	tx_step;
 	double	ty_step;
 	double	ty_offset;
 	double	ty;
