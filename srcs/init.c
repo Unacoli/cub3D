@@ -20,6 +20,8 @@ void	assign_text(t_data *data, int nb, char *path)
 
 	data->text[nb].img = mlx_xpm_file_to_image(data->mlx, path,
 			&width, &height);
+	if (data->text[nb].img == NULL)
+		exit_game(data, "Failed to make an image from xpm file")
 	data->text[nb].size.x = (double)width;
 	data->text[nb].size.y = (double)height;
 	data->text[nb].addr = mlx_get_data_addr(data->text[nb].img,
