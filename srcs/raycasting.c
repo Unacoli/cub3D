@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/23 20:47:00 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:37:37 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_cub(t_data *data, double ray_angle, int rays)
 	player_angle = get_rad(data->player.o);
 	data->ray->angle_diff = change_rad_angle(player_angle, ray_angle, '-');
 	data->ray_length = data->ray_length * cos(data->ray->angle_diff);
-	data->ray->line_height = (SIZE * HEIGHT_3D) / data->ray_length;
+	data->ray->line_height = (SIZE_3D * HEIGHT_3D) / data->ray_length;
 	data->ray->ty_step = data->text[data->ray->wall].size.y
 		/ data->ray->line_height;
 	data->ray->ty_offset = 0;

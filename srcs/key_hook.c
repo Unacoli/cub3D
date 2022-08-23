@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 18:34:07 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:15:07 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	act_keypress(t_data *data)
 
 int	hook_keypress(int keycode, t_data *data)
 {
-	if (keycode == XK_Escape) 
+	if (keycode == XK_Escape)
 	{
 		ft_printf("Game closed\n");
 		mlx_loop_end(data->mlx);

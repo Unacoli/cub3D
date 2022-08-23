@@ -1,7 +1,7 @@
-EA ./textures/norminet/east.xpm
-WE ./textures/norminet/north.xpm
-NO ./textures/norminet/west.xpm
-SO ./textures/cat_big/south_big.xpm
+EA ./textures/cat_compas/east.xpm
+WE ./textures/cat_compas/west.xpm
+NO ./textures/cat_compas/north.xpm
+SO ./textures/cat_compas/south.xpm
 C 255, 186, 8
 F 50, 1, 19
 111111111111111

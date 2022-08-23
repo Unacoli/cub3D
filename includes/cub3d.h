@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 22:25:39 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:34:21 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 # include <X11/keysymdef.h>
 # include "../libft/include/libft.h"
 
-# define SIZE 64
+# define SIZE 16
+# define SIZE_3D 64
 # define PI 3.14159265359
 # define FOV 30
 # define FACING_UP 0
