@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/22 22:38:18 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:31:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_map_data(t_data *data, t_line *map)
 	free(map);
 }
 
-void	free_textures(t_data *data)
+void	free_textures(t_data *data, int status)
 {
 	int	i;
 
@@ -38,32 +38,33 @@ void	free_textures(t_data *data)
 	free(data->map_path);
 	while (i < 4)
 	{
-		if (data->text[i].img)
+		if (data->text[i].img && !status)
 			mlx_destroy_image(data->mlx, data->text[i].img);
 		i++;
 	}
 	free(data->text);
 }
 
-void	free_game_data(t_data *data)
+void	free_game_data(t_data *data, int status)
 {
 	free_map_data(data, data->map);
-	free_textures(data);
 	free(data->c_palette);
 	free(data->ray);
-	if (data->screen->img)
+	free_textures(data, status);
+	if (data->screen->img && !status)
 		mlx_destroy_image(data->mlx, data->screen->img);
 	free(data->screen);
-	if (data->mlx)
+	if (data->mlx && !status)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
+	if (data->mlx && !status)
+		mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);
 }
 
-void	exit_game(t_data *data, char *msg)
+void	exit_game(t_data *data, char *msg, int status)
 {
 	ft_printf("%s\n", msg);
-	free_game_data(data);
-	exit(1);
+	free_game_data(data, status);
+	exit(status);
 }

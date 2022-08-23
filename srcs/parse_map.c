@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 20:51:47 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:33:18 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,30 @@ int	scan_map(t_line *map, t_data *data, int x, int y)
 	return (0);
 }
 
-void	get_file(t_data *data, int fd)
+int	get_file(t_data *data, int fd)
 {
 	char	*line;
+	int		ret;
 
-	while (get_next_line(fd, &line))
+	ret = get_next_line(fd, &line);
+	while (ret)
 	{
 		if (!only_isspace(line))
-		{
 			ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
-		}
 		else
 			free(line);
+		ret = get_next_line(fd, &line);
 	}
 	if (!only_isspace(line))
 		ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
 	else
 		free(line);
+	if (ret == -1)
+	{
+		ft_lstclear(&data->m_info->map, &free);
+		return (ft_printf("Error\nMap file could not be opened\n"));
+	}
+	return (0);
 }
 
 int	parse_map(t_data *data, int fd)
@@ -88,7 +95,8 @@ int	parse_map(t_data *data, int fd)
 	fd = open(data->map_path, O_RDONLY);
 	if (fd == -1)
 		return (ft_error("No map given, couldn't open file"));
-	get_file(data, fd);
+	if (get_file(data, fd))
+		return (1);
 	if (is_valid_file(data))
 		ret++;
 	ft_lstclear(&data->m_info->map, &free);

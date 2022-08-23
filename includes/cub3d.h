@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 20:41:11 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:25:39 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,8 +219,8 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
 //-----------------//
 
 //------UTILS------//
-void	free_game_data(t_data *data);
-void	exit_game(t_data *data, char *msg);
+void	free_game_data(t_data *data, int status);
+void	exit_game(t_data *data, char *msg, int status);
 t_rgb	get_rgb(int r, int g, int b, int o);
 //-----------------//
 

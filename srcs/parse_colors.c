@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:47:32 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/23 20:53:28 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:27:49 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	get_ceiling(t_data *data, char *rgb, int i)
 int	fetch_colors(t_data *data, char c, char *rgb)
 {
 	if (!rgb)
-		exit_game(data, "Error\nAllocation failure\n");
+		exit_game(data, "Error\nAllocation failure\n", 1);
 	if (rgb[0] == ' ')
 		rgb = swap_str(rgb, ft_strtrim(rgb, " "));
 	if (c == 'F')

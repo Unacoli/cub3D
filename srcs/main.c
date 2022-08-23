@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:49:09 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/13 02:58:49 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:28:04 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int ac, char **av)
 	if (!ft_malloc((void **)&(data), sizeof(t_data)))
 		return (EXIT_FAILURE);
 	init_game_data(data, av);
-	cub_start(data);
-	free_game_data(data);
+	if (cub_start(data))
+		exit_game(data, "Problem encountered, check above", 1);
+	free_game_data(data, 0);
 	return (EXIT_SUCCESS);
 }
