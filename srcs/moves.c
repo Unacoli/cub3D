@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 23:03:02 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:04:42 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 	my = (int)(d->convert.y + v_y * speed * (dir.y * 2)) / 64;
 	if (d->player.x != mx && d->player.y != my)
 	{
-		if (d->map[my].line[(int)d->player.x] == '1')
+		if (d->map[my].line[(int)d->player.x] == '1' || d->map[my].line[(int)d->player.x] == ' ')
 			v_y = 0;
-		if (d->map[(int)d->player.y].line[mx] == '1')
+		if (d->map[(int)d->player.y].line[mx] == '1' || d->map[(int)d->player.y].line[mx] == ' ')
 			v_x = 0;
 	}
 	if (my < d->m_info->size.y && my >= 0 && mx < d->map[my].len
