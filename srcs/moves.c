@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 02:01:21 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:14:20 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ void	change_player_pos(double orientation, t_data *data, t_pos dir, int speed)
 	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
-	mx = (int)(data->convert.x + v_x * speed * (dir.x * 4)) / 64;
-	my = (int)(data->convert.y + v_y * speed * (dir.y * 4)) / 64;
+	data->player.x = (int)data->convert.x / 64;
+	data->player.y = (int)data->convert.y / 64;
+	mx = (int)(data->convert.x + v_x * speed * (dir.x * 2)) / 64;
+	my = (int)(data->convert.y + v_y * speed * (dir.y * 2)) / 64;
 	if (my < data->m_info->size.y && my >= 0
 			&& mx < data->map[my].len
 			&& mx >= 0
 			&& data->map[my].line[mx] != '1')
 	{
-		data->convert.x += (v_x * speed) * (dir.x * 2);
-		data->convert.y += (v_y * speed) * (dir.y * 2);
+			data->convert.x += (v_x * speed) * (dir.x * 2);
+			data->convert.y += (v_y * speed) * (dir.y * 2);
 	}
 }
 

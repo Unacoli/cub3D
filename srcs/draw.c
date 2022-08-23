@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/22 16:00:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:26:51 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_wall(t_data *data, int i)
 
 t_rgb	get_pixel_color(t_text text, int x, int y)
 {
-	if ((x >= 0 && x < text.size.x) && (y >= 0 && y < text.size.y))
+	if ((x >= 0 && x <= text.size.x) && (y >= 0 && y <= text.size.y))
 		return (text.draw[y * (int)text.size.x + x]);
 	return (get_rgb(0, 0, 0, 0));
 }

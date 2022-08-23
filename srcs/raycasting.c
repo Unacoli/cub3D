@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/23 02:52:46 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:13:26 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 			draw_ray(data, start, &data->ray->h_ray, ray_angle);
 			data->ray->ray_pos = point(data->ray->h_ray.x, data->ray->h_ray.y, 0);
 			data->ray_length = data->ray->h_ray.length;
+			data->ray->tx = (((int)data->ray->ray_pos.x % 64));
 			if (ray_angle > PI)
 				set_wall(data, 0);
 			if (ray_angle < PI)
 				set_wall(data, 1);
-			data->ray->tx = ((int)data->ray->ray_pos.x % 64);
 		}
 		else
 		{

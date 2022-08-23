@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 02:47:31 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:32:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,14 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
 	y = HEIGHT_3D;
 	ray->ty = text->size.y - (ray->ty_offset * ray->ty_step);
+	ray->tx = ray->tx / 64 * text->size.x;
+	if (data->ray->wall == 3 || data->ray->wall == 1)
+		ray->tx = (text->size.x - ray->tx - 1);
 	while (y >= 0)
 	{
 		if (y <= ray->line_height + ray->line_offset && y >= ray->line_offset)
 		{
-			ray->wall_color = get_pixel_color(data->text[ray->wall], ray->tx / 64 * text->size.x, ray->ty / 50 * text->size.y);
+			ray->wall_color = get_pixel_color(data->text[ray->wall], ray->tx, ray->ty / 50 * text->size.y);
 			draw_pixel(data, x, y, ray->wall_color, data->screen->draw);
 			ray->ty -= ray->ty_step;
 		}
