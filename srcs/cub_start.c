@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:37:36 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/24 15:27:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:33:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	start_game(t_data *data)
 		data->player.o = 90;
 	if (data->player.facing == 'W')
 		data->player.o = 180;
-	map_fill(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen->img, 0, 0);
 	mlx_hook(data->win, DestroyNotify, 1L << 17, mlx_loop_end, data->mlx);
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
 	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
 	mlx_loop_hook(data->mlx, &act_keypress, data);
+	map_fill(data);
 	mlx_loop(data->mlx);
 }
 

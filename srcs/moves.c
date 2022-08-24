@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 14:58:29 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:38:25 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,13 @@ void	increment_pos(t_data *data, double x, double y)
 	data->p_3d = point_3d(data->convert.x, data->convert.y);
 }
 
-void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
+void	change_player_pos(double t, t_data *d, t_pos dir, int speed)
 {
-	double	t;
 	double	v_x;
 	double	v_y;
 	int		mx;
 	int		my;
 
-	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
 	d->player.x = (int)d->convert.x / SIZE;
@@ -67,11 +65,11 @@ void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 
 int	move_player(int keycode, t_data *data)
 {
-	int	speed;
+	int	s;
 
-	speed = MOVE_SPEED;
+	s = MOVE_SPEED;
 	if (data->keys.shift)
-		speed += 1;
+		s += 1;
 	if (keycode == XK_Escape)
 	{
 		ft_printf("You pressed escape key\nGame closed\n");
@@ -81,14 +79,14 @@ int	move_player(int keycode, t_data *data)
 	if (keycode == XK_Left || keycode == XK_Right)
 		rotate_player(keycode, data, ROTATE_SPEED);
 	if (keycode == XK_W)
-		change_player_pos(data->player.o, data, point(1, 1, 0), speed);
+		change_player_pos(get_rad(data->player.o), data, point(1, 1, 0), s);
 	if (keycode == XK_S)
-		change_player_pos(data->player.o, data, point(-1, -1, 0), speed);
+		change_player_pos(get_rad(data->player.o), data, point(-1, -1, 0), s);
 	if (keycode == XK_A)
-		change_player_pos(change_angle(data->player.o, 90, '-'),
-			data, point(1, 1, 0), speed);
+		change_player_pos(change_angle(get_rad(data->player.o), 90, '-'),
+			data, point(1, 1, 0), s);
 	if (keycode == XK_D)
-		change_player_pos(change_angle(data->player.o, 90, '-'),
-			data, point(-1, -1, 0), speed);
+		change_player_pos(change_angle(get_rad(data->player.o), 90, '-'),
+			data, point(-1, -1, 0), s);
 	return (0);
 }
