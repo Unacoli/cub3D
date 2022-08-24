@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:33:49 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:41:09 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,24 @@ void	map_fill(t_data *data)
 
 	y = 0;
 	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
-	while (y < data->m_info->size.y)
+	if (data->keys.map)
 	{
-		x = 0;
-		while (data->map[y].line[x])
-		{	
-			if (data->map[y].line[x] == '1')
-				draw_texture(data, point(x * SIZE, y * SIZE, 0),
-					data->m_info->floor_color, SIZE);
-			if (data->map[y].line[x] == '0' || !is_player(data->map[y].line[x]))
-				draw_texture(data, point(x * SIZE, y * SIZE, 0),
-					data->m_info->ceiling_color, SIZE);
-			x++;
+		while (y < data->m_info->size.y)
+		{
+			x = 0;
+			while (data->map[y].line[x])
+			{	
+				if (data->map[y].line[x] == '1')
+					draw_texture(data, point(x * SIZE, y * SIZE, 0),
+						data->m_info->floor_color, SIZE);
+				if (data->map[y].line[x] == '0' || !is_player(data->map[y].line[x]))
+					draw_texture(data, point(x * SIZE, y * SIZE, 0),
+						data->m_info->ceiling_color, SIZE);
+				x++;
+			}
+			y++;
 		}
-		y++;
+		draw_texture(data, point((data->convert.x - 2),
+				(data->convert.y - 2), 0), data->c_palette->red, 4);
 	}
-	draw_texture(data, point((data->convert.x - 2),
-			(data->convert.y - 2), 0), data->c_palette->red, 4);
 }

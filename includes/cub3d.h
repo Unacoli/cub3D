@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:25:48 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:40:17 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_keys
 	int	s;
 	int	d;
 	int	w;
-	int	m;
+	int	map;
 	int	shift;
 	int	l_arr;
 	int	r_arr;

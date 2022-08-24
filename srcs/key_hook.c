@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/24 15:34:16 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:40:34 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	hook_keypress(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
+	if (keycode == XK_M || keycode == XK_m)
+		data->keys.map = !data->keys.map;
 	if (keycode == XK_W || keycode == XK_w
 		|| keycode == XK_Z || keycode == XK_z)
 		data->keys.w = !data->keys.w;
@@ -49,8 +51,6 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.a = !data->keys.a;
 	if (keycode == XK_D || keycode == XK_d)
 		data->keys.d = !data->keys.d;
-	if (keycode == XK_M || keycode == XK_m)
-		data->keys.m = !data->keys.m;
 	if (keycode == XK_Left)
 		data->keys.l_arr = !data->keys.l_arr;
 	if (keycode == XK_Right)
