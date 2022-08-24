@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 14:48:18 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:06:50 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	init_textures_data(t_data *data)
 void	init_mlx_data(t_data *data, int trash)
 {
 	data->mlx = mlx_init();
+	if (!data->mlx)
+		exit_game(data, "No screen link couldn't operate MLX", 1);
 	data->screen->size.y = HEIGHT_3D;
 	data->screen->size.x = WIDTH_3D;
 	data->win = mlx_new_window(data->mlx, data->screen->size.x,
