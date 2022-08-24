@@ -24,9 +24,9 @@ void	stock_element(t_data *data, int *elems, char *line)
 	if (!ft_strncmp(line, "WE ", 3))
 		data->m_info->we_path = ft_substr(line, 3, ft_strlen(line) - 3);
 	if (!ft_strncmp(line, "F ", 2))
-		fetch_colors(data, 'F', ft_substr(line, 2, ft_strlen(line) - 1));
+		fetch_colors(data, 'F', line + 2);
 	if (!ft_strncmp(line, "C ", 2))
-		fetch_colors(data, 'C', ft_substr(line, 2, ft_strlen(line) - 1));
+		fetch_colors(data, 'C', line + 2);
 }
 
 void	trim_textures(t_data *data)

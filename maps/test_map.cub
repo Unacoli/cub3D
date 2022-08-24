@@ -1,7 +1,7 @@
-NO ./texture/shrek/shrek1.xpm
-EA ./texture/shrek/shrek2.xpm
-WE ./texture/shrek/shrek3.xpm
-SO ./texture/shrek/shrek4.xpm
+NO ./textures/cat_big/north_big.xpm
+EA ./textures/cat_big/east_big.xpm
+WE ./textures/cat_big/west_big.xpm
+SO ./textures/cat_big/south_big.xpm
 
 C 255,186,8
 F 50,1,19

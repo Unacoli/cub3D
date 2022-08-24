@@ -1,6 +1,6 @@
 EA ./textures/cat_compass/east.xpm
 WE ./textures/cat_compass/west.xpm
-NO ./textures/cat_compass/north.xpm
+NO 
 SO ./textures/cat_compass/south.xpm
 C 255, 186, 8
 F 50, 1, 19

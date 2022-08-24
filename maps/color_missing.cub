@@ -3,7 +3,7 @@ WE ./textures/cat_compass/west.xpm
 NO ./textures/cat_compass/north.xpm
 SO ./textures/cat_compass/south.xpm
 C 255, 186, 8
-F 50, 1, 19
+F 
 111111111111111
 100001111011001
 100000E00110001

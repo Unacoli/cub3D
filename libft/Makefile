@@ -15,7 +15,7 @@ NAME		= libft.a
 
 # ----------- COMPILER FLAGS -------
 CC			= clang
-CFLAGS		+= -Wall -Wextra -Werror
+CFLAGS		+= -Wall -Wextra -Werror -g3
 
 # ----------- FILES ----------------
 INCLUDE		= ./include

@@ -14,18 +14,20 @@
 
 int	allocate_game_data(t_data *data, char **av)
 {
-	if (!ft_malloc((void **)&(data->m_info), sizeof(t_map)))
-		return (1);
-	if (!ft_malloc((void **)&(data->text), sizeof(t_text) * 4))
-		return (1);
-	if (!ft_malloc((void **)&(data->c_palette), sizeof(t_color)))
-		return (1);
-	if (!ft_malloc((void **)&(data->screen), sizeof(t_text)))
-		return (1);
-	if (!ft_malloc((void **)&(data->ray), sizeof(t_draw)))
-		return (1);
+	int	i;
+
+	i = 0;
+	data->m_info = (t_map *)malloc(sizeof(t_map));
+	data->text = (t_text *)malloc(sizeof(t_text) * 4);
+	data->c_palette = (t_color *)malloc(sizeof(t_color));
+	data->screen = (t_text *)malloc(sizeof(t_text));
+	data->ray = (t_draw *)malloc(sizeof(t_draw));
 	data->map_path = ft_strdup(av[1]);
-	if (!data->map_path)
+	if (!(data->ray && data->screen && data->c_palette && data->text 
+		&& data->m_info && data->map_path))
 		return (1);
+	while (i < 4)
+	   data->text[i++].img = NULL;
+	data->screen->img = NULL;
 	return (0);
 }

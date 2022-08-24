@@ -1,7 +1,7 @@
-NO ./textures/cat_compas/north.xpm
-SO ./textures/cat_compas/south.xpm
-WE ./textures/cat_compas/west.xpm
-EA ./textures/cat_compas/east.xpm
+NO ./textures/norminet/north.xpm
+SO ./textures/norminet/south.xpm
+WE ./textures/norminet/west.xpm
+EA ./textures/norminet/east.xpm
 
 F 220,100,0
 C 225,30,0

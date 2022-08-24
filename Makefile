@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/24 16:01:59 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/24 17:41:14 by nargouse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIB	= $(MLX) $(LIBFT)
 # ----------- COMPILER FLAGS -------
 
 CC			=	clang
-CFLAGS		+=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		+=	-Wall -Wextra -Werror -g3
 LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- FILES ----------------
@@ -42,7 +42,7 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/exit_game.c				\
 				$(SRC)/fill_map.c				\
 				$(SRC)/get_rgb.c				\
-				$(SRC)/init.c					\
+				$(SRC)/init_game.c				\
 				$(SRC)/key_hook.c				\
 				$(SRC)/malloc_data.c			\
 				$(SRC)/maths.c					\
@@ -55,7 +55,7 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/raycasting.c				\
 				$(SRC)/rays.c					\
 				$(SRC)/setup_rays.c				\
-				$(SRC)/utils.c					\
+				$(SRC)/init_subdata.c			\
 				$(SRC)/rescale_size.c
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))

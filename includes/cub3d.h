@@ -169,6 +169,7 @@ int		allocate_game_data(t_data *data, char **av);
 void	init_game_data(t_data *data, char **av);
 void	init_subdata(t_data *data);
 void	init_mlx_data(t_data *data, int trash);
+void	assign_text(t_data *data, int nb, char *path);
 //-----------------//
 
 //-----PARSING-----//

@@ -69,14 +69,18 @@ void	get_ceiling(t_data *data, char *rgb, int i)
 
 int	fetch_colors(t_data *data, char c, char *rgb)
 {
-	if (!rgb)
-		exit_game(data, "Error\nAllocation failure\n", 1);
+	if (!rgb || ft_strlen(rgb) < 7)
+	{
+		ft_lstclear(&data->m_info->map, &free);
+		exit_game(data, "Error\nMissing color in map", 1);
+	}
 	if (rgb[0] == ' ')
 		rgb = swap_str(rgb, ft_strtrim(rgb, " "));
 	if (c == 'F')
 		get_floor(data, rgb, 0);
 	if (c == 'C')
 		get_ceiling(data, rgb, 0);
-	free(rgb);
+	if (!data->text)
+		free(rgb);
 	return (check_colors(data, c));
 }

@@ -55,7 +55,7 @@ int	hook_keypress(int keycode, t_data *data)
 		data->keys.l_arr = !data->keys.l_arr;
 	if (keycode == XK_Right)
 		data->keys.r_arr = !data->keys.r_arr;
-	if (keycode == 65505)
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
 		data->keys.shift = !data->keys.shift;
 	return (0);
 }

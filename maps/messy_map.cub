@@ -1,17 +1,17 @@
-WE ./textures/cat_compas/west.xpm
+WE ./textures/cat_compass/west.xpm
 
 
 
-NO ./textures/cat_compas/north.xpm
+NO ./textures/cat_compass/north.xpm
 
 
 
-SO ./textures/cat_compas/south.xpm
+SO ./textures/cat_compass/south.xpm
 
 F 34,34,34
 C 242,242,242
 
-EA ./textures/cat_compas/east.xpm
+EA ./textures/cat_compass/east.xpm
 
 
 

@@ -51,12 +51,12 @@ void	free_game_data(t_data *data, int status)
 	free(data->c_palette);
 	free(data->ray);
 	free_textures(data, status);
-	if (data->screen->img && !status)
+	if (data->screen->img)
 		mlx_destroy_image(data->mlx, data->screen->img);
 	free(data->screen);
-	if (data->mlx && !status)
+	if (data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx && !status)
+	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);

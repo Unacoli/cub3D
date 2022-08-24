@@ -35,7 +35,7 @@ void	start_game(t_data *data)
 int	cub_start(t_data *data)
 {
 	if (parse_map(data, 0))
-		return (ft_error("File error, check description above"));
+		return (1);
 	else
 		start_game(data);
 	return (0);
