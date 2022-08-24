@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/24 15:22:45 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:23:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	v_ray_set(t_data *data, double ray_angle)
 	data->ray->ray_pos = point(data->ray->v_ray.x,
 			data->ray->v_ray.y, 0);
 	if (ray_angle < (PI / 2) || ray_angle > ((3 * PI) / 2))
-		set_wall(data, 2);
-	if (ray_angle > (PI / 2) && ray_angle < ((3 * PI) / 2))
 		set_wall(data, 3);
+	if (ray_angle > (PI / 2) && ray_angle < ((3 * PI) / 2))
+		set_wall(data, 2);
 	data->ray_length = data->ray->v_ray.length;
 	data->ray->tx = ((int)data->ray->ray_pos.y % SIZE_3D);
 }

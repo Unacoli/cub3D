@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:07:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:23:32 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 	y = HEIGHT_3D;
 	ray->ty = text->size.y - (ray->ty_offset * ray->ty_step);
 	ray->tx = ray->tx / SIZE_3D * text->size.x;
-	if (data->ray->wall == 3 || data->ray->wall == 1)
+	if (data->ray->wall == 2 || data->ray->wall == 1)
 		ray->tx = (text->size.x - ray->tx - 1);
 	while (y >= 0)
 	{
