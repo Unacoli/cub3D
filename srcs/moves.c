@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:38:25 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:48:29 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	move_player(int keycode, t_data *data)
 
 	s = MOVE_SPEED;
 	if (data->keys.shift)
-		s += 1;
+		s += 2;
 	if (keycode == XK_Escape)
 	{
 		ft_printf("You pressed escape key\nGame closed\n");
@@ -83,10 +83,10 @@ int	move_player(int keycode, t_data *data)
 	if (keycode == XK_S)
 		change_player_pos(get_rad(data->player.o), data, point(-1, -1, 0), s);
 	if (keycode == XK_A)
-		change_player_pos(change_angle(get_rad(data->player.o), 90, '-'),
+		change_player_pos(get_rad(change_angle(data->player.o, 90, '-')),
 			data, point(1, 1, 0), s);
 	if (keycode == XK_D)
-		change_player_pos(change_angle(get_rad(data->player.o), 90, '-'),
+		change_player_pos(get_rad(change_angle(data->player.o, 90, '-')),
 			data, point(-1, -1, 0), s);
 	return (0);
 }
