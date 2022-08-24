@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 23:23:17 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:07:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 
 	while (dof < 9000)
 	{
-		mx = (int)(ray->x / 64);
-		my = (int)(ray->y / 64);
+		mx = (int)(ray->x / SIZE_3D);
+		my = (int)(ray->y / SIZE_3D);
 		if (my < data->m_info->size.y && my >= 0
 			&& mx < data->map[my].len
 			&& mx >= 0
@@ -78,10 +78,10 @@ void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
 	double	y;
 	double	x;
 
-	x = rays * (WIDTH_3D / NB_RAYS) + data->m_info->size.x * 64;
+	x = rays * (WIDTH_3D / NB_RAYS);
 	y = HEIGHT_3D;
 	ray->ty = text->size.y - (ray->ty_offset * ray->ty_step);
-	ray->tx = ray->tx / 64 * text->size.x;
+	ray->tx = ray->tx / SIZE_3D * text->size.x;
 	if (data->ray->wall == 3 || data->ray->wall == 1)
 		ray->tx = (text->size.x - ray->tx - 1);
 	while (y >= 0)

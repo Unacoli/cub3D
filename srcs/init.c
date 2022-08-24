@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 23:21:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:48:18 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_textures_data(t_data *data)
 void	init_mlx_data(t_data *data, int trash)
 {
 	data->mlx = mlx_init();
-	data->screen->size.y = data->m_info->size.y * 64 + HEIGHT_3D / 2;
-	data->screen->size.x = data->m_info->size.x * 64 + WIDTH_3D;
+	data->screen->size.y = HEIGHT_3D;
+	data->screen->size.x = WIDTH_3D;
 	data->win = mlx_new_window(data->mlx, data->screen->size.x,
 			data->screen->size.y, "cub3D");
 	data->screen->img = mlx_new_image(data->mlx,

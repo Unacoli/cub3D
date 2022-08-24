@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/23 23:37:37 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:22:45 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,22 @@ void	draw_cub(t_data *data, double ray_angle, int rays)
 	draw_line(data, rays, &(data->text[data->ray->wall]), data->ray);
 }
 
-void	h_ray_set(t_data *data, t_pos start, double ray_angle)
+void	h_ray_set(t_data *data, double ray_angle)
 {
 	data->ray->wall_color = data->c_palette->red;
-	draw_ray(data, start, &data->ray->h_ray, ray_angle);
 	data->ray->ray_pos = point(data->ray->h_ray.x,
 			data->ray->h_ray.y, 0);
 	data->ray_length = data->ray->h_ray.length;
-	data->ray->tx = (((int)data->ray->ray_pos.x % 64));
+	data->ray->tx = (((int)data->ray->ray_pos.x % SIZE_3D));
 	if (ray_angle > PI)
 		set_wall(data, 0);
 	if (ray_angle < PI)
 		set_wall(data, 1);
 }
 
-void	v_ray_set(t_data *data, t_pos start, double ray_angle)
+void	v_ray_set(t_data *data, double ray_angle)
 {
 	data->ray->wall_color = data->c_palette->blue;
-	draw_ray(data, start, &data->ray->v_ray, ray_angle);
 	data->ray->ray_pos = point(data->ray->v_ray.x,
 			data->ray->v_ray.y, 0);
 	if (ray_angle < (PI / 2) || ray_angle > ((3 * PI) / 2))
@@ -57,7 +55,7 @@ void	v_ray_set(t_data *data, t_pos start, double ray_angle)
 	if (ray_angle > (PI / 2) && ray_angle < ((3 * PI) / 2))
 		set_wall(data, 3);
 	data->ray_length = data->ray->v_ray.length;
-	data->ray->tx = ((int)data->ray->ray_pos.y % 64);
+	data->ray->tx = ((int)data->ray->ray_pos.y % SIZE_3D);
 }
 
 void	raycasting(t_data *data, t_pos start, int nb_rays)
@@ -72,9 +70,9 @@ void	raycasting(t_data *data, t_pos start, int nb_rays)
 		cast_h_ray(data, start, ray_angle);
 		cast_v_ray(data, start, ray_angle);
 		if (data->ray->h_ray.length < data->ray->v_ray.length)
-			h_ray_set(data, start, ray_angle);
+			h_ray_set(data, ray_angle);
 		else
-			v_ray_set(data, start, ray_angle);
+			v_ray_set(data, ray_angle);
 		draw_cub(data, ray_angle, rays);
 		ray_angle = change_rad_angle(ray_angle, RAD_1 / (NB_RAYS / FOV), '+');
 		rays++;

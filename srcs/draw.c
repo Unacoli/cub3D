@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 23:34:40 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:27:48 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,19 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 {
 	double	t;
 	double	length;
+	t_pos	player;
 
 	t = ray_angle;
 	ray->x_dir = cos(t);
 	ray->y_dir = sin(t);
-	ray->x = start.x;
-	ray->y = start.y;
+	ray->x = start.x / SIZE_3D * SIZE;
+	ray->y = start.y / SIZE_3D * SIZE;
 	length = 0;
+	player = point_2d(start.x, start.y);
 	while (length < 8000
-		&& get_dist(start, point(ray->x, ray->y, 0)) < ray->length)
+		&& get_dist(player, point(ray->x, ray->y, 0)) < ray->length)
 	{
-		draw_pixel(data, ray->x, ray->y, data->ray->wall_color);
+		draw_pixel(data, ray->x, ray->y, data->c_palette->white);
 		ray->y += ray->y_dir;
 		ray->x += ray->x_dir;
 		length++;
@@ -72,6 +74,7 @@ void	map_fill(t_data *data)
 	int	y;
 
 	y = 0;
+	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
 	while (y < data->m_info->size.y)
 	{
 		x = 0;
@@ -87,7 +90,6 @@ void	map_fill(t_data *data)
 		}
 		y++;
 	}
-	draw_texture(data, point((data->convert.x - 8),
-			(data->convert.y - 8), 0), data->c_palette->red, 4);
-	raycasting(data, point(data->convert.x, data->convert.y, 0), NB_RAYS);
+	draw_texture(data, point((data->convert.x - 2),
+			(data->convert.y - 2), 0), data->c_palette->red, 4);
 }

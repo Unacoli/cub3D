@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 22:33:18 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:01:36 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	scan_map(t_line *map, t_data *data, int x, int y)
 				data->player = point(x, y, map[y].line[x]);
 				data->convert = point(data->player.x * SIZE + (SIZE / 2),
 						data->player.y * SIZE + (SIZE / 2), 0);
+				data->p_3d = point_3d(data->convert.x, data->convert.y);
 				data->m_info->nb_player++;
 			}
 			if (data->m_info->nb_player > 1)

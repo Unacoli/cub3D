@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 00:15:20 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:58:29 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	increment_pos(t_data *data, double x, double y)
 {
 	data->convert.x += x;
 	data->convert.y += y;
+	data->p_3d = point_3d(data->convert.x, data->convert.y);
 }
 
 void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
@@ -45,10 +46,10 @@ void	change_player_pos(double orientation, t_data *d, t_pos dir, int speed)
 	t = get_rad(orientation);
 	v_x = cos(t);
 	v_y = sin(t);
-	d->player.x = (int)d->convert.x / 64;
-	d->player.y = (int)d->convert.y / 64;
-	mx = (int)(d->convert.x + v_x * speed * (dir.x * 2)) / 64;
-	my = (int)(d->convert.y + v_y * speed * (dir.y * 2)) / 64;
+	d->player.x = (int)d->convert.x / SIZE;
+	d->player.y = (int)d->convert.y / SIZE;
+	mx = (int)(d->convert.x + v_x * speed * (dir.x * 2)) / SIZE;
+	my = (int)(d->convert.y + v_y * speed * (dir.y * 2)) / SIZE;
 	if (d->player.x != mx && d->player.y != my)
 	{
 		if (d->map[my].line[(int)d->player.x] == '1'

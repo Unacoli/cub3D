@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/23 23:34:21 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:25:48 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 # define WALL_HEIGHT 960
 # define WIDTH_3D 760
 # define NB_RAYS 760
-# define MOVE_SPEED 3
-# define ROTATE_SPEED 5
+# define MOVE_SPEED 2
+# define ROTATE_SPEED 2
 
 # define NORTH_T 0
 # define EAST_T 1
@@ -145,6 +145,8 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	double		ray_length;
+	int			minimap;
+	t_pos		p_3d;
 	t_draw		*ray;
 	t_text		*screen;
 	t_line		*map;
@@ -233,6 +235,8 @@ double	change_rad_angle(double angle, double iterate, char iterator);
 double	get_angle(double rad);
 double	get_dist(t_pos start, t_pos end);
 int		check_pos(double pos);
+t_pos	point_3d(double x, double y);
+t_pos	point_2d(double x, double y);
 //-----------------//
 
 #endif

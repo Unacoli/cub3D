@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/23 22:41:47 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/24 14:57:16 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/rays.c					\
 				$(SRC)/setup_rays.c				\
 				$(SRC)/utils.c					\
+				$(SRC)/rescale_size.c
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 
