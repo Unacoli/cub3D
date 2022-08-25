@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:42:03 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 03:08:11 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:41:55 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,22 @@ int	check_id(char *str)
 	return (0);
 }
 
+void	*error_ret(char *str)
+{
+	ft_printf("%s\n", str);
+	return (NULL);
+}
+
 t_list	*is_valid_id(t_list *file_line, t_data *data)
 {
 	int		elems;
 	char	*line;
 	int		i;
 
-	i = 0;
 	elems = 0;
 	while (file_line && elems < 6)
 	{
+		i = 0;
 		line = file_line->content;
 		if (line && line[0] == ' ')
 		{
@@ -42,18 +48,10 @@ t_list	*is_valid_id(t_list *file_line, t_data *data)
 		else
 			stock_element(data, &elems, line);
 		if (i)
-		{
-			free(line);
-			i = 0;
-			line = NULL;
-		}
+			line = swap_str(line, NULL);
 		file_line = file_line->next;
 	}
 	if (elems != 6)
-	{
-		ft_printf("Error\nNot all elements were disposed, missing %d\n",
-			6 - elems);
-		return (NULL);
-	}
+		return (error_ret("Error\nElements missing"));
 	return (file_line);
 }
