@@ -67,7 +67,6 @@ int	get_ceiling(t_data *data, char *rgb, int i)
 		return (printf("Error\nDuplicate elements were given: [C] %s\n", rgb));
 	if (ft_atoi(rgb) > 255 || ft_atoi(rgb) < 0)
 		return (printf("Error\nWrong rgb for floor\n"));
-	printf("%s\n", rgb);
 	data->m_info->ceiling_color.r = ft_atoi(rgb);
 	while (rgb && rgb[i] && ft_isdigit(rgb[i]))
 		i++;
@@ -80,13 +79,13 @@ int	get_ceiling(t_data *data, char *rgb, int i)
 		i++;
 	if (ft_atoi(rgb + (i + 1)) > 255 || ft_atoi(rgb + (i + 1)) < 0)
 		return (printf("Error\nWrong rgb for floor\n"));
-	printf("%s\n", rgb + i + 1);
 	data->m_info->ceiling_color.b = ft_atoi(rgb + i + 1);
 	return (0);
 }
 
 int	fetch_colors(t_data *data, char c, char *rgb)
 {
+	check_space(rgb);
 	if (!rgb || ft_strlen(rgb) < 1 || check_coma(rgb) == 1
 		|| check_numbers(rgb) == 1 || check_format(rgb) == 1)
 	{

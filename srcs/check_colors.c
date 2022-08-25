@@ -26,6 +26,23 @@ int check_numbers(char *rgb)
     return (0);
 }
 
+int check_space(char *rgb)
+{
+    int n;
+
+    n = 0;
+    if (ft_strlen(rgb) < 1)
+        return (0);
+    n = ft_strlen(rgb) - 1;
+    if (rgb[n] == ' ')
+    {
+        while (rgb[n] == ' ')
+            n--;
+        rgb[n + 1] = '\0';
+    }
+    return (0);
+}
+
 int check_format(char *rgb)
 {
     int i;

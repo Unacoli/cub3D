@@ -1,7 +1,7 @@
-NO ./images/NO.xpm
-SO ./images/SO.xpm
-WE ./images/WE.xpm
-EA ./images/EA.xpm
+EA ./textures/cat_compass/east.xpm             
+WE ./textures/cat_compass/west.xpm
+NO ./textures/cat_compass/north.xpm
+SO ./textures/cat_compass/south.xpm 
 F 110,153,15
 C 255,255,255
 

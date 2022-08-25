@@ -188,6 +188,7 @@ int		check_elem(t_line *map, int x, int y, int map_size);
 int 	check_coma(char *rgb);
 int 	check_format(char *rgb);
 int 	check_numbers(char *rgb);
+int 	check_space(char *rgb);
 int		fetch_colors(t_data *data, char c, char *rgb);
 int		is_border(t_line *map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
