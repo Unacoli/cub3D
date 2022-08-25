@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:23:04 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 16:06:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:35:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,19 @@ void	init_mlx_data(t_data *data, int trash)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		exit_game(data, "No screen link couldn't operate MLX", 1);
+		exit_game(data, "No screen link couldn't operate MLX", 0);
 	data->screen->size.y = HEIGHT_3D;
 	data->screen->size.x = WIDTH_3D;
 	data->win = mlx_new_window(data->mlx, data->screen->size.x,
 			data->screen->size.y, "cub3D");
+	if (!data->win)
+		exit_game(data, "Could not create window", 0);
 	data->screen->img = mlx_new_image(data->mlx,
 			data->screen->size.x, data->screen->size.y);
 	data->screen->addr = mlx_get_data_addr(data->screen->img,
 			&trash, &trash, &trash);
+	if (!data->screen->img || !data->screen->addr)
+		exit_game(data, "Could not create a new image or get address", 0);
 	data->screen->draw = (t_rgb *)data->screen->addr;
 	init_textures_data(data);
 }

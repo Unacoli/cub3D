@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 03:14:09 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:33:10 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_map_data(t_data *data, t_line *map)
 	int	i;
 
 	i = 0;
-	while (map && map[i].line && i < data->m_info->size.y)
+	while (map && i < data->m_info->size.y)
 	{
 		free(map[i].line);
 		i++;
@@ -54,7 +54,7 @@ void	free_game_data(t_data *data, int status)
 	if (data->screen->img)
 		mlx_destroy_image(data->mlx, data->screen->img);
 	free(data->screen);
-	if (data->mlx)
+	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
