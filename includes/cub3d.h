@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 16:17:34 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:48:37 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ typedef struct s_map
 	char	*ea_path;
 	char	*no_path;
 	int		nb_player;
+	int		nb_f;
+	int		nb_c;
 	t_pos	size;
 	t_list	*map;
 	t_rgb	ceiling_color;
@@ -176,12 +178,12 @@ void	assign_text(t_data *data, int nb, char *path);
 int		check_av(int ac, char **av);
 int		parse_map(t_data *data, int fd);
 int		is_player(char c);
-int		check_id(char *str);
-t_list	*is_valid_id(t_list *file_line, t_data *data);
+int		check_id(char *str, int elems);
+t_list	*is_valid_id(t_list *file_line, t_data *data, int elems);
 void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(t_line *map, t_data *data, int x, int y);
-void	stock_element(t_data *data, int *elems, char *line);
+int		stock_element(t_data *data, int *elems, char *line);
 int		check_elem(t_line *map, int x, int y, int map_size);
 int		fetch_colors(t_data *data, char c, char *rgb);
 int		is_border(t_line *map, int x, int y, int map_size);

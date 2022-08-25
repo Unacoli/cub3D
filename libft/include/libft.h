@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 01:10:22 by telli             #+#    #+#             */
-/*   Updated: 2022/08/12 00:02:19 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:41:43 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+void				*error_ret(char *str);
 char				*ft_strdup(const char *s);
 void				str_arr_display(char **str);
 void				str_arr_free(char **str);
