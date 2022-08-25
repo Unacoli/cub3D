@@ -35,7 +35,7 @@ int	hook_keypress(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 	{
-		ft_printf("Game closed\n");
+		printf("Game closed\n");
 		mlx_loop_end(data->mlx);
 		return (0);
 	}

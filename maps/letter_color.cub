@@ -1,8 +1,8 @@
-            EA ./textures/cat_compass/east.xpm             
+EA ./textures/cat_compass/east.xpm             
 WE ./textures/cat_compass/west.xpm
 NO ./textures/cat_compass/north.xpm
 SO ./textures/cat_compass/south.xpm            
-F 34,34,34
+F 34,h34,34
 C 242,242,242
  1111111111111 
 100001111011001

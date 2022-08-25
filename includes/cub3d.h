@@ -40,8 +40,8 @@
 # define RAD_1 0.0174533 // 1 degree in radian
 # define HEIGHT_3D 960
 # define WALL_HEIGHT 960
-# define WIDTH_3D 760
-# define NB_RAYS 760
+# define WIDTH_3D 1600
+# define NB_RAYS 1600
 # define MOVE_SPEED 4
 # define ROTATE_SPEED 5
 
@@ -185,6 +185,9 @@ void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(t_line *map, t_data *data, int x, int y);
 int		stock_element(t_data *data, int *elems, char *line);
 int		check_elem(t_line *map, int x, int y, int map_size);
+int 	check_coma(char *rgb);
+int 	check_format(char *rgb);
+int 	check_numbers(char *rgb);
 int		fetch_colors(t_data *data, char c, char *rgb);
 int		is_border(t_line *map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);

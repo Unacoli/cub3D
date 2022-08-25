@@ -56,7 +56,7 @@ int	is_valid_file(t_data *data)
 	file = data->m_info->map;
 	map = is_valid_id(file, data, 0);
 	if (!map)
-		return (ft_printf("No map given\n"));
+		return (printf("No map given\n"));
 	trim_textures(data);
 	if (is_valid_map(data, map))
 		return (1);

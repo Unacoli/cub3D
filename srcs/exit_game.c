@@ -64,7 +64,7 @@ void	free_game_data(t_data *data, int status)
 
 void	exit_game(t_data *data, char *msg, int status)
 {
-	ft_printf("%s\n", msg);
+	printf("%s\n", msg);
 	free_game_data(data, status);
 	exit(status);
 }

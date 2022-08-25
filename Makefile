@@ -28,7 +28,7 @@ LIB	= $(MLX) $(LIBFT)
 # ----------- COMPILER FLAGS -------
 
 CC			=	clang
-CFLAGS		+=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		+=	-Wall -Wextra -Werror -g3
 LFLAGS		=	-Lmlx -lbsd -lXext -lX11 -lmlx -lm
 
 # ----------- FILES ----------------
@@ -56,7 +56,8 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/rays.c					\
 				$(SRC)/setup_rays.c				\
 				$(SRC)/init_subdata.c			\
-				$(SRC)/rescale_size.c
+				$(SRC)/rescale_size.c			\
+				$(SRC)/check_colors.c
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 

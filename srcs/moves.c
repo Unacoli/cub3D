@@ -72,7 +72,7 @@ int	move_player(int keycode, t_data *data)
 		s += 2;
 	if (keycode == XK_Escape)
 	{
-		ft_printf("You pressed escape key\nGame closed\n");
+		printf("You pressed escape key\nGame closed\n");
 		mlx_loop_end(data->mlx);
 		return (0);
 	}

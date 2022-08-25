@@ -23,13 +23,13 @@ int	check_elem(t_line *map, int x, int y, int map_size)
 {
 	if (map[y].line[x] != '1' && map[y].line[x] != '0'
 		&& map[y].line[x] != ' ' && is_player(map[y].line[x]))
-		return (ft_printf("Error\nNot a valid map element: %c\n",
+		return (printf("Error\nNot a valid map element: %c\n",
 				map[y].line[x]));
 	if (((map[y].line[x] == '0' || !is_player(map[y].line[x]))
 			&& is_border(map, x, y, map_size)) || (((map[y].line[x] == '0'
 					|| !is_player(map[y].line[x]))
 				&& is_opened(map, x, y, map_size))))
-		return (ft_printf("Error\nMap is not closed at line: %d column: %d\n",
+		return (printf("Error\nMap is not closed at line: %d column: %d\n",
 				y, x));
 	return (0);
 }
@@ -50,7 +50,7 @@ int	scan_map(t_line *map, t_data *data, int x, int y)
 				data->m_info->nb_player++;
 			}
 			if (data->m_info->nb_player > 1)
-				return (ft_printf("Error\nToo many player elements\n"));
+				return (printf("Error\nToo many player elements\n"));
 			if (check_elem(map, x, y, data->m_info->size.y))
 				return (1);
 			x++;
@@ -58,7 +58,7 @@ int	scan_map(t_line *map, t_data *data, int x, int y)
 		y++;
 	}
 	if (data->m_info->nb_player < 1)
-		return (ft_printf("Error\nNo player on map, (N, S, W, E)\n"));
+		return (printf("Error\nNo player on map, (N, S, W, E)\n"));
 	return (0);
 }
 
@@ -84,7 +84,7 @@ int	get_file(t_data *data, int fd)
 	{
 		if (line)
 			ft_lstclear(&data->m_info->map, &free);
-		return (ft_printf("Error\nMap file could not be opened\n"));
+		return (printf("Error\nMap file could not be opened\n"));
 	}
 	return (0);
 }

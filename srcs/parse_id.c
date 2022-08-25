@@ -19,9 +19,9 @@ int	check_id(char *str, int elems)
 			&& ft_strncmp(str, "C ", 2) && ft_strncmp(str, "F ", 2)))
 	{
 		if (elems < 6)
-			return (ft_printf("Error\nMissing %d elements\n", 6 - elems));
+			return (printf("Error\nMissing %d elements\n", 6 - elems));
 		else
-			return (ft_printf("Error\nNot a valid identifier: %s\n", str));
+			return (printf("Error\nNot a valid identifier: %s\n", str));
 	}
 	return (0);
 }
@@ -36,7 +36,7 @@ t_list	*is_valid_id(t_list *file_line, t_data *data, int elems)
 		i = 0;
 		line = file_line->content;
 		if (line && line[0] == ' ')
-			line = ft_strtrim(line + 0 * i++, " \t\r\v\f\n");
+			line = ft_strtrim(line + 0 * i++, " ");
 		if (check_id(line, elems))
 		{
 			if (i)

@@ -12,6 +12,13 @@
 
 #include "cub3d.h"
 
+t_rgb	get_pixel_color(t_text text, int x, int y)
+{
+	if ((x >= 0 && x <= text.size.x) && (y >= 0 && y <= text.size.y))
+		return (text.draw[y * (int)text.size.x + x]);
+	return (get_rgb(0, 0, 0, 0));
+}
+
 void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 {
 	int	mx;
