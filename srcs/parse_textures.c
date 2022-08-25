@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:51:10 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/20 13:23:27 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:11:34 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,7 @@ void	trim_textures(t_data *data)
 	if (ft_strchr(data->m_info->so_path, ' '))
 		data->m_info->so_path = swap_str(data->m_info->so_path,
 				ft_strtrim(data->m_info->so_path, " "));
+	if (!data->m_info->so_path || !data->m_info->no_path
+	|| !data->m_info->ea_path || !data->m_info->we_path)
+		exit_game(data, "Allocation failed", 0);
 }

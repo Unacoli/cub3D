@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:40:09 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/21 19:56:49 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 02:30:22 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	allocate_game_data(t_data *data, char **av)
 		&& data->m_info && data->map_path))
 		return (1);
 	while (i < 4)
-	   data->text[i++].img = NULL;
+		data->text[i++].img = NULL;
 	data->screen->img = NULL;
 	return (0);
 }

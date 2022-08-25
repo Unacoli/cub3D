@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:01:36 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 02:29:24 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	get_file(t_data *data, int fd)
 	int		ret;
 
 	ret = get_next_line(fd, &line);
-	while (ret)
+	while (ret == 1)
 	{
 		if (!only_isspace(line))
 			ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
@@ -82,7 +82,8 @@ int	get_file(t_data *data, int fd)
 		free(line);
 	if (ret == -1)
 	{
-		ft_lstclear(&data->m_info->map, &free);
+		if (line)
+			ft_lstclear(&data->m_info->map, &free);
 		return (ft_printf("Error\nMap file could not be opened\n"));
 	}
 	return (0);

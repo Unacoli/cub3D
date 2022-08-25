@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/23 20:51:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:14:26 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	is_valid_map(t_data *data, t_list *map)
 	data->m_info->size.y = ft_lstsize(map);
 	data->map = malloc(sizeof(t_line) * (data->m_info->size.y));
 	if (!data->map)
-		return (-1);
+		return (1);
 	fill_map_array(data, map);
 	data->m_info->size.x = find_long_line(data->map, data);
 	if (scan_map(data->map, data, 0, 0))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_id.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:42:03 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/19 13:36:48 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/25 03:08:11 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,28 @@ t_list	*is_valid_id(t_list *file_line, t_data *data)
 {
 	int		elems;
 	char	*line;
+	int		i;
 
+	i = 0;
 	elems = 0;
 	while (file_line && elems < 6)
 	{
 		line = file_line->content;
-		if (line && ft_isspace(line[0]))
-			swap_str(line, ft_strtrim(line, " \t\r\v\f\n"));
+		if (line && line[0] == ' ')
+		{
+			i = 1;
+			line = ft_strtrim(line, " \t\r\v\f\n");
+		}
 		if (check_id(line))
 			return (NULL);
 		else
 			stock_element(data, &elems, line);
+		if (i)
+		{
+			free(line);
+			i = 0;
+			line = NULL;
+		}
 		file_line = file_line->next;
 	}
 	if (elems != 6)
