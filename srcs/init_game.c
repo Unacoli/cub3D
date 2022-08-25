@@ -25,6 +25,7 @@ void	init_mlx_data(t_data *data, int trash)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit_game(data, "No screen link couldn't operate MLX", 0);
+	init_textures_data(data);
 	data->screen->size.y = HEIGHT_3D;
 	data->screen->size.x = WIDTH_3D;
 	data->win = mlx_new_window(data->mlx, data->screen->size.x,
@@ -38,7 +39,6 @@ void	init_mlx_data(t_data *data, int trash)
 	if (!data->screen->img || !data->screen->addr)
 		exit_game(data, "Could not create a new image or get address", 0);
 	data->screen->draw = (t_rgb *)data->screen->addr;
-	init_textures_data(data);
 }
 
 void	init_game_data(t_data *data, char **av)
