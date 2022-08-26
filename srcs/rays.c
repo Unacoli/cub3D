@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 00:20:25 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 00:23:23 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 	ray->length = 8000;
 }
 
-
 void	cast_h_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray)
 {
 	int	dof;
@@ -79,30 +78,6 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray)
 		|| ray->v_ray.angle == ((3 * PI) / 2))
 		reset_ray_data(&ray->v_ray, start, &dof);
 	send_ray(&ray->v_ray, data, dof, start);
-}
-
-void	h_ray_set(t_data *data, double ray_angle, t_draw *ray)
-{
-	ray->pos = point(ray->h_ray.x,
-			ray->h_ray.y, 0);
-	data->ray_length = ray->h_ray.length;
-	ray->tx = (((int)ray->pos.x % 64));
-	if (ray_angle > PI)
-		set_wall(data, 0);
-	if (ray_angle < PI)
-		set_wall(data, 1);
-}
-
-void	v_ray_set(t_data *data, double ray_angle, t_draw *ray)
-{
-	ray->pos = point(ray->v_ray.x,
-			ray->v_ray.y, 0);
-	if (ray_angle < (PI / 2) || ray_angle > ((3 * PI) / 2))
-		set_wall(data, 2);
-	if (ray_angle > (PI / 2) && ray_angle < ((3 * PI) / 2))
-		set_wall(data, 3);
-	data->ray_length = ray->v_ray.length;
-	ray->tx = ((int)ray->pos.y % 64);
 }
 
 void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)

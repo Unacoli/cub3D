@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:56:07 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 00:19:58 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 00:23:35 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,30 @@ void	draw_cub(t_data *data, double ray_angle, int rays)
 	}
 	data->ray->line_offset = (HEIGHT_3D - data->ray->line_height) / 2;
 	draw_line(data, rays, &(data->text[data->ray->wall]), data->ray);
+}
+
+void	h_ray_set(t_data *data, double ray_angle, t_draw *ray)
+{
+	ray->pos = point(ray->h_ray.x,
+			ray->h_ray.y, 0);
+	data->ray_length = ray->h_ray.length;
+	ray->tx = (((int)ray->pos.x % 64));
+	if (ray_angle > PI)
+		set_wall(data, 0);
+	if (ray_angle < PI)
+		set_wall(data, 1);
+}
+
+void	v_ray_set(t_data *data, double ray_angle, t_draw *ray)
+{
+	ray->pos = point(ray->v_ray.x,
+			ray->v_ray.y, 0);
+	if (ray_angle < (PI / 2) || ray_angle > ((3 * PI) / 2))
+		set_wall(data, 2);
+	if (ray_angle > (PI / 2) && ray_angle < ((3 * PI) / 2))
+		set_wall(data, 3);
+	data->ray_length = ray->v_ray.length;
+	ray->tx = ((int)ray->pos.y % 64);
 }
 
 void	send_player_ray(t_data *data, t_pos start)

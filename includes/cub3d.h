@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 00:11:31 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 00:22:39 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,10 +188,10 @@ void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(t_line *map, t_data *data, int x, int y);
 int		stock_element(t_data *data, int *elems, char *line);
 int		check_elem(t_line *map, int x, int y, int map_size);
-int 	check_coma(char *rgb);
-int 	check_format(char *rgb);
-int 	check_numbers(char *rgb);
-int 	check_space(char *rgb);
+int		check_coma(char *rgb);
+int		check_format(char *rgb);
+int		check_numbers(char *rgb);
+int		check_space(char *rgb);
 int		fetch_colors(t_data *data, char c, char *rgb);
 int		is_border(t_line *map, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
