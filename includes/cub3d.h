@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/25 17:48:37 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 00:11:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ typedef struct s_text
 typedef struct s_draw
 {
 	int		wall;
+	double	adj;
+	double	angle;
 	double	tx;
 	double	ty_step;
 	double	ty_offset;
@@ -136,7 +138,7 @@ typedef struct s_draw
 	double	line_height;
 	double	line_offset;
 	double	angle_diff;
-	t_pos	ray_pos;
+	t_pos	pos;
 	t_ray	h_ray;
 	t_ray	v_ray;
 	t_rgb	wall_color;
@@ -149,6 +151,7 @@ typedef struct s_data
 	double		ray_length;
 	int			minimap;
 	t_pos		p_3d;
+	t_draw		*player_ray;
 	t_draw		*ray;
 	t_text		*screen;
 	t_line		*map;
@@ -222,10 +225,12 @@ void	raycasting(t_data *data, t_pos start, int nb_rays);
 void	set_ray_data(t_data *data, int facing, double precision, double atang);
 void	send_rays(t_data *data, t_pos start_point, int nb_rays);
 void	setup_h_ray_data(t_ray *ray, t_pos start, int facing);
+void	h_ray_set(t_data *data, double ray_angle, t_draw *ray);
+void	v_ray_set(t_data *data, double ray_angle, t_draw *ray);
 void	reset_ray_data(t_ray *ray, t_pos start, int *dof);
 void	setup_v_ray_data(t_ray *ray, t_pos start, int facing);
-void	cast_h_ray(t_data *data, t_pos start, double ray_angle);
-void	cast_v_ray(t_data *data, t_pos start, double ray_angle);
+void	cast_v_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray);
+void	cast_h_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray);
 //-----------------//
 
 //------UTILS------//

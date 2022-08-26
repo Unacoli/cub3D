@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:40:09 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 03:42:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 00:07:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	allocate_game_data(t_data *data, char **av)
 	data->c_palette = (t_color *)malloc(sizeof(t_color));
 	data->screen = (t_text *)malloc(sizeof(t_text));
 	data->ray = (t_draw *)malloc(sizeof(t_draw));
+	data->player_ray = (t_draw *)malloc(sizeof(t_draw));
 	data->map_path = ft_strdup(av[1]);
 	if (!(data->ray && data->screen && data->c_palette && data->text
 			&& data->m_info && data->map_path))
