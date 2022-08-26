@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/25 02:29:24 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/26 23:11:23 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,10 @@ int	get_file(t_data *data, int fd)
 	ret = get_next_line(fd, &line);
 	while (ret == 1)
 	{
-		if (!only_isspace(line))
-			ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
-		else
-			free(line);
+		ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
 		ret = get_next_line(fd, &line);
 	}
-	if (!only_isspace(line))
-		ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
-	else
-		free(line);
+	ft_lstadd_back(&(data->m_info->map), ft_lstnew(line));
 	if (ret == -1)
 	{
 		if (line)

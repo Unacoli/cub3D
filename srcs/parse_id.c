@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:42:03 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 17:45:53 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/26 23:06:55 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ t_list	*is_valid_id(t_list *file_line, t_data *data, int elems)
 	{
 		i = 0;
 		line = file_line->content;
+		if (only_isspace(line))
+		{
+			file_line = file_line->next;
+			continue ;
+		}
 		if (line && line[0] == ' ')
 			line = ft_strtrim(line + 0 * i++, " ");
-		if (check_id(line, elems))
-		{
-			if (i)
-				return ((t_list *)swap_str(line, NULL));
+		if (check_id(line, elems) && i)
+			return ((t_list *)swap_str(line, NULL));
+		else if (stock_element(data, &elems, line))
 			return (NULL);
-		}
-		else
-			if (stock_element(data, &elems, line))
-				return (NULL);
 		if (i)
 			line = swap_str(line, NULL);
 		file_line = file_line->next;
