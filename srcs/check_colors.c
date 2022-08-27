@@ -30,7 +30,6 @@ int	check_space(char *rgb)
 {
 	int	n;
 
-	n = 0;
 	if (ft_strlen(rgb) < 1)
 		return (0);
 	n = ft_strlen(rgb) - 1;
@@ -48,7 +47,6 @@ int	check_format(char *rgb)
 	int	i;
 	int	coma;
 
-	coma = 0;
 	i = 0;
 	while (rgb[i])
 	{
