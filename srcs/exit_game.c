@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 03:33:10 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 10:56:04 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	free_game_data(t_data *data, int status)
 	free_map_data(data, data->map);
 	free(data->c_palette);
 	free(data->ray);
+	free(data->player_ray);
 	free_textures(data, status);
 	if (data->screen->img)
 		mlx_destroy_image(data->mlx, data->screen->img);
