@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 15:38:13 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:46:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 # define FACING_LEFT 1
 # define FACING_RIGHT 1
 # define RAD_1 0.0174533 // 1 degree in radian
-# define HEIGHT_3D 960
-# define WALL_HEIGHT 960
-# define WIDTH_3D 1600
-# define NB_RAYS 1600
+# define HEIGHT_3D 640
+# define WALL_HEIGHT 640
+# define WIDTH_3D 1280
+# define NB_RAYS 1280
 # define MOVE_SPEED 4
 # define ROTATE_SPEED 5
 
