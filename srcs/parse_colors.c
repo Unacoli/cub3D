@@ -12,31 +12,6 @@
 
 #include "cub3d.h"
 
-int	check_colors(t_data *data, char c)
-{
-	if (c == 'F')
-	{
-		if ((data->m_info->floor_color.r > 255
-				|| data->m_info->floor_color.r < 0)
-			&& (data->m_info->floor_color.g > 255
-				|| data->m_info->floor_color.g < 0)
-			&& (data->m_info->floor_color.b > 255
-				|| data->m_info->floor_color.b < 0))
-			return (printf("Error\nWrong rgb for floor\n"));
-	}
-	else if (c == 'C')
-	{
-		if ((data->m_info->ceiling_color.r > 255
-				|| data->m_info->ceiling_color.r < 0)
-			&& (data->m_info->ceiling_color.g > 255
-				|| data->m_info->ceiling_color.g < 0)
-			&& (data->m_info->ceiling_color.b > 255
-				|| data->m_info->ceiling_color.b < 0))
-			return (printf("Error\nWrong rgb for ceiling\n"));
-	}
-	return (0);
-}
-
 int	get_floor(t_data *data, char *rgb, int i)
 {
 	data->m_info->nb_f++;
@@ -100,5 +75,5 @@ int	fetch_colors(t_data *data, char c, char *rgb)
 	if (c == 'C')
 		if (get_ceiling(data, rgb, 0))
 			return (1);
-	return (check_colors(data, c));
+	return (0);
 }
