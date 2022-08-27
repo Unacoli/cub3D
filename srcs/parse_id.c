@@ -42,8 +42,12 @@ t_list	*is_valid_id(t_list *file_line, t_data *data, int elems)
 		}
 		if (line && line[0] == ' ')
 			line = ft_strtrim(line + 0 * i++, " ");
-		if (check_id(line, elems) && i)
-			return ((t_list *)swap_str(line, NULL));
+		if (check_id(line, elems))
+		{
+			if (i)
+				return ((t_list *)swap_str(line, NULL));
+			return (NULL);
+		}
 		else if (stock_element(data, &elems, line))
 			return (NULL);
 		if (i)
