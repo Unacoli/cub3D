@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 21:56:19 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 22:23:49 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define WALL_HEIGHT 640
 # define WIDTH_3D 1280
 # define NB_RAYS 1280
-# define MOVE_SPEED 4
+# define MOVE_SPEED 2
 # define ROTATE_SPEED 5
 
 # define NORTH_T 0
