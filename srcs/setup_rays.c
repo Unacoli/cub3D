@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 16:13:23 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 14:46:18 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:21:06 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ void	reset_ray_data(t_ray *ray, t_pos start, int *dof)
 {
 	ray->x = start.x;
 	ray->y = start.y;
-	*dof = 9000;
+	*dof = 2000;
 }

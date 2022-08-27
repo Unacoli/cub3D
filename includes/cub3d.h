@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 15:46:57 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 18:52:57 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ void	draw_pixel(t_data *d, int x, int y, t_rgb color);
 void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle);
 void	draw_texture(t_data *data, t_pos p, t_rgb col, int s);
 void	image(t_data *data);
-void	map_fill(t_data *data, int x, int y);
+void	minimap(t_data *data, int x, int y);
 void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray);
 void	draw_player(t_data *data, t_pos pos, t_rgb color);
 t_rgb	get_pixel_color(t_text text, int x, int y);
@@ -237,6 +237,7 @@ void	cast_h_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray);
 
 //------UTILS------//
 void	free_game_data(t_data *data, int status);
+void	free_map_data(t_line *map, int size);
 void	exit_game(t_data *data, char *msg, int status);
 t_rgb	get_rgb(int r, int g, int b, int o);
 //-----------------//

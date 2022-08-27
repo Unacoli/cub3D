@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 15:52:40 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:29:20 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	change_player_pos(double t, t_data *d, t_pos dir, int speed)
 	d->player.y = (int)d->convert.y / SIZE;
 	mx = (int)(d->convert.x + v_x * speed * (dir.x * 1.5)) / SIZE;
 	my = (int)(d->convert.y + v_y * speed * (dir.y * 1.5)) / SIZE;
-	if (d->player.x != mx && d->player.y != my)
+	/*if (d->player.x != mx && d->player.y != my)
 	{
 		if (d->map[my].line[(int)d->player.x] == '1'
 			|| d->map[my].line[(int)d->player.x] == ' ')
@@ -56,10 +56,10 @@ void	change_player_pos(double t, t_data *d, t_pos dir, int speed)
 		if (d->map[(int)d->player.y].line[mx] == '1'
 			|| d->map[(int)d->player.y].line[mx] == ' ')
 			v_x = 0;
-	}
-	if (is_inmap(d, mx, my) && d->map[my].line[mx] != '1')
-		increment_pos(d, (v_x * speed) * (dir.x),
-			(v_y * speed) * (dir.y));
+	}*/
+	//if (is_inmap(d, mx, my) && d->map[my].line[mx] != '1')
+	increment_pos(d, (v_x * speed) * (dir.x),
+		(v_y * speed) * (dir.y));
 }
 
 int	move_player(int keycode, t_data *data)

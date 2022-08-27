@@ -6,18 +6,18 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 10:56:04 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:21:52 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_map_data(t_data *data, t_line *map)
+void	free_map_data(t_line *map, int size)
 {
 	int	i;
 
 	i = 0;
-	while (map && i < data->m_info->size.y)
+	while (map && i < size)
 	{
 		free(map[i].line);
 		i++;
@@ -47,7 +47,7 @@ void	free_textures(t_data *data, int status)
 
 void	free_game_data(t_data *data, int status)
 {
-	free_map_data(data, data->map);
+	free_map_data(data->map, data->m_info->size.y);
 	free(data->c_palette);
 	free(data->ray);
 	free(data->player_ray);

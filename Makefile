@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/27 13:46:04 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/27 19:32:07 by tmoragli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/init_subdata.c			\
 				$(SRC)/rescale_size.c			\
 				$(SRC)/check_colors.c			\
-				$(SRC)/parsing_checks2.c
+				$(SRC)/parsing_checks2.c		\
+				$(SRC)/draw2.c
 				
 SRCS_BONUS	=	$(SRC)/main.c					\
 				$(SRC)/check_av.c				\
@@ -83,7 +84,8 @@ SRCS_BONUS	=	$(SRC)/main.c					\
 				$(SRC)/init_subdata.c			\
 				$(SRC)/rescale_size.c			\
 				$(SRC)/check_colors.c			\
-				$(SRC)/parsing_checks2.c
+				$(SRC)/parsing_checks2.c		\
+				$(SRC)/draw2.c
 				
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 OBJS_BONUS	= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS_BONUS))

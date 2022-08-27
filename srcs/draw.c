@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:21:03 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/24 15:42:43 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:58:44 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ void	draw_ray(t_data *data, t_pos start, t_ray *ray, double ray_angle)
 	}
 }
 
-void	map_fill(t_data *data, int x, int y)
+void	minimap(t_data *data, int x, int y)
 {
-	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
 	if (data->keys.map)
 	{
 		while (y < data->m_info->size.y)

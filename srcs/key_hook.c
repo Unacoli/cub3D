@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/24 15:43:40 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:59:24 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	act_keypress(t_data *data)
 		move_player(XK_A, data);
 	if (data->keys.d)
 		move_player(XK_D, data);
-	map_fill(data, 0, 0);
+	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
+	minimap(data, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen->img, 0, 0);
 	return (0);
 }

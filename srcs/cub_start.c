@@ -6,11 +6,23 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:37:36 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 13:31:56 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:05:00 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	display_map(t_line *map, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("[%s]\n", map[i].line);
+		i++;
+	}
+}
 
 void	start_game(t_data *data)
 {
@@ -28,7 +40,8 @@ void	start_game(t_data *data)
 	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
 	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
 	mlx_loop_hook(data->mlx, &act_keypress, data);
-	map_fill(data, 0, 0);
+	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
+	minimap(data, 0, 0);
 	mlx_loop(data->mlx);
 }
 

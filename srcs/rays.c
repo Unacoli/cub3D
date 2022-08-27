@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:24:01 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 13:09:50 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:30:31 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@ void	send_ray(t_ray *ray, t_data *data, int dof, t_pos start)
 	int	mx;
 	int	my;
 
-	while (dof < 9000)
+	while (dof < 2000)
 	{
 		mx = (int)(ray->x / SIZE_3D);
 		my = (int)(ray->y / SIZE_3D);
+		if (ray->y < 0)
+			my = -1;
+		if (ray->x < 0)
+			mx = -1;
 		if (is_inmap(data, mx, my) && data->map[my].line[mx] == '1')
 		{
-			dof = 9000;
+			dof = 2000;
 			ray->length = get_dist(start, point(ray->x, ray->y, 0));
 			return ;
 		}
@@ -75,32 +79,4 @@ void	cast_v_ray(t_data *data, t_pos start, double ray_angle, t_draw *ray)
 		|| ray->v_ray.angle == ((3 * PI) / 2))
 		reset_ray_data(&ray->v_ray, start, &dof);
 	send_ray(&ray->v_ray, data, dof, start);
-}
-
-void	draw_line(t_data *data, int rays, t_text *text, t_draw *ray)
-{
-	double	y;
-	double	x;
-
-	x = rays * (WIDTH_3D / NB_RAYS);
-	y = HEIGHT_3D;
-	ray->ty = text->size.y - 1 - (ray->ty_offset * ray->ty_step);
-	ray->tx = ray->tx / SIZE_3D * text->size.x;
-	if (data->ray->wall == 2 || data->ray->wall == 1)
-		ray->tx = (text->size.x - ray->tx - 1);
-	while (y >= 0)
-	{
-		if (y <= ray->line_height + ray->line_offset && y >= ray->line_offset)
-		{
-			ray->wall_color = get_pixel_color(data->text[ray->wall],
-					ray->tx, ray->ty);
-			draw_pixel(data, x, y, ray->wall_color);
-			ray->ty -= ray->ty_step;
-		}
-		if (y > ray->line_height + ray->line_offset)
-			draw_pixel(data, x, y, data->m_info->floor_color);
-		if (y < ray->line_offset)
-			draw_pixel(data, x, y, data->m_info->ceiling_color);
-		y--;
-	}
 }
