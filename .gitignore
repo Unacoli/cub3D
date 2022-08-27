@@ -56,8 +56,8 @@ dkms.conf
 Notes/*
 *.pdf
 *.txt
-cub3d.out
 cub3D
+cub3D_bonus
 
 # Local History for Visual Studio Code
 .history/
