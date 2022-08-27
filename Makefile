@@ -58,8 +58,32 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/init_subdata.c			\
 				$(SRC)/rescale_size.c			\
 				$(SRC)/check_colors.c
+SRCS_BONUS	=	$(SRC)/main.c					\
+				$(SRC)/check_av.c				\
+				$(SRC)/cub_start.c				\
+				$(SRC)/draw.c					\
+				$(SRC)/exit_game.c				\
+				$(SRC)/fill_map.c				\
+				$(SRC)/get_rgb.c				\
+				$(SRC)/init_game.c				\
+				$(SRC)/key_hook.c				\
+				$(SRC)/malloc_data.c			\
+				$(SRC)/maths.c					\
+				$(SRC)/moves.c					\
+				$(SRC)/parse_colors.c			\
+				$(SRC)/parse_id.c 				\
+				$(SRC)/parse_map.c				\
+				$(SRC)/parse_textures.c			\
+				$(SRC)/parsing_checks.c			\
+				$(SRC)/raycasting.c				\
+				$(SRC)/rays.c					\
+				$(SRC)/setup_rays.c				\
+				$(SRC)/init_subdata.c			\
+				$(SRC)/rescale_size.c			\
+				$(SRC)/check_colors.c
 
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
+OBJS_BONUS	= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS_BONUS))
 
 # ----------- COLORS ---------------
 
@@ -76,10 +100,19 @@ EOC			= \033[0;0m
 
 all			: $(NAME)
 
+bonus		: $(NAME)_bonus
+
 ${NAME}		: $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(BLUE) =========> Compiling object files <========="
 	@echo "$(WHITE)"
 		$(CC) $(OBJS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
+	@echo "$(BLUE) =====> Build $(DESCRIPTION) DONE √ <====="
+	@echo -n "$(EOC)"
+
+${NAME}_bonus	: $(MLX) $(LIBFT) $(OBJS_BONUS)
+	@echo "$(BLUE) =========> Compiling object files <========="
+	@echo "$(WHITE)"
+		$(CC) $(OBJS_BONUS) $(LIB) $(CFLAGS) $(LFLAGS) -o $@
 	@echo "$(BLUE) =====> Build $(DESCRIPTION) DONE √ <====="
 	@echo -n "$(EOC)"
 
