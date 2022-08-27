@@ -42,6 +42,10 @@ t_pos	point(int x, int y, char facing)
 void	init_subdata(t_data *data)
 {
 	ft_memset(data->m_info, 0, sizeof(t_map));
+	ft_memset(data->text, 0, sizeof(t_text));
+	ft_memset(data->screen, 0, sizeof(t_text));
+	ft_memset(data->ray, 0, sizeof(t_draw));
+	ft_memset(data->player_ray, 0, sizeof(t_draw));
 	data->c_palette->red = get_rgb(255, 0, 0, 1);
 	data->c_palette->white = get_rgb(255, 255, 255, 1);
 	data->c_palette->black = get_rgb(0, 0, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 18:52:57 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 20:57:39 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ int		is_opened(t_data *data, int x, int y);
 //-----------------//
 
 //-----MOVES-------//
+void	increment_pos(t_data *data, double x, double y);
 void	change_player_pos(double orientation,
 			t_data *data, t_pos dir, int speed);
 void	turn_player(int keycode, t_data *data);

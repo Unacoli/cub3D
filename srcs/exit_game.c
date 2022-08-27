@@ -47,12 +47,17 @@ void	free_textures(t_data *data, int status)
 
 void	free_game_data(t_data *data, int status)
 {
-	free_map_data(data->map, data->m_info->size.y);
-	free(data->c_palette);
-	free(data->ray);
-	free(data->player_ray);
-	free_textures(data, status);
-	if (data->screen->img)
+	if (data->map)
+		free_map_data(data->map, data->m_info->size.y);
+	if (data->c_palette)
+		free(data->c_palette);
+	if (data->ray)
+		free(data->ray);
+	if (data->player_ray)
+		free(data->player_ray);
+	if (data->m_info)
+		free_textures(data, status);
+	if (data->screen && data->screen->img)
 		mlx_destroy_image(data->mlx, data->screen->img);
 	free(data->screen);
 	if (data->win)

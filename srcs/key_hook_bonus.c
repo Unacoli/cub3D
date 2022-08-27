@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   key_hook_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nargouse <nargouse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 12:52:25 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 15:59:24 by tmoragli         ###   ########.fr       */
+/*   Created: 2022/08/27 20:48:28 by nargouse          #+#    #+#             */
+/*   Updated: 2022/08/27 21:14:48 by nargouse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	act_keypress(t_data *data)
 	if (data->keys.d)
 		move_player(XK_D, data);
 	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
+	minimap(data, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->screen->img, 0, 0);
 	return (0);
 }
@@ -39,6 +40,8 @@ int	hook_keypress(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
+	if (keycode == XK_M || keycode == XK_m)
+		data->keys.map = !data->keys.map;
 	if (keycode == XK_W || keycode == XK_w
 		|| keycode == XK_Z || keycode == XK_z)
 		data->keys.w = !data->keys.w;

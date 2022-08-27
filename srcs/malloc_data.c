@@ -26,7 +26,10 @@ int	allocate_game_data(t_data *data, char **av)
 	data->map_path = ft_strdup(av[1]);
 	if (!(data->ray && data->screen && data->c_palette && data->text
 			&& data->m_info && data->map_path))
+	{
+		free(data->map_path);
 		return (1);
+	}	
 	while (i < 4)
 		data->text[i++].img = NULL;
 	data->screen->img = NULL;

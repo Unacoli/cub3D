@@ -24,27 +24,6 @@ void	display_map(t_line *map, int size)
 	}
 }
 
-void	start_game(t_data *data)
-{
-	init_mlx_data(data, 0);
-	if (data->player.facing == 'N')
-		data->player.o = 270;
-	if (data->player.facing == 'E')
-		data->player.o = 360;
-	if (data->player.facing == 'S')
-		data->player.o = 90;
-	if (data->player.facing == 'W')
-		data->player.o = 180;
-	mlx_put_image_to_window(data->mlx, data->win, data->screen->img, 0, 0);
-	mlx_hook(data->win, DestroyNotify, 1L << 17, mlx_loop_end, data->mlx);
-	mlx_hook(data->win, 2, 1L << 0, hook_keypress, data);
-	mlx_hook(data->win, 3, 1L << 1, hook_keypress, data);
-	mlx_loop_hook(data->mlx, &act_keypress, data);
-	raycasting(data, point(data->p_3d.x, data->p_3d.y, 0), NB_RAYS);
-	minimap(data, 0, 0);
-	mlx_loop(data->mlx);
-}
-
 int	cub_start(t_data *data)
 {
 	if (parse_map(data, 0))

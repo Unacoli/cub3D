@@ -6,7 +6,7 @@
 #    By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 18:58:48 by tmoragli          #+#    #+#              #
-#    Updated: 2022/08/27 19:32:07 by tmoragli         ###   ########.fr        #
+#    Updated: 2022/08/27 20:34:46 by nargouse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,9 @@ SRCS		=	$(SRC)/main.c					\
 				$(SRC)/rescale_size.c			\
 				$(SRC)/check_colors.c			\
 				$(SRC)/parsing_checks2.c		\
-				$(SRC)/draw2.c
+				$(SRC)/draw2.c					\
+				$(SRC)/change_player_pos.c		\
+				$(SRC)/start_game.c
 				
 SRCS_BONUS	=	$(SRC)/main.c					\
 				$(SRC)/check_av.c				\
@@ -69,7 +71,7 @@ SRCS_BONUS	=	$(SRC)/main.c					\
 				$(SRC)/fill_map.c				\
 				$(SRC)/get_rgb.c				\
 				$(SRC)/init_game.c				\
-				$(SRC)/key_hook.c				\
+				$(SRC)/key_hook_bonus.c			\
 				$(SRC)/malloc_data.c			\
 				$(SRC)/maths.c					\
 				$(SRC)/moves.c					\
@@ -85,7 +87,10 @@ SRCS_BONUS	=	$(SRC)/main.c					\
 				$(SRC)/rescale_size.c			\
 				$(SRC)/check_colors.c			\
 				$(SRC)/parsing_checks2.c		\
-				$(SRC)/draw2.c
+				$(SRC)/draw2.c					\
+				$(SRC)/start_game.c				\
+				$(SRC)/change_player_pos_bonus.c
+				
 				
 OBJS		= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS))
 OBJS_BONUS	= $(patsubst $(SRC)/%.c, $(OBJ)/%.o,$(SRCS_BONUS))
@@ -143,12 +148,14 @@ clean		:
 	@echo "$(PURPLE)"
 		$(MAKE) -C ./mlx clean
 		$(MAKE) -C ./libft clean
-		$(RM) $(OBJS) 
+		$(RM) $(OBJS)
+	    $(RM) $(OBJS_BONUS)	
 
 fclean		: clean
 	@echo "$(BLUE) =========> Deleting executable <========="
 	@echo "$(PURPLE)"
 		$(RM) $(NAME)
+		$(RM) $(NAME)_bonus
 	@echo "$(GREEN)"
 		$(RM) $(MLX)
 		$(RM) $(LIBFT)
