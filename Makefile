@@ -160,7 +160,8 @@ fclean		: clean
 		$(RM) $(MLX)
 		$(RM) $(LIBFT)
 	@echo "$(BLUE) =====> Cleaning LIBFT and MLX DONE √ <====="
-re			: fclean all
+
+re			: fclean all bonus
 
 norm		:
 	@echo "$(BLACK)"
