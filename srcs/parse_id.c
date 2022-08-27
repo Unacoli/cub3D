@@ -6,13 +6,13 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:42:03 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 14:05:40 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:40:15 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_id(char *str, int elems)
+int	check_line(char *str, int elems)
 {
 	if (str && (ft_strncmp(str, "NO ", 3) && ft_strncmp(str, "WE ", 3)
 			&& ft_strncmp(str, "EA ", 3) && ft_strncmp(str, "SO ", 3)
@@ -23,6 +23,23 @@ int	check_id(char *str, int elems)
 		else
 			return (printf("Error\nNot a valid identifier: %s\n", str));
 	}
+	return (0);
+}
+
+int	check_id(t_data *data, char *line, int *elems, int i)
+{
+	if (line && line[0] == ' ')
+		line = ft_strtrim(line + 0 * i++, " ");
+	if (check_line(line, *elems))
+	{
+		if (i)
+			return (swap_str(line, NULL) == NULL);
+		return (1);
+	}
+	else if (stock_element(data, elems, line))
+		return (1);
+	if (i)
+		line = swap_str(line, NULL);
 	return (0);
 }
 
@@ -40,18 +57,8 @@ t_list	*is_valid_id(t_list *file_line, t_data *data, int elems)
 			file_line = file_line->next;
 			continue ;
 		}
-		if (line && line[0] == ' ')
-			line = ft_strtrim(line + 0 * i++, " ");
-		if (check_id(line, elems))
-		{
-			if (i)
-				return ((t_list *)swap_str(line, NULL));
+		if (check_id(data, line, &elems, i))
 			return (NULL);
-		}
-		else if (stock_element(data, &elems, line))
-			return (NULL);
-		if (i)
-			line = swap_str(line, NULL);
 		file_line = file_line->next;
 	}
 	if (elems != 6)
