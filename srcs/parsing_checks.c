@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 19:12:57 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:56:01 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	is_valid_map(t_data *data, t_list *map)
 	data->map = malloc(sizeof(t_line) * (data->m_info->size.y));
 	if (!data->map)
 		return (1);
-	fill_map_array(data, map);
+	if (fill_map_array(data, map))
+		return (1);
 	if (scan_map(data->map, data, 0, 0))
 		return (1);
 	return (0);
@@ -42,7 +43,8 @@ int	is_valid_file(t_data *data)
 	map = is_valid_id(file, data, 0);
 	if (!map)
 		return (printf("No map given\n"));
-	trim_textures(data);
+	if (trim_textures(data))
+		return (1);
 	if (is_valid_map(data, map))
 		return (1);
 	return (0);

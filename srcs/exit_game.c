@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:38:14 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 19:21:52 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 22:02:56 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_map_data(t_line *map, int size)
 	int	i;
 
 	i = 0;
-	while (map && i < size)
+	while (map && i < size && map[i].line)
 	{
 		free(map[i].line);
 		i++;

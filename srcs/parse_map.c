@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 19:15:33 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:53:24 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	parse_map(t_data *data, int fd)
 		return (ft_error("No map given, couldn't open file"));
 	if (get_file(data, fd))
 		return (1);
+	close(fd);
 	if (is_valid_file(data))
 		ret++;
 	ft_lstclear(&data->m_info->map, &free);

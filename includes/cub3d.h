@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 20:57:39 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:56:19 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,8 @@ int		is_player(char c);
 int		check_line(char *str, int elems);
 int		check_id(t_data *data, char *line, int *elems, int i);
 t_list	*is_valid_id(t_list *file_line, t_data *data, int elems);
-void	trim_textures(t_data *data);
-void	fill_map_array(t_data *data, t_list *map);
+int		trim_textures(t_data *data);
+int		fill_map_array(t_data *data, t_list *map);
 int		scan_map(t_line *map, t_data *data, int x, int y);
 int		stock_element(t_data *data, int *elems, char *line);
 int		check_elem(t_data *data, int x, int y, int map_size);

@@ -1,11 +1,11 @@
-NO ./textures/cat_big/north_big.xpm
-EA ./textures/cat_big/east_big.xpm
-WE ./textures/cat_big/west_big.xpm
-SO ./textures/cat_big/south_big.xpm
+NO ./textures/cat_compass/north.xpm
+EA ./textures/cat_compass/east.xpm
+WE ./textures/cat_compass/west.xpm
+SO ./textures/cat_compass/south.xpm
 
 C 255,186,8
 F 50,1,19
 
-01
+11
 1S1
 111

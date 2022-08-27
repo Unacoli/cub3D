@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:42:03 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/27 15:40:15 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:48:10 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	check_id(t_data *data, char *line, int *elems, int i)
 {
 	if (line && line[0] == ' ')
 		line = ft_strtrim(line + 0 * i++, " ");
+	if (!line)
+		return (swap_str(line, NULL) == NULL);
 	if (check_line(line, *elems))
 	{
 		if (i)
@@ -37,7 +39,11 @@ int	check_id(t_data *data, char *line, int *elems, int i)
 		return (1);
 	}
 	else if (stock_element(data, elems, line))
+	{
+		if (i)
+			return (swap_str(line, NULL) == NULL);
 		return (1);
+	}
 	if (i)
 		line = swap_str(line, NULL);
 	return (0);
