@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 18:20:51 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 00:50:44 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 14:03:25 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,24 +179,26 @@ void	assign_text(t_data *data, int nb, char *path);
 
 //-----PARSING-----//
 int		check_av(int ac, char **av);
+int		is_inmap(t_data *data, int x, int y);
 int		parse_map(t_data *data, int fd);
 int		is_player(char c);
-int		check_id(char *str, int elems);
+int		check_line(char *str, int elems);
+int		check_id(t_data *data, char **line, int elems, int i);
 t_list	*is_valid_id(t_list *file_line, t_data *data, int elems);
 void	trim_textures(t_data *data);
 void	fill_map_array(t_data *data, t_list *map);
 int		scan_map(t_line *map, t_data *data, int x, int y);
 int		stock_element(t_data *data, int *elems, char *line);
-int		check_elem(t_line *map, int x, int y, int map_size);
+int		check_elem(t_data *data, int x, int y, int map_size);
 int		check_coma(char *rgb);
 int		check_format(char *rgb);
 int		check_numbers(char *rgb);
 int		check_space(char *rgb);
 int		fetch_colors(t_data *data, char c, char *rgb);
-int		is_border(t_line *map, int x, int y, int map_size);
+int		is_border(t_data *data, int x, int y, int map_size);
 int		is_valid_map(t_data *data, t_list *map);
 int		is_valid_file(t_data *data);
-int		is_opened(t_line *map, int x, int y, int map_size);
+int		is_opened(t_data *data, int x, int y);
 //-----------------//
 
 //-----MOVES-------//

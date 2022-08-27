@@ -6,33 +6,19 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 12:49:05 by nargouse          #+#    #+#             */
-/*   Updated: 2022/08/25 17:47:19 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 13:47:53 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_border(t_line *map, int x, int y, int map_size)
+int	is_border(t_data *data, int x, int y, int map_size)
 {
-	if (y == 0 || y == map_size || x == 0 || x == map[y].len)
+	if (y == 0 || y == map_size || x == 0 || x == data->map[y].len)
+		return (1);
+	if (!is_inmap(data, x, y + 1) || !is_inmap(data, x, y - 1))
 		return (1);
 	return (0);
-}
-
-double	find_long_line(t_line *map, t_data *data)
-{
-	int		i;
-	double	len;
-
-	i = 0;
-	len = 0;
-	while (i <= data->m_info->size.y)
-	{
-		if (map->len > len)
-			len = map->len;
-		i++;
-	}
-	return (len);
 }
 
 int	is_valid_map(t_data *data, t_list *map)
@@ -42,7 +28,6 @@ int	is_valid_map(t_data *data, t_list *map)
 	if (!data->map)
 		return (1);
 	fill_map_array(data, map);
-	data->m_info->size.x = find_long_line(data->map, data);
 	if (scan_map(data->map, data, 0, 0))
 		return (1);
 	return (0);
@@ -63,23 +48,27 @@ int	is_valid_file(t_data *data)
 	return (0);
 }
 
-int	is_opened(t_line *map, int x, int y, int map_size)
+int	is_opened(t_data *data, int x, int y)
 {
-	if (x != 0)
-		if (map[y].line && map[y].line[x - 1] != '0'
-			&& map[y].line[x - 1] != '1' && is_player(map[y].line[x - 1]))
-			return (1);
-	if (x != map[y].len)
-		if (map[y].line && map[y].line[x + 1] != '0'
-			&& map[y].line[x + 1] != '1' && is_player(map[y].line[x + 1]))
-			return (1);
-	if (y < map_size - 1)
-		if (map[y + 1].line && map[y + 1].line[x] != '0'
-			&& map[y + 1].line[x] != '1' && is_player(map[y + 1].line[x]))
-			return (1);
-	if (y != 0)
-		if (map[y - 1].line && map[y - 1].line[x] != '0'
-			&& map[y - 1].line[x] != '1' && is_player(map[y - 1].line[x]))
-			return (1);
+	if (is_inmap(data, x - 1, y) && data->map[y].line
+		&& data->map[y].line[x - 1] != '0'
+		&& data->map[y].line[x - 1] != '1'
+		&& is_player(data->map[y].line[x - 1]))
+		return (1);
+	if (is_inmap(data, x + 1, y) && data->map[y].line
+		&& data->map[y].line[x + 1] != '0'
+		&& data->map[y].line[x + 1] != '1'
+		&& is_player(data->map[y].line[x + 1]))
+		return (1);
+	if (is_inmap(data, x, y + 1) && data->map[y + 1].line
+		&& data->map[y + 1].line[x] != '0'
+		&& data->map[y + 1].line[x] != '1'
+		&& is_player(data->map[y + 1].line[x]))
+		return (1);
+	if (is_inmap(data, x, y - 1) && data->map[y - 1].line
+		&& data->map[y - 1].line[x] != '0'
+		&& data->map[y - 1].line[x] != '1'
+		&& is_player(data->map[y - 1].line[x]))
+		return (1);
 	return (0);
 }

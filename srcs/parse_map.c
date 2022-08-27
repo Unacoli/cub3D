@@ -6,31 +6,29 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 00:35:46 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/26 23:11:23 by nargouse         ###   ########.fr       */
+/*   Updated: 2022/08/27 13:44:00 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_player(char c)
+int	check_elem(t_data *data, int x, int y, int map_size)
 {
-	if (c != 'N' && c != 'S' && c != 'W' && c != 'E')
-		return (1);
-	return (0);
-}
-
-int	check_elem(t_line *map, int x, int y, int map_size)
-{
-	if (map[y].line[x] != '1' && map[y].line[x] != '0'
-		&& map[y].line[x] != ' ' && is_player(map[y].line[x]))
+	if (is_inmap(data, x, y)
+		&& data->map[y].line[x] != '1'
+		&& data->map[y].line[x] != '0'
+		&& data->map[y].line[x] != ' '
+		&& is_player(data->map[y].line[x]))
 		return (printf("Error\nNot a valid map element: %c\n",
-				map[y].line[x]));
-	if (((map[y].line[x] == '0' || !is_player(map[y].line[x]))
-			&& is_border(map, x, y, map_size)) || (((map[y].line[x] == '0'
-					|| !is_player(map[y].line[x]))
-				&& is_opened(map, x, y, map_size))))
+				data->map[y].line[x]));
+	if (is_inmap(data, x, y)
+		&& (((data->map[y].line[x] == '0' || !is_player(data->map[y].line[x]))
+				&& is_border(data, x, y, map_size))
+			|| (((data->map[y].line[x] == '0'
+						|| !is_player(data->map[y].line[x]))
+					&& is_opened(data, x, y)))))
 		return (printf("Error\nMap is not closed at line: %d column: %d\n",
-				y, x));
+				y + 1, x + 1));
 	return (0);
 }
 
@@ -51,7 +49,7 @@ int	scan_map(t_line *map, t_data *data, int x, int y)
 			}
 			if (data->m_info->nb_player > 1)
 				return (printf("Error\nToo many player elements\n"));
-			if (check_elem(map, x, y, data->m_info->size.y))
+			if (check_elem(data, x, y, data->m_info->size.y))
 				return (1);
 			x++;
 		}

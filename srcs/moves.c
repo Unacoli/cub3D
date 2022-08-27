@@ -6,7 +6,7 @@
 /*   By: tmoragli <tmoragli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:25:05 by tmoragli          #+#    #+#             */
-/*   Updated: 2022/08/27 00:34:47 by tmoragli         ###   ########.fr       */
+/*   Updated: 2022/08/27 13:11:36 by tmoragli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	change_player_pos(double t, t_data *d, t_pos dir, int speed)
 			|| d->map[(int)d->player.y].line[mx] == ' ')
 			v_x = 0;
 	}
-	if (my < d->m_info->size.y && my >= 0 && mx < d->map[my].len
-		&& mx >= 0 && d->map[my].line[mx] != '1')
+	if (is_inmap(d, mx, my) && d->map[my].line[mx] != '1')
 		increment_pos(d, (v_x * speed) * (dir.x),
 			(v_y * speed) * (dir.y));
 }
